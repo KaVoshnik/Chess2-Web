@@ -1,0 +1,15 @@
+@font-face {
+    font-family: JetBrainsMono;
+    src: url(../fonts/JetBrainsMono-Medium.ttf) format('truetype');
+    font-size: medium;
+    font-weight: normal;
+}
+
+body{
+    background: #4e3f64;
+}
+
+.header {
+    padding: 56px 0;
+    border-bottom: 3px solid #281f35;
+}
