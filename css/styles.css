@@ -5,6 +5,18 @@
   font-weight: normal;
 }
 
+:root {
+  --background-color: #1a1a2e;
+  --navbar-color: #161625;
+  --sidebar-color: #1f1f30;
+  --card-color: #2a2a40;
+  --text-color: #fff;
+  --accent-color: #6a5acd;
+  --button-blue: #007bff;
+  --button-pink: #e83e8c;
+  --button-orange: #fd7e14;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -13,9 +25,16 @@
 
 body {
   font-family: 'JetBrains Mono', sans-serif;
-  background-color: #1e1e2e;
-  color: #fff;
+  background-color: var(--background-color);
+  color: var(--text-color);
   line-height: 1.6;
+}
+
+.dashboard {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 2rem;
 }
 
 /* Navbar */
@@ -24,19 +43,24 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background-color: #2a2a40;
+  background-color: var(--navbar-color);
 }
 
 .navbar .logo {
   font-size: 1.5rem;
   font-weight: bold;
+  color: var(--text-color);
 }
 
 .navbar nav a {
   margin: 0 1rem;
   text-decoration: none;
-  color: #fff;
+  color: var(--text-color);
   font-size: 1rem;
+}
+
+.navbar nav a:hover {
+  color: var(--accent-color);
 }
 
 .user-profile {
@@ -85,19 +109,17 @@ body {
 /* Sidebar */
 .sidebar {
   width: 20%;
-  background-color: #2a2a40;
+  background-color: var(--sidebar-color);
   padding: 1rem;
   border-radius: 8px;
+  position: sticky;
+  top: 1rem;
+  height: fit-content;
 }
 
 .sidebar h2 {
   margin-bottom: 1rem;
-}
-
-.menu-text {
-  border: none;
-  color: #fff;
-  font-size: 1rem;
+  color: var(--accent-color);
 }
 
 .sidebar ul {
@@ -109,12 +131,12 @@ body {
   padding: 0.5rem 1rem;
   border-radius: 4px;
   text-decoration: none;
-  color: #fff;
+  color: var(--text-color);
   transition: background-color 0.3s ease;
 }
 
 .sidebar ul li a:hover {
-  background-color: #444;
+  background-color: var(--card-color);
 }
 
 /* Main Content */
@@ -129,6 +151,7 @@ body {
   border-radius: 8px;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-bottom: 2rem;
 }
 
 .banner h1 {
@@ -152,16 +175,23 @@ body {
 }
 
 .news-card {
-  background-color: #2a2a40;
+  background-color: var(--card-color);
   padding: 1rem;
   border-radius: 8px;
   margin-bottom: 1rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  color: var(--text-color);
 }
 
 /* Right Panel */
 .right-panel {
   width: 20%;
+  background-color: var(--sidebar-color);
+  padding: 1rem;
+  border-radius: 8px;
+  position: sticky;
+  top: 1rem;
+  height: fit-content;
 }
 
 .right-panel h2 {
@@ -185,20 +215,19 @@ body {
 .btn:hover {
   transform: scale(1.05);
   opacity: 0.9;
-  transition: all 0.2s ease-in-out;
 }
 
 .btn.blue {
-  background-color: #007bff;
-  color: #fff;
+  background-color: var(--button-blue);
+  color: var(--text-color);
 }
 
 .btn.pink {
-  background-color: #e83e8c;
-  color: #fff;
+  background-color: var(--button-pink);
+  color: var(--text-color);
 }
 
 .btn.orange {
-  background-color: #fd7e14;
-  color: #fff;
+  background-color: var(--button-orange);
+  color: var(--text-color);
 }
