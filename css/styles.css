@@ -85,6 +85,16 @@ body {
   border-radius: 8px;
   padding: 1rem;
   display: none;
+  width: 200px;
+  z-index: 1000;
+}
+
+.profile-menu.hidden {
+  display: none;
+}
+
+.profile-menu.visible {
+  display: block;
 }
 
 .profile-menu a {
@@ -96,14 +106,6 @@ body {
 
 .profile-menu a:last-child {
   margin-bottom: 0;
-}
-
-.profile-menu.hidden {
-  display: none;
-}
-
-.profile-menu.visible {
-  display: block;
 }
 
 /* Sidebar */
