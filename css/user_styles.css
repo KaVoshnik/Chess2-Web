@@ -48,23 +48,31 @@ body {
 
 .background-image {
   width: 100%;
-  height: 100%;
+  height: 80%;
   object-fit: cover;
 }
 
 .profile-info {
   display: flex;
   align-items: center;
+  justify-content: space-between; /* Равномерное распределение элементов */
+  padding: 1rem 2rem;
+  background-color: #2a2a40;
+  border-radius: 8px;
   margin-top: -50px;
-  padding: 0 2rem;
 }
 
 .profile-avatar-large {
-  width: 100px;
-  height: 100px;
+  width: 80px; /* Уменьшение размеров аватарки */
+  height: 80px;
   border-radius: 50%;
-  border: 4px solid #28373d;
+  border: 3px solid #1e1e2e;
   margin-right: 1rem;
+}
+
+.user-info {
+  flex: 1;
+  margin-left: 1rem;
 }
 
 .user-info h1 {
@@ -74,8 +82,17 @@ body {
 }
 
 .user-info p {
+  display: flex;
+  align-items: center;
   margin: 0.5rem 0 0;
   color: #c1c1c1;
+  font-size: 0.9rem; /* Уменьшение размера текста */
+}
+
+.user-info img {
+  width: 20px; /* Уменьшение размера флага */
+  height: auto;
+  margin-right: 0.5rem; /* Отступ между флагом и текстом */
 }
 
 /* Статистика */
