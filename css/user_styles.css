@@ -1,148 +1,166 @@
+/* Основные настройки */
 body {
-    font-family: 'JetBrains Mono', sans-serif;
-    background-color: #1e1e2e;
-    color: #fff;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background-color: #2a2a40;
-  }
-  
-  .navbar .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
-  
-  .navbar nav a {
-    margin: 0 1rem;
-    text-decoration: none;
-    color: #fff;
-  }
-  
-  .navbar .user-profile .profile-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-  }
-  
-  /* Profile */
-  .profile-header {
-    position: relative;
-    background-color: #2a2a40;
-    padding-bottom: 2rem;
-  }
+  font-family: 'JetBrains Mono', sans-serif;
+  background-color: #1e1e2e;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
 
-  .profile-avatar-large {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-right: 10px;
-  }
-  
-  .background-banner {
-    position: relative;
-    height: 200px;
-    overflow: hidden;
-  }
-  
-  .background-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  .profile-info {
-    display: flex;
-    align-items: center;
-    margin-top: -50px;
-    padding: 0 2rem;
-  }
-  
-  .user-info h1 {
-    margin: 0;
-    font-size: 1.5rem;
-    color: #fff;
-  }
-  
-  .user-info p {
-    margin: 0.5rem 0 0;
-    color: #aaa;
-  }
-  
-  /* Stats section */
-  .stats-section {
-    display: flex;
-    justify-content: space-between;
-    padding: 2rem;
-    background-color: #2a2a40;
-    margin: 2rem 0;
-    border-radius: 8px;
-  }
-  
-  .stats-container {
-    display: flex;
-    justify-content: space-between;
-    gap: 2rem;
-  }
-  
-  .stats {
-    text-align: center;
-  }
-  
-  .stats h2 {
-    margin-bottom: 0.5rem;
-    font-size: 1rem;
-  }
-  
-  .stats p {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #6a5acd;
-  }
-  
-  /* Graph */
-  .graph {
-    flex: 1;
-    margin-left: 2rem;
-    padding: 1rem;
-    background-color: #1e1e2e;
-    border-radius: 8px;
-  }
-  
-  .graph-placeholder {
-    height: 150px;
-    background-color: #444;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #888;
-  }
-  
-  /* Addiction info */
-  .additional-info {
-    display: flex;
-    justify-content: space-between;
-    padding: 2rem;
-    background-color: #2a2a40;
-    border-radius: 8px;
-  }
-  
-  .info-block {
-    text-align: center;
-  }
-  
-  .info-block h3 {
-    color: #6a5acd;
-    margin-bottom: 0.5rem;
-  }
-  
-  .info-block p {
-    color: #fff;
-  }
-  
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #1f292e;
+}
+
+.navbar .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #9eff9e;
+}
+
+.navbar nav a {
+  margin: 0 1rem;
+  text-decoration: none;
+  color: #fff;
+}
+
+.navbar .user-profile .profile-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+/* Профиль */
+.profile-header {
+  position: relative;
+  background-color: #28373d;
+  padding-bottom: 2rem;
+}
+
+.background-banner {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-info {
+  display: flex;
+  align-items: center;
+  margin-top: -50px;
+  padding: 0 2rem;
+}
+
+.profile-avatar-large {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 4px solid #28373d;
+  margin-right: 1rem;
+}
+
+.user-info h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.user-info p {
+  margin: 0.5rem 0 0;
+  color: #c1c1c1;
+}
+
+/* Статистика */
+.stats-section {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem;
+  background-color: #28373d;
+  margin: 2rem 0;
+  border-radius: 8px;
+}
+
+.stats-container {
+  display: flex;
+  gap: 2rem;
+}
+
+.stats {
+  text-align: center;
+}
+
+.stats h2 {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: #9eff9e;
+}
+
+.stats p {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+/* График */
+.graph {
+  flex: 1;
+  margin-left: 2rem;
+  padding: 1rem;
+  background-color: #1e1e2e;
+  border-radius: 8px;
+}
+
+.graph-placeholder {
+  height: 150px;
+  background-color: #444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+}
+
+/* Достижения */
+.achievements {
+  padding: 2rem;
+  background-color: #28373d;
+  border-radius: 8px;
+}
+
+.achievements h2 {
+  margin-bottom: 1rem;
+  color: #9eff9e;
+}
+
+.achievement-list {
+  display: flex;
+  gap: 1rem;
+}
+
+.achievement-card {
+  text-align: center;
+  background-color: #1e1e2e;
+  border-radius: 8px;
+  padding: 1rem;
+  width: 150px;
+}
+
+.achievement-card img {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+}
+
+.achievement-card p {
+  font-size: 0.9rem;
+  color: #fff;
+}
