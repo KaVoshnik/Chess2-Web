@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="/css/user_styles.css">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
   <!-- Навигационная панель -->
@@ -18,9 +19,20 @@
         <a href="https://t.me/AdKavoshnik">Community</a>
         <a href="#">Help</a>
       </nav>
-    <div class="user-profile">
-      <img src="img/profile.jpg" alt="User Avatar" class="profile-avatar">
-    </div>
+      <div class="user-profile">
+        <img src="/img/profile.jpg" alt="User Avatar" class="profile-avatar" id="profile-avatar">
+        <div class="profile-menu hidden">
+          <div class="profile-info">
+            <img src="/img/profile.jpg" alt="User Avatar" class="profile-avatar-large">
+            <p class="username">Player_nickname</p>
+          </div>
+          <div class="profile-buttons">
+            <a href="user_profile.html">View Profile</a>
+            <a href="#">Settings</a>
+            <a href="#">Logout</a>
+          </div>
+        </div>
+      </div>
   </div>
 
   <!-- Профиль игрока -->
