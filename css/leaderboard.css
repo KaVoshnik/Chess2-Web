@@ -99,6 +99,10 @@ body {
   .leaderboard-col.username {
     flex: 2;
   }
+
+  .leaderboard-col.country {
+    flex: 1;
+  }
   
   .leaderboard-col.stats,
   .leaderboard-col.winrate,
