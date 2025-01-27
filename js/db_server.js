@@ -21,11 +21,11 @@ app.get('/players', async (req, res) => {
     const result = await pool.query('SELECT username, rank, wins, losses, total_games, win_rate FROM chess_players ORDER BY rank ASC LIMIT 50');
     res.json(result.rows);
   } catch (err) {
-    console.error('Ошибка при получении данных:', err);
-    res.status(500).send('Ошибка сервера');
+    console.error('Error while receiving data:', err);
+    res.status(500).send('Server error');
   }
 });
 
 app.listen(port, () => {
-  console.log(`Сервер запущен на http://localhost:${port}`);
+  console.log(`The server is running on http://localhost:${port}`);
 });
