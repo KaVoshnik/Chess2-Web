@@ -55,28 +55,28 @@
       <div id="leaderboard-rows"></div>
     </div>
   </div>
-
+<!--ПРОЕБЧИК-->
   <script src="js/profile_avatar.js"></script>
   <script>
-    async function fetchPlayers() {
-  const response = await fetch('http://localhost:3000/players');
-  const players = await response.json();
-  const leaderboardRows = document.getElementById('leaderboard-rows');
+  async function fetchPlayers() {
+    const response = await fetch('http://localhost:3000/players');
+    const players = await response.json();
+    const leaderboardRows = document.getElementById('leaderboard-rows');
 
-  players.forEach(player => {
-    const playerRow = document.createElement('div');
-    playerRow.className = 'leaderboard-row';
-    playerRow.innerHTML = `
-      <div class="leaderboard-col rank">${player.rank}</div>
-      <div class="leaderboard-col username">${player.username}</div>
-      <div class="leaderboard-col stats">${player.wins}</div>
-      <div class="leaderboard-col stats">${player.losses}</div>
-      <div class="leaderboard-col winrate">${player.win_rate.toFixed(2)}%</div>
-      <div class="leaderboard-col games">${player.total_games}</div>
-    `;
-    leaderboardRows.appendChild(playerRow);
-  });
-}
+    players.forEach(player => {
+      const playerRow = document.createElement('div');
+      playerRow.className = 'leaderboard-row';
+      playerRow.innerHTML = `
+        <div class="leaderboard-col rank">${player.rank}</div>
+        <div class="leaderboard-col username">${player.username}</div>
+        <div class="leaderboard-col stats">${player.wins}</div>
+        <div class="leaderboard-col stats">${player.losses}</div>
+        <div class="leaderboard-col winrate">${player.win_rate.toFixed(2)}%</div>
+        <div class="leaderboard-col games">${player.total_games}</div>
+      `;
+      leaderboardRows.appendChild(playerRow);
+    });
+  }
 
 fetchPlayers();
 
