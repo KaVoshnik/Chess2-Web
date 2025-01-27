@@ -55,31 +55,37 @@
       <div id="leaderboard-rows"></div>
     </div>
   </div>
-<!--ПРОЕБЧИК-->
-  <script src="js/profile_avatar.js"></script>
+
   <script>
-  async function fetchPlayers() {
-    const response = await fetch('http://localhost:3000/players');
-    const players = await response.json();
-    const leaderboardRows = document.getElementById('leaderboard-rows');
-
-    players.forEach(player => {
-      const playerRow = document.createElement('div');
-      playerRow.className = 'leaderboard-row';
-      playerRow.innerHTML = `
-        <div class="leaderboard-col rank">${player.rank}</div>
-        <div class="leaderboard-col username">${player.username}</div>
-        <div class="leaderboard-col stats">${player.wins}</div>
-        <div class="leaderboard-col stats">${player.losses}</div>
-        <div class="leaderboard-col winrate">${player.win_rate.toFixed(2)}%</div>
-        <div class="leaderboard-col games">${player.total_games}</div>
-      `;
-      leaderboardRows.appendChild(playerRow);
-    });
-  }
-
-fetchPlayers();
-
+    async function fetchPlayers() {
+      try {
+        const response = await fetch('http://localhost:3000/players');
+        const players = await response.json();
+        const leaderboardRows = document.getElementById('leaderboard-rows');
+  
+        // Очистка таблицы перед добавлением данных
+        leaderboardRows.innerHTML = '';
+  
+        // Добавление данных игроков в таблицу
+        players.forEach(player => {
+          const playerRow = document.createElement('div');
+          playerRow.className = 'leaderboard-row';
+          playerRow.innerHTML = `
+            <div class="leaderboard-col rank">${player.rank}</div>
+            <div class="leaderboard-col username">${player.username}</div>
+            <div class="leaderboard-col stats">${player.wins}</div>
+            <div class="leaderboard-col stats">${player.losses}</div>
+            <div class="leaderboard-col winrate">${parseFloat(player.win_rate).toFixed(2)}%</div>
+            <div class="leaderboard-col games">${player.total_games}</div>
+          `;
+          leaderboardRows.appendChild(playerRow);
+        });
+      } catch (error) {
+        console.error('Ошибка при загрузке данных:', error);
+      }
+    }
+  
+    fetchPlayers();
   </script>
 </body>
 </html>

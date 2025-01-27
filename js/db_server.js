@@ -13,28 +13,19 @@ const pool = new Pool({
   port: 8080,
 });
 
-app.get('/', (req, res) => {
-  res.send('Welcome to the Chess Leaderboard API!');
-});
-
 app.use(cors());
 app.use(express.json());
 
-// Получение списка игроков
 app.get('/players', async (req, res) => {
   try {
-    const result = await pool.query('SELECT * FROM chess_players ORDER BY rank ASC LIMIT 50');
-    
-    console.log('Полученные данные игроков:', result.rows);
-
+    const result = await pool.query('SELECT username, rank, wins, losses, total_games, win_rate FROM chess_players ORDER BY rank ASC LIMIT 50');
     res.json(result.rows);
   } catch (err) {
-    console.error(err);
+    console.error('Ошибка при получении данных:', err);
     res.status(500).send('Ошибка сервера');
   }
 });
 
-// Запуск сервера
 app.listen(port, () => {
   console.log(`Сервер запущен на http://localhost:${port}`);
 });
