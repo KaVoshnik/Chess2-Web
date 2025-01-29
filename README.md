@@ -1,6 +1,6 @@
 # Chess 2 Web
 
-Welcome to our website dedicated to chess! This resource is designed to allow Chess 2 players to track their achievements, rankings, and game stats across all game modes. We aim to create a community where players can share their experiences, analyze their games, and improve their skills.
+This is a site for the game Chess 2
 
 ## The following technologies were used for development:
 
