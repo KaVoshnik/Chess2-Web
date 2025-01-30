@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chess2</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/sign.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1 id="form-title">Register</h1>
+    <form id="auth-form">
+      <div class="form-group">
+        <input type="text" id="username" placeholder="Username" required>
+      </div>
+      <div class="form-group">
+        <input type="password" id="password" placeholder="Password" required>
+      </div>
+      <div class="form-group" id="email-group" style="display: none;">
+        <input type="email" id="email" placeholder="Email" required>
+      </div>
+      <button type="submit" class="button" id="submit-button">Register</button>
+    </form>
+    <div class="toggle-button" id="toggle-button">Do you have an account? Login!</div>
+  </div>
+
+  <script>
+    const formTitle = document.getElementById('form-title');
+    const submitButton = document.getElementById('submit-button');
+    const toggleButton = document.getElementById('toggle-button');
+    const authForm = document.getElementById('auth-form');
+    const emailGroup = document.getElementById('email-group');
+
+    let isRegistering = true;
+
+    toggleButton.addEventListener('click', () => {
+      isRegistering = !isRegistering;
+      if (isRegistering) {
+        formTitle.textContent = 'Registration';
+        submitButton.textContent = 'Register';
+        toggleButton.textContent = 'Do you have an account? Login!';
+        emailGroup.style.display = 'block';
+      } else {
+        formTitle.textContent = 'Login';
+        submitButton.textContent = 'Sign in';
+        toggleButton.textContent = 'Don’t have an account?';
+        emailGroup.style.display = 'none';
+      }
+    });
+
+    authForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const email = isRegistering ? document.getElementById('email').value : null;
+
+      const url = isRegistering ? 'http://localhost:3001/register' : 'http://localhost:3001/login';
+      const body = isRegistering ? JSON.stringify({ username, password, email }) : JSON.stringify({ username, password });
+
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: body
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        if (isRegistering) {
+          alert('Registration successful! You can now log in.');
+        } else {
+          localStorage.setItem('token', data.token);
+          window.location.href = 'user_profile.html';
+        }
+      } else {
+        alert(data.error);
+      }
+    });
+  </script>
+</body>
+</html>

@@ -65,18 +65,18 @@
         const response = await fetch('http://localhost:3000/players');
         const players = await response.json();
         const leaderboardRows = document.getElementById('leaderboard-rows');
-  
+
         leaderboardRows.innerHTML = '';
-  
+
         players.forEach(player => {
           const playerRow = document.createElement('div');
           playerRow.className = 'leaderboard-row';
           playerRow.innerHTML = `
             <div class="leaderboard-col rank">${player.rank}</div>
             <div class="leaderboard-col username">${player.username}</div>
-            <div class="leaderboard-col CR">${player.ChessRating}</div>
-            <div class="leaderboard-col OpenWorldCR">${player.OpenWorldCR}</div>
-            <div class="leaderboard-col BattleRoyalCR">${player.BattleRoyalCR}</div>
+            <div class="leaderboard-col CR">${player.ChessRating || '0'}</div>
+            <div class="leaderboard-col OpenWorldCR">${player.OpenWorldCR || '0'}</div>
+            <div class="leaderboard-col BattleRoyalCR">${player.BattleRoyalCR || '0'}</div>
             <div class="leaderboard-col stats">${player.wins}</div>
             <div class="leaderboard-col stats">${player.losses}</div>
             <div class="leaderboard-col winrate">${parseFloat(player.win_rate).toFixed(2)}%</div>
@@ -88,8 +88,9 @@
         console.error('Error loading data:', error);
       }
     }
-  
+
     fetchPlayers();
-  </script>
+</script>
+
 </body>
 </html>

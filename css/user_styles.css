@@ -1,4 +1,3 @@
-/* Основные настройки */
 body {
   font-family: 'JetBrains Mono', sans-serif;
   background-color: #1e1e2e;
@@ -55,7 +54,7 @@ body {
 .profile-info {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Равномерное распределение элементов */
+  justify-content: space-between;
   padding: 1rem 2rem;
   background-color: #2a2a40;
   border-radius: 8px;
@@ -63,7 +62,7 @@ body {
 }
 
 .profile-avatar-large {
-  width: 80px; /* Уменьшение размеров аватарки */
+  width: 80px;
   height: 80px;
   border-radius: 50%;
   border: 3px solid #1e1e2e;
@@ -86,16 +85,15 @@ body {
   align-items: center;
   margin: 0.5rem 0 0;
   color: #c1c1c1;
-  font-size: 0.9rem; /* Уменьшение размера текста */
+  font-size: 0.9rem;
 }
 
 .user-info img {
-  width: 20px; /* Уменьшение размера флага */
+  width: 20px;
   height: auto;
-  margin-right: 0.5rem; /* Отступ между флагом и текстом */
+  margin-right: 0.5rem;
 }
 
-/* Статистика */
 .stats-section {
   display: flex;
   justify-content: space-between;
@@ -126,7 +124,6 @@ body {
   color: #fff;
 }
 
-/* График */
 .graph {
   flex: 1;
   margin-left: 2rem;
@@ -144,7 +141,6 @@ body {
   color: #888;
 }
 
-/* Достижения */
 .achievements {
   padding: 2rem;
   background-color: #28373d;
