@@ -58,7 +58,7 @@ app.get('/user/:id', async (req, res) => {
 
   try {
     const query = `
-      SELECT u.nickname, cp.rank, cp.total_games, cp.wins, cp.losses 
+      SELECT u.username, cp.rank, cp.total_games, cp.wins, cp.losses 
       FROM users u 
       JOIN chess_players cp ON u.user_id = cp.user_id 
       WHERE u.user_id = $1
@@ -75,6 +75,7 @@ app.get('/user/:id', async (req, res) => {
     res.status(500).json({ error: 'Server error' });
   }
 });
+
 
 app.listen(port, () => {
   console.log(`The server is running on http://localhost:${port}`);
