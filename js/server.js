@@ -53,6 +53,30 @@ app.post('/login', async (req, res) => {
   }
 });
 
+app.get('/user/:id', async (req, res) => {
+  const userId = req.params.id;
+
+  try {
+    // Объединяем таблицы users и chess_players по user_id
+    const query = `
+      SELECT u.nickname, cp.rank, cp.total_games, cp.wins, cp.losses 
+      FROM users u 
+      JOIN chess_players cp ON u.user_id = cp.user_id 
+      WHERE u.user_id = $1
+    `;
+    const result = await pool.query(query, [userId]);
+
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    res.json(result.rows[0]);
+  } catch (error) {
+    console.error('Error fetching user data:', error);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
 app.listen(port, () => {
   console.log(`The server is running on http://localhost:${port}`);
 });
