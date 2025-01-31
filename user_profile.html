@@ -1,137 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chess2</title>
-  <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/user_styles.css">
-  <link rel="stylesheet" href="css/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess2</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/user_styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <div class="navbar">
-    <div class="logo">Chess2</div>
-    <nav>
-        <a href="/index.html">Home</a>
-        <a href="/leaderboard.html">Leaderboard</a>
-        <a href="https://t.me/AdKavoshnik">Community</a>
-        <a href="#">Help</a>
-      </nav>
-      <div class="user-profile">
-        <img src="/img/profile.jpg" alt="User Avatar" class="profile-avatar" id="profile-avatar">
-        <div class="profile-menu hidden">
-          <div class="profile-info">
-            <img src="/img/profile.jpg" alt="User Avatar" class="profile-avatar-large">
-            <p class="username">Player_PlayerId</p>
-          </div>
-          <div class="profile-buttons">
-            <a href="user_profile.html">View Profile</a>
-            <a href="#">Settings</a>
-            <a href="#">Logout</a>
-          </div>
-        </div>
-      </div>
-  </div>
-
-  <div class="profile-page">
-    <header class="profile-header">
-        <div class="background-banner">
-            <img src="/img/background.jpg" alt="Background" class="background-image">
-        </div>
-        <div class="profile-info">
-            <img src="/img/profile.jpg" alt="User Avatar" class="profile-avatar-large">
-            <div class="user-info">
-                <h1 id="player-name">Player_PlayerId</h1>
-                <p>
-                    <img src="/img/russia_flag.png" alt="Country Flag"> Russian Federation
-                </p>
+    <header class="navbar">
+        <div class="logo">Chess2</div>
+        <nav>
+            <a href="/index.html">Home</a>
+            <a href="/leaderboard.html">Leaderboard</a>
+            <a href="https://t.me/AdKavoshnik">Community</a>
+            <a href="#">Help</a>
+        </nav>
+        <div class="user-profile">
+            <img src="/img/profile.jpg" alt="User Avatar" class="profile-avatar" id="profile-avatar">
+            <div class="profile-menu hidden">
+                <div class="profile-info">
+                    <img src="/img/profile.jpg" alt="User Avatar" class="profile-avatar-large">
+                    <p class="username" id="username">Player_PlayerId</p>
+                </div>
+                <div class="profile-buttons">
+                    <a href="user_profile.html">View Profile</a>
+                    <a href="#">Settings</a>
+                    <a href="#">Logout</a>
+                </div>
             </div>
         </div>
     </header>
 
-    <div class="stats-section">
-        <div class="stats-container">
-            <div class="stats">
-                <h2>Rating</h2>
-                <p id="rating"></p>
+    <main class="profile-page">
+        <section class="profile-header">
+            <div class="background-banner">
+                <img src="/img/background.jpg" alt="Background" class="background-image">
             </div>
-            <div class="stats">
-                <h2>Play count</h2>
-                <p id="play-count"></p>
+            <div class="profile-info">
+                <img src="/img/profile.jpg" alt="User Avatar" class="profile-avatar-large">
+                <div class="user-info">
+                    <h1 id="player-name">Player_PlayerId</h1>
+                    <p>
+                        <img src="/img/russia_flag.png" alt="Country Flag"> Russian Federation
+                    </p>
+                </div>
             </div>
-            <div class="stats">
-                <h2>Wins</h2>
-                <p id="wins"></p>
+        </section>
+
+        <section class="stats-section">
+            <div class="stats-container">
+                <div class="stats">
+                    <h2>Rating</h2>
+                    <p id="rating"></p>
+                </div>
+                <div class="stats">
+                    <h2>Play count</h2>
+                    <p id="play-count"></p>
+                </div>
+                <div class="stats">
+                    <h2>Wins</h2>
+                    <p id="wins"></p>
+                </div>
+                <div class="stats">
+                    <h2>Losses</h2>
+                    <p id="losses"></p>
+                </div>
+                <div class="graph">
+                <h2>Rating progress</h2>
+                <div class="graph-placeholder">[Graph]</div>
+                </div>
+              </div>
+        </section>
+
+        <section class="achievements">
+            <h2>Achievements</h2>
+            <div class="achievement-list">
+                <div class="achievement-cards">
+                    <div class="achievement-card">
+                        <img src="achievement1.jpg" alt="Achievement Icon">
+                        <p>Winner</p>
+                    </div>
+                    <div class="achievement-card">
+                        <img src="achievement2.jpg" alt="Achievement Icon">
+                        <p>Tournament winner</p>
+                    </div>
+                    <div class="achievement-card">
+                        <img src="achievement3.jpg" alt="Achievement Icon">
+                        <p>Top 100 player</p>
+                    </div>
+                </div>
             </div>
-            <div class="stats">
-                <h2>Losses</h2>
-                <p id="losses"></p>
-            </div>
-        </div>
-    </div>
-</div>
+        </section>
+    </main>
 
-      <div class="graph">
-        <h2>Rating progress</h2>
-        <div class="graph-placeholder">[Graph]</div>
-      </div>
-    </div>
+    <script src="js/profile_avatar.js"></script>
+    <script>
+        window.onload = async () => {
+            const userId = localStorage.getItem('userId');
+            if (!userId) {
+                window.location.href = 'sign_in.html';
+                return;
+            }
 
-    <div class="achievements">
-      <h2>Achievement</h2>
-      <div class="achievement-list">
-        <div class="achievement-cards">
-          <div class="achievement-card">
-            <img src="achievement1.jpg" alt="Achievement_icon">
-            <p>Winner</p>
-          </div>
-          <div class="achievement-card">
-            <img src="achievement2.jpg" alt="Achievement_icon">
-            <p>Tournament winner</p>
-          </div>
-          <div class="achievement-card">
-            <img src="achievement3.jpg" alt="Achievement_icon">
-            <p>Top 100 player</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+            try {
+                const response = await fetch(`http://localhost:3001/user/${userId}`);
+                console.log('Response status:', response.status);
 
-  <script src="js/profile_avatar.js"></script>
-  <script>
-  window.onload = async () => {
-  const userId = localStorage.getItem('userId');
-  if (!userId) {
-    window.location.href = 'sign_in.html';
-    return;
-  }
+                if (!response.ok) {
+                    const errorMessage = await response.text();
+                    console.error('Error loading user data:', errorMessage);
+                    alert('Error loading user data: ' + errorMessage);
+                    return;
+                }
 
-  try {
-    const response = await fetch(`http://localhost:3001/user/${userId}`);
-    console.log('Response status:', response.status); // Логирование статуса ответа
+                const userData = await response.json();
+                console.log('User Data:', userData);
 
-    if (!response.ok) {
-      const errorMessage = await response.text(); // Получение текста ошибки
-      console.error('Error loading user data:', errorMessage);
-      alert('Error loading user data: ' + errorMessage);
-      return;
-    }
-
-    const userData = await response.json();
-    console.log('User Data:', userData); // Логирование данных пользователя
-
-    document.getElementById('player-name').textContent = userData.username; // Никнейм пользователя
-    document.getElementById('rating').textContent = userData.rank; // Рейтинг
-    document.getElementById('play-count').textContent = userData.total_games; // Количество игр
-    document.getElementById('wins').textContent = userData.wins; // Победы
-    document.getElementById('losses').textContent = userData.losses; // Поражения
-  } catch (error) {
-    console.error('Error loading user data:', error);
-    alert('Error loading user data. Please try again later.');
-  }
-};
-  </script>
+                document.getElementById('player-name').textContent = userData.username;
+                document.getElementById('rating').textContent = userData.rank;
+                document.getElementById('play-count').textContent = userData.total_games;
+                document.getElementById('wins').textContent = userData.wins;
+                document.getElementById('losses').textContent = userData.losses;
+                document.getElementById('username').textContent = userData.username; // Обновление имени пользователя в меню
+            } catch (error) {
+                console.error('Error loading user data:', error);
+                alert('Error loading user data. Please try again later.');
+            }
+        };
+    </script>
 </body>
 </html>
