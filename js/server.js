@@ -57,7 +57,6 @@ app.get('/user/:id', async (req, res) => {
   const userId = req.params.id;
 
   try {
-    // Объединяем таблицы users и chess_players по user_id
     const query = `
       SELECT u.nickname, cp.rank, cp.total_games, cp.wins, cp.losses 
       FROM users u 
