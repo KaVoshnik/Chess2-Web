@@ -19,10 +19,10 @@ app.use(express.json());
 app.get('/players', async (req, res) => {
   try {
     const result = await pool.query(`
-      SELECT cp.player_id, u.username, cp.rank, cp.wins, cp.losses, cp.total_games, cp.win_rate
+      SELECT cp.player_id, u.username, cp.rank, cp.wins, cp.losses, cp.total_games, cp.win_rate, cp.cr
       FROM chess_players cp
       JOIN users u ON cp.user_id = u.user_id
-      ORDER BY cp.rank ASC
+      ORDER BY cp.cr ASC
       LIMIT 50
     `);
     res.json(result.rows);

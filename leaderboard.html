@@ -42,12 +42,11 @@
       <p>Top 50 players</p>
     </header>
 
-    <!-- Таблица лидеров -->
     <div class="leaderboard">
       <div class="leaderboard-header-row">
         <div class="leaderboard-col rank">Rank</div>
         <div class="leaderboard-col username">Player</div>
-        <div class="leaderboard-col CR">CRS</div>
+        <div class="leaderboard-col CR">CR</div>
         <div class="leaderboard-col OpenWorldCR">OWCR</div>
         <div class="leaderboard-col BattleRoyalCR">BRCR</div>
         <div class="leaderboard-col stats">Win</div>
@@ -74,7 +73,7 @@
           playerRow.innerHTML = `
             <div class="leaderboard-col rank">${player.rank}</div>
             <div class="leaderboard-col username">${player.username}</div>
-            <div class="leaderboard-col CR">${player.ChessRating || '0'}</div>
+            <div class="leaderboard-col CR">${player.cr || '0'}</div>
             <div class="leaderboard-col OpenWorldCR">${player.OpenWorldCR || '0'}</div>
             <div class="leaderboard-col BattleRoyalCR">${player.BattleRoyalCR || '0'}</div>
             <div class="leaderboard-col stats">${player.wins}</div>

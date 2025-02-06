@@ -58,7 +58,7 @@ app.get('/user/:id', async (req, res) => {
 
   try {
     const query = `
-      SELECT u.username, cp.rank, cp.total_games, cp.wins, cp.losses 
+      SELECT u.username, cp.rank, cp.total_games, cp.wins, cp.losses, cp.cr
       FROM users u 
       JOIN chess_players cp ON u.user_id = cp.user_id 
       WHERE u.user_id = $1

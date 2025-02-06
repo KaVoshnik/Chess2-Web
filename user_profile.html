@@ -68,6 +68,10 @@
                     <h2>Losses</h2>
                     <p id="losses"></p>
                 </div>
+                <div class="CR">
+                    <h2>CR</h2>
+                    <p id="CR"></p>
+                </div>
                 <div class="graph">
                 <h2>Rating progress</h2>
                 <div class="graph-placeholder">[Graph]</div>
@@ -124,6 +128,7 @@
                 document.getElementById('play-count').textContent = userData.total_games;
                 document.getElementById('wins').textContent = userData.wins;
                 document.getElementById('losses').textContent = userData.losses;
+                document.getElementById('CR').textContent = userData.cr;
                 document.getElementById('username').textContent = userData.username;
             } catch (error) {
                 console.error('Error loading user data:', error);
