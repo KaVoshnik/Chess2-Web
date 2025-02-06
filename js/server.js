@@ -27,12 +27,21 @@ app.post('/register', async (req, res) => {
       'INSERT INTO users (username, password, email) VALUES ($1, $2, $3) RETURNING *',
       [username, hashedPassword, email]
     );
-    res.status(201).json({ id: result.rows[0].user_id, username: result.rows[0].username });
+
+    const newUserId = result.rows[0].user_id;
+
+    await pool.query(
+      'INSERT INTO chess_players (user_id, wins, losses, total_games, cr) VALUES ($1, $2, $3, $4, $5)',
+      [newUserId, 0, 0, 0, 0]
+    );
+
+    res.status(201).json({ id: newUserId, username: result.rows[0].username });
   } catch (error) {
     console.error('Error during registration:', error);
     res.status(400).json({ error: 'User with this name found, do you want to login?' });
   }
 });
+
 
 app.post('/login', async (req, res) => {
   const { username, password } = req.body;

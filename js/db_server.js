@@ -19,12 +19,23 @@ app.use(express.json());
 app.get('/players', async (req, res) => {
   try {
     const result = await pool.query(`
-      SELECT cp.player_id, u.username, cp.rank, cp.wins, cp.losses, cp.total_games, cp.win_rate, cp.cr
-      FROM chess_players cp
-      JOIN users u ON cp.user_id = u.user_id
-      ORDER BY cp.cr ASC
+      SELECT 
+          cp.player_id, 
+          u.username, 
+          DENSE_RANK() OVER (ORDER BY cp.cr DESC) AS rank, 
+          cp.wins, 
+          cp.losses, 
+          cp.total_games, 
+          cp.win_rate, 
+          cp.cr
+      FROM 
+          chess_players cp
+      JOIN 
+          users u ON cp.user_id = u.user_id
+      ORDER BY 
+          cp.cr DESC
       LIMIT 50
-    `);
+  `);
     res.json(result.rows);
   } catch (err) {
     console.error('Error while receiving data:', err);
