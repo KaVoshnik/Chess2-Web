@@ -8,7 +8,7 @@ const port = 3000;
 const pool = new Pool({
   user: 'postgres',
   host: 'localhost',
-  database: 'Players',
+  database: 'Chess2',
   password: 'passwd',
   port: 8080,
 });
@@ -39,23 +39,6 @@ app.get('/players', async (req, res) => {
     res.json(result.rows);
   } catch (err) {
     console.error('Error while receiving data:', err);
-    res.status(500).send('Server error');
-  }
-});
-
-app.get('/matches', async (req, res) => {
-  try {
-    const result = await pool.query(`
-      SELECT m.match_id, p1.username AS player1, p2.username AS player2, 
-             m.winner_id, m.match_date
-      FROM matches m
-      JOIN chess_players p1 ON m.player1_id = p1.player_id
-      JOIN chess_players p2 ON m.player2_id = p2.player_id
-      ORDER BY m.match_date DESC
-    `);
-    res.json(result.rows);
-  } catch (err) {
-    console.error('Error while receiving match data:', err);
     res.status(500).send('Server error');
   }
 });
