@@ -95,8 +95,3 @@ app.get('/user/:id', async (req, res) => {
 app.listen(port, () => {
   console.log(`The server is running on http://localhost:${port}`);
 });
-
-/* FIX LIST:
-Пофиксить ранг
-Добавить постановку юзер айди при входе в аккаунт в локальное хранилище
-*/
