@@ -1,104 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chess2</title>
-  <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/user_styles.css">
-  <link rel="stylesheet" href="css/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess2</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/user_styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <!-- Навигационная панель -->
-  <div class="navbar">
-    <div class="logo">Chess2</div>
-    <nav>
-        <a href="/index.html">Home</a>
-        <a href="/leaderboard.html">Leaderboard</a>
-        <a href="https://t.me/AdKavoshnik">Community</a>
-        <a href="#">Help</a>
-      </nav>
-      <div class="user-profile">
-        <img src="/img/profile.jpg" alt="User Avatar" class="profile-avatar" id="profile-avatar">
-        <div class="profile-menu hidden">
-          <div class="profile-info">
-            <img src="/img/profile.jpg" alt="User Avatar" class="profile-avatar-large">
-            <p class="username">Player_PlayerId</p>
-          </div>
-          <div class="profile-buttons">
-            <a href="user_profile.html">View Profile</a>
-            <a href="#">Settings</a>
-            <a href="#">Logout</a>
-          </div>
+    <header class="navbar">
+        <div class="logo">Chess2</div>
+        <nav>
+            <a href="/index.html">Home</a>
+            <a href="/leaderboard.html">Leaderboard</a>
+            <a href="https://t.me/AdKavoshnik">Community</a>
+            <a href="#">Help</a>
+        </nav>
+        <div class="user-profile">
+            <img src="/img/profile.jpg" alt="User Avatar" class="profile-avatar" id="profile-avatar">
+            <div class="profile-menu hidden">
+                <div class="profile-info">
+                    <img src="/img/profile.jpg" alt="User Avatar" class="profile-avatar-large">
+                    <p class="username" id="username">Player_PlayerId</p>
+                </div>
+                <div class="profile-buttons">
+                    <a href="user_profile.html">View Profile</a>
+                    <a href="#">Settings</a>
+                    <a href="#" id="logoutButton">Logout</a>
+                </div>
+            </div>
         </div>
-      </div>
-  </div>
-
-  <!-- Профиль игрока -->
-  <div class="profile-page">
-    <header class="profile-header">
-      <div class="background-banner">
-        <img src="/img/background.jpg" alt="Background" class="background-image">
-      </div>
-      <div class="profile-info">
-        <img src="/img/profile.jpg" alt="User Avatar" class="profile-avatar-large">
-        <div class="user-info">
-          <h1>Player_PlayerId</h1>
-          <p><img src="/img/russia_flag.png" alt="Country Flag"> Russian Federation</p>
-        </div>
-      </div>
     </header>
 
-    <!-- Статистика игрока -->
-    <div class="stats-section">
-      <div class="stats-container">
-        <div class="stats">
-          <h2>Rating</h2>
-          <p>94</p>
-        </div>
-        <div class="stats">
-          <h2>Play count</h2>
-          <p>1,203</p>
-        </div>
-        <div class="stats">
-          <h2>Wins</h2>
-          <p>865</p>
-        </div>
-        <div class="stats">
-          <h2>Loss</h2>
-          <p>338</p>
-        </div>
-      </div>
+    <main class="profile-page">
+        <section class="profile-header">
+            <div class="background-banner">
+                <img src="/img/background.jpg" alt="Background" class="background-image">
+            </div>
+            <div class="profile-info">
+                <img src="/img/profile.jpg" alt="User Avatar" class="profile-avatar-large">
+                <div class="user-info">
+                    <h1 id="player-name">Player_PlayerId</h1>
+                    <p>
+                        <img src="/img/russia_flag.png" alt="Country Flag"> Russian Federation
+                    </p>
+                </div>
+            </div>
+        </section>
 
-      <div class="graph">
-        <h2>Rating progress</h2>
-        <div class="graph-placeholder">[Graph]</div>
-      </div>
-    </div>
+        <section class="stats-section">
+            <div class="stats-container">
+                <div class="stats">
+                    <h2>Play count</h2>
+                    <p id="play-count"></p>
+                </div>
+                <div class="stats">
+                    <h2>Wins</h2>
+                    <p id="wins"></p>
+                </div>
+                <div class="stats">
+                    <h2>Losses</h2>
+                    <p id="losses"></p>
+                </div>
+                <div class="stats">
+                    <h2>Draws</h2>
+                    <p id="draws"></p>
+                </div>
+                <div class="stats">
+                    <h2>Chess Rating</h2>
+                    <p id="CR"></p>
+                </div>
+              </div>
+        </section>
 
-    <!-- Достижения -->
-    <div class="achievements">
-      <h2>Achievement</h2>
-      <div class="achievement-list">
-        <div class="achievement-cards">
-          <div class="achievement-card">
-            <img src="achievement1.jpg" alt="Achievement_icon">
-            <p>Winner</p>
-          </div>
-          <div class="achievement-card">
-            <img src="achievement2.jpg" alt="Achievement_icon">
-            <p>Tournament winner</p>
-          </div>
-          <div class="achievement-card">
-            <img src="achievement3.jpg" alt="Achievement_icon">
-            <p>Top 100 player</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+        <section class="achievements">
+            <h2>Achievements</h2>
+            <div class="achievement-list">
+                <div class="achievement-cards">
+                    <div class="achievement-card">
+                        <img src="achievement1.jpg" alt="Achievement Icon">
+                        <p>Test Achievement</p>
+                    </div>
+                    <div class="achievement-card">
+                        <img src="achievement2.jpg" alt="Achievement Icon">
+                        <p>Test Achievement</p>
+                    </div>
+                    <div class="achievement-card">
+                        <img src="achievement3.jpg" alt="Achievement Icon">
+                        <p>Test Achievement</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
-  <script src="js/profile_avatar.js"></script>
+    <script src="js/profile_avatar.js"></script>
+    <script>
+        window.onload = async () => {
+            const userId = localStorage.getItem('userId');
+            if (!userId) {
+                window.location.href = 'sign_in.html';
+                return;
+            }
+
+            try {
+                const response = await fetch(`http://localhost:3001/user/${userId}`);
+                console.log('Response status:', response.status);
+
+                if (!response.ok) {
+                    const errorMessage = await response.text();
+                    console.error('Error loading user data:', errorMessage);
+                    alert('Error loading user data: ' + errorMessage);
+                    return;
+                }
+
+                const userData = await response.json();
+                console.log('User Data:', userData);
+
+                
+                document.getElementById('player-name').textContent = userData.username;
+                document.getElementById('play-count').textContent = userData.total_games;
+                document.getElementById('wins').textContent = userData.wins;
+                document.getElementById('losses').textContent = userData.losses;
+                document.getElementById('draws').textContent = userData.draws;
+                document.getElementById('CR').textContent = userData.cr;
+                document.getElementById('username').textContent = userData.username;
+            } catch (error) {
+                console.error('Error loading user data:', error);
+                alert('Error loading user data. Please try again later.');
+            }
+        };
+    </script>
 </body>
 </html>
