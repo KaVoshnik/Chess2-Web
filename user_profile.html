@@ -53,10 +53,6 @@
         <section class="stats-section">
             <div class="stats-container">
                 <div class="stats">
-                    <h2>Rank</h2>
-                    <p id="rating"></p>
-                </div>
-                <div class="stats">
                     <h2>Play count</h2>
                     <p id="play-count"></p>
                 </div>
@@ -85,15 +81,15 @@
                 <div class="achievement-cards">
                     <div class="achievement-card">
                         <img src="achievement1.jpg" alt="Achievement Icon">
-                        <p>Winner</p>
+                        <p>Test Achievement</p>
                     </div>
                     <div class="achievement-card">
                         <img src="achievement2.jpg" alt="Achievement Icon">
-                        <p>Tournament winner</p>
+                        <p>Test Achievement</p>
                     </div>
                     <div class="achievement-card">
                         <img src="achievement3.jpg" alt="Achievement Icon">
-                        <p>Top 100 player</p>
+                        <p>Test Achievement</p>
                     </div>
                 </div>
             </div>
@@ -125,7 +121,6 @@
 
                 
                 document.getElementById('player-name').textContent = userData.username;
-                document.getElementById('rating').textContent = userData.rank;
                 document.getElementById('play-count').textContent = userData.total_games;
                 document.getElementById('wins').textContent = userData.wins;
                 document.getElementById('losses').textContent = userData.losses;
