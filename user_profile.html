@@ -28,7 +28,7 @@
                 <div class="profile-buttons">
                     <a href="user_profile.html">View Profile</a>
                     <a href="#">Settings</a>
-                    <a href="#">Logout</a>
+                    <a href="#" id="logoutButton">Logout</a>
                 </div>
             </div>
         </div>
@@ -65,12 +65,12 @@
                     <p id="losses"></p>
                 </div>
                 <div class="stats">
+                    <h2>Draws</h2>
+                    <p id="draws"></p>
+                </div>
+                <div class="stats">
                     <h2>Chess Rating</h2>
                     <p id="CR"></p>
-                </div>
-                <div class="graph">
-                <h2>Rating progress</h2>
-                <div class="graph-placeholder">[Graph]</div>
                 </div>
               </div>
         </section>
@@ -98,6 +98,16 @@
 
     <script src="js/profile_avatar.js"></script>
     <script>
+        document.getElementById('logoutButton').addEventListener('click', function(event) {
+            event.preventDefault();
+    
+            localStorage.removeItem('token');
+            localStorage.removeItem('userId');
+    
+            window.location.href = '/index.html';
+        });
+    </script>
+    <script>
         window.onload = async () => {
             const userId = localStorage.getItem('userId');
             if (!userId) {
@@ -124,6 +134,7 @@
                 document.getElementById('play-count').textContent = userData.total_games;
                 document.getElementById('wins').textContent = userData.wins;
                 document.getElementById('losses').textContent = userData.losses;
+                document.getElementById('draws').textContent = userData.draws;
                 document.getElementById('CR').textContent = userData.cr;
                 document.getElementById('username').textContent = userData.username;
             } catch (error) {

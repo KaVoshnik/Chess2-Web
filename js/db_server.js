@@ -43,6 +43,16 @@ app.get('/players', async (req, res) => {
   }
 });
 
+app.get('/api/cr-data', async (req, res) => {
+  try {
+      const result = await pool.query('SELECT date, cr FROM chess_players ORDER BY date ASC');
+      res.json(result.rows);
+  } catch (err) {
+      console.error(err);
+      res.status(500).send('Server error');
+  }
+});
+
 app.listen(port, () => {
   console.log(`The server is running on http://localhost:${port}`);
 });
