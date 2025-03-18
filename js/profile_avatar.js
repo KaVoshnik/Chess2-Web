@@ -17,8 +17,7 @@ document.getElementById('logoutButton').addEventListener('click', function(event
     }
 
     try {
-        // Запрос к серверу для получения данных пользователя
-        const response = await fetch(`http://localhost:3001/user/${userId}`);
+        const response = await fetch(`http://localhost:3000/user/${userId}`);
         console.log('Response status:', response.status);
 
         if (!response.ok) {
@@ -31,7 +30,6 @@ document.getElementById('logoutButton').addEventListener('click', function(event
         const userData = await response.json();
         console.log('User Data:', userData);
 
-        // Устанавливаем никнейм пользователя в поле username
         document.getElementById('username').textContent = userData.username;
 
     } catch (error) {
@@ -48,7 +46,7 @@ window.onload = async () => {
   }
 
   try {
-      const response = await fetch(`http://localhost:3001/user/${userId}`);
+      const response = await fetch(`http://localhost:3000/user/${userId}`);
       console.log('Response status:', response.status);
 
       if (!response.ok) {
