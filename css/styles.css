@@ -1,8 +1,6 @@
 @font-face {
   font-family: JetBrainsMono;
   src: url(../fonts/JetBrainsMono-Medium.ttf) format('truetype');
-  font-size: medium;
-  font-weight: normal;
 }
 
 :root {
@@ -44,10 +42,11 @@ body {
   align-items: center;
   padding: 1rem 2rem;
   background-color: var(--navbar-color);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .navbar .logo {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: bold;
   color: var(--text-color);
 }
@@ -57,12 +56,14 @@ body {
   text-decoration: none;
   color: var(--text-color);
   font-size: 1rem;
+  transition: color 0.3s;
 }
 
 .navbar nav a:hover {
   color: var(--accent-color);
 }
 
+/* User Profile */
 .user-profile {
   position: relative;
   display: flex;
@@ -74,13 +75,14 @@ body {
   height: 40px;
   border-radius: 50%;
   cursor: pointer;
+  border: 3px solid var(--accent-color);
 }
 
 .profile-menu {
   position: absolute;
   top: 50px;
   right: 0;
-  background-color: #2a2a40;
+  background-color: var(--card-color);
   border: 1px solid #ccc;
   border-radius: 8px;
   padding: 1rem;
@@ -88,6 +90,7 @@ body {
   width: 250px;
   z-index: 1000;
 }
+
 .profile-info {
   display: flex;
   align-items: center;
@@ -106,6 +109,7 @@ body {
   font-weight: bold;
 }
 
+/* Profile Buttons */
 .profile-buttons a {
   display: block;
   color: #fff;
@@ -117,7 +121,6 @@ body {
 .profile-buttons a:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
-
 
 .profile-menu.hidden {
   display: none;
@@ -147,6 +150,7 @@ body {
   position: sticky;
   top: 1rem;
   height: fit-content;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .sidebar h2 {
@@ -187,23 +191,22 @@ body {
 }
 
 .banner h1 {
-  font-size: 2rem;
+  font-size: 2.5rem;
+  color: #fff;
 }
 
 .banner p {
   margin-top: 0.5rem;
+  color: #f0f0f0;
 }
 
 .news-section {
   margin-top: 2rem;
 }
 
-.news-section {
-  margin-bottom: 2rem;
-}
-
 .news-section h2 {
   margin-bottom: 1rem;
+  color: var(--accent-color);
 }
 
 .news-card {
@@ -224,12 +227,15 @@ body {
   position: sticky;
   top: 1rem;
   height: fit-content;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .right-panel h2 {
   margin-bottom: 1rem;
+  color: var(--accent-color);
 }
 
+/* Buttons */
 .btn {
   display: block;
   width: 100%;

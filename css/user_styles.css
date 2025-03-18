@@ -16,32 +16,41 @@ body {
 }
 
 .navbar .logo {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: bold;
   color: #9eff9e;
+  transition: transform 0.3s;
+}
+
+.navbar .logo:hover {
+  transform: scale(1.05);
 }
 
 .navbar nav a {
   margin: 0 1rem;
   text-decoration: none;
   color: #fff;
-  transition: color 0.3s;
+  transition: color 0.3s, transform 0.3s;
 }
 
 .navbar nav a:hover {
   color: #9eff9e;
+  transform: translateY(-2px);
 }
 
 .navbar .user-profile .profile-avatar {
   width: 40px;
   height: 40px;
   border-radius: 50%;
+  border: 3px solid #9eff9e;
 }
 
 .profile-header {
   position: relative;
   background-color: #28373d;
   padding-bottom: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
 .background-banner {
@@ -60,7 +69,7 @@ body {
 .profile-info {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   padding: 1rem 2rem;
   background-color: #2a2a40;
   border-radius: 8px;
@@ -83,7 +92,7 @@ body {
 
 .user-info h1 {
   margin: 0;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   color: #fff;
 }
 
@@ -130,7 +139,7 @@ body {
 }
 
 .stats p {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: bold;
   color: #fff;
 }
@@ -158,11 +167,12 @@ body {
   border-radius: 8px;
   padding: 1rem;
   width: 150px;
-  transition: transform 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .achievement-card:hover {
   transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
 .achievement-card img {
