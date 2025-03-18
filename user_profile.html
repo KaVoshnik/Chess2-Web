@@ -21,7 +21,7 @@
         <div class="user-profile">
             <img src="/img/profile.jpg" alt="User Avatar" class="profile-avatar" id="profile-avatar">
             <div class="profile-menu hidden">
-                <div class="profile-info">
+                <div class="profile-menu-info">
                     <img src="/img/profile.jpg" alt="User Avatar" class="profile-avatar-large">
                     <p class="username" id="username">Player_PlayerId</p>
                 </div>
@@ -105,7 +105,7 @@
             }
 
             try {
-                const response = await fetch(`http://localhost:3001/user/${userId}`);
+                const response = await fetch(`http://localhost:3000/user/${userId}`);
                 console.log('Response status:', response.status);
 
                 if (!response.ok) {

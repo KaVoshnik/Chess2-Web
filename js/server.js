@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const cors = require('cors');
 
 const app = express();
-const port = 3001;
+const port = 3000;
 app.use(express.json());
 
 const pool = new Pool({
@@ -42,7 +42,6 @@ app.post('/register', async (req, res) => {
     res.status(400).json({ error: 'User with this name found, do you want to login?' });
   }
 });
-
 
 app.post('/login', async (req, res) => {
   const { username, password } = req.body;
@@ -90,7 +89,42 @@ app.get('/user/:id', async (req, res) => {
   }
 });
 
+app.get('/players', async (req, res) => {
+  try {
+    const result = await pool.query(`
+      SELECT 
+          cp.player_id, 
+          u.username, 
+          DENSE_RANK() OVER (ORDER BY cp.cr DESC) AS rank, 
+          cp.wins, 
+          cp.losses, 
+          cp.total_games, 
+          cp.win_rate, 
+          cp.cr
+      FROM 
+          chess_players cp
+      JOIN 
+          users u ON cp.user_id = u.user_id
+      ORDER BY 
+          cp.cr DESC
+      LIMIT 50
+  `);
+    res.json(result.rows);
+  } catch (err) {
+    console.error('Error while receiving data:', err);
+    res.status(500).send('Server error');
+  }
+});
 
+app.get('/api/cr-data', async (req, res) => {
+  try {
+      const result = await pool.query('SELECT date, cr FROM chess_players ORDER BY date ASC');
+      res.json(result.rows);
+  } catch (err) {
+      console.error(err);
+      res.status(500).send('Server error');
+  }
+});
 
 app.listen(port, () => {
   console.log(`The server is running on http://localhost:${port}`);
