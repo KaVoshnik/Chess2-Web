@@ -8,20 +8,14 @@ CREATE TABLE users (
 CREATE TABLE chess_players (
     player_id SERIAL PRIMARY KEY,
     user_id INT REFERENCES users(user_id) ON DELETE CASCADE,
+    rank INT DEFAULT NULL,
     wins INT DEFAULT 0,
     losses INT DEFAULT 0,
     total_games INT DEFAULT 0,
+    draws INT DEFAULT 0,
     win_rate DECIMAL(5, 2) DEFAULT 0.00,
     cr DECIMAL(10, 2) DEFAULT 0.00
 );
-
--- Alters
-
-ALTER TABLE chess_players
-ADD COLUMN rank INT DEFAULT NULL;
-
-ALTER TABLE chess_players
-ADD COLUMN draws INT DEFAULT 0;
 
 -- Views
 
