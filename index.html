@@ -3,74 +3,242 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard</title>
+  <title>Chess2 - Home</title>
   <link rel="stylesheet" href="/css/reset.css">
   <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/user_styles.css">
   <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <meta name="theme-color" content="#1e1e2e">
 </head>
 <body>
-  <div class="navbar">
-    <div class="logo">Chess2</div>
+  <header class="navbar">
+    <div class="logo">Chess<span>2</span></div>
     <nav>
-      <a href="/index.html">Home</a>
-      <a href="/leaderboard.html">Leaderboard</a>
-      <a href="https://t.me/AdKavoshnik">Community</a>
-      <a href="https://github.com/KaVoshnik/Chess_2/issues">Help</a>
+      <a href="/index.html" class="active"><i class="fas fa-home"></i> Home</a>
+      <a href="/leaderboard.html"><i class="fas fa-trophy"></i> Leaderboard</a>
+      <a href="https://t.me/AdKavoshnik"><i class="fab fa-telegram"></i> Community</a>
+      <a href="https://github.com/KaVoshnik/Chess_2/issues"><i class="fas fa-question-circle"></i> Help</a>
     </nav>
     <div class="user-profile">
-      <img src="/img/profile.jpg" alt="User Avatar" class="profile-avatar" id="profile-avatar">
+      <img src="https://avatars.dicebear.com/api/identicon/default.svg" alt="User Avatar" class="profile-avatar" id="profile-avatar">
       <div class="profile-menu hidden">
-          <div class="profile-info">
-              <img src="/img/profile.jpg" alt="User Avatar" class="profile-avatar-large">
-              <p class="username" id="username">Player_PlayerId</p>
+        <div class="profile-info">
+          <img src="https://avatars.dicebear.com/api/identicon/default.svg" alt="User Avatar" class="profile-avatar-large" id="menu-avatar">
+          <p class="username" id="username">Guest</p>
+        </div>
+        <div class="profile-buttons">
+          <a href="user_profile.html"><i class="fas fa-user"></i> View Profile</a>
+          <a href="#" id="logoutButton"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="home-page">
+    <section class="hero-section">
+      <div class="hero-content">
+        <h1>Welcome to <span>Chess<span class="highlight">2</span></span></h1>
+        <p class="hero-description">The evolution of chess. New strategy. New rules. New era.</p>
+        <div class="hero-actions">
+          <a href="sign_in.html" class="btn primary-btn">
+            <i class="fas fa-play"></i> Play Now
+          </a>
+          <a href="leaderboard.html" class="btn secondary-btn">
+            <i class="fas fa-trophy"></i> Leaderboard
+          </a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="chess-pattern">
+          <svg width="100%" height="100%" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="chessPattern" width="80" height="80" patternUnits="userSpaceOnUse">
+                <rect width="40" height="40" fill="#1e1e2e" />
+                <rect width="40" height="40" x="40" y="40" fill="#1e1e2e" />
+                <rect width="40" height="40" x="40" y="0" fill="#2a2a40" />
+                <rect width="40" height="40" x="0" y="40" fill="#2a2a40" />
+              </pattern>
+              <linearGradient id="heroGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="rgba(158, 255, 158, 0.3)" />
+                <stop offset="100%" stop-color="rgba(106, 90, 205, 0.3)" />
+              </linearGradient>
+              <mask id="chessMask">
+                <rect width="100%" height="100%" fill="white" />
+                <circle cx="400" cy="300" r="200" fill="black" />
+              </mask>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#chessPattern)" mask="url(#chessMask)" />
+            <circle cx="400" cy="300" r="200" fill="url(#heroGlow)" />
+            <path d="M380 200 C380 180 420 180 420 200 L420 250 L440 250 L400 300 L360 250 L380 250 Z" fill="#9eff9e" opacity="0.9" />
+            <text x="400" y="400" text-anchor="middle" fill="#fff" font-size="30" font-weight="bold">CHESS2</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section class="features-section">
+      <h2 class="section-title"><i class="fas fa-star"></i> Features</h2>
+      <div class="features-container">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-chess"></i>
           </div>
-          <div class="profile-buttons">
-              <a href="user_profile.html">View Profile</a>
-              <a href="#" id="logoutButton">Logout</a>
+          <h3>New Rules</h3>
+          <p>Experience chess with revolutionary new rules that bring fresh strategies and excitement.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-users"></i>
           </div>
-      </div>
-  </div>
-  </div>
-
-  <div class="dashboard">
-    <div class="sidebar">
-      <h2><span class="menu-text">Menu</span></h2>
-      <ul>
-        <li><a href="index.html">Dashboard</a></li>
-      </ul>
-    </div>
-
-    <div class="main-content">
-      <div class="banner">
-        <h1>Welcome to Chess 2!</h1>
-        <p>Play, compete, and master the game of Chess2!</p>
-      </div>
-
-      <div class="news-section">
-        <h2>News</h2>
-        <div class="news-card">
-          <h3>Version 1.0</h3>
-          <p>The first version of the site is completely ready and this means that the development team can start writing the main project, right?</p>
+          <h3>Global Community</h3>
+          <p>Join players from around the world and become part of a growing competitive community.</p>
         </div>
-        <div class="news-card">
-          <h3>New Update Released</h3>
-          <p>Discover the latest features and improvements in Chess2 at our GitHub!</p>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h3>Rankings & Stats</h3>
+          <p>Track your progress with detailed statistics and climb the global leaderboard.</p>
         </div>
-        <div class="news-card">
-          <h3>News card?</h3>
-          <p>Let's take now news!</p>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-medal"></i>
+          </div>
+          <h3>Achievements</h3>
+          <p>Earn prestigious achievements as you master different aspects of Chess2.</p>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="right-panel">
-      <h2>Quick Links</h2>
-      <a href="sign_in.html" class="btn blue">Play Now</a>
-      <a href="#" class="btn pink">Support Us</a>
-      <a href="https://github.com/KaVoshnik/Chess_2" class="btn orange">GitHub</a>
+    <section class="news-section">
+      <h2 class="section-title"><i class="fas fa-newspaper"></i> Latest News</h2>
+      <div class="news-container">
+        <div class="news-card">
+          <div class="news-date">
+            <span class="day">28</span>
+            <span class="month">APR</span>
+          </div>
+          <div class="news-content">
+            <h3>Version 2.0 Coming Soon</h3>
+            <p>We're working on exciting new features including tournaments, live matches, and improved UI. Stay tuned!</p>
+            <div class="news-footer">
+              <span class="news-tag">Update</span>
+              <span class="news-tag">Features</span>
+            </div>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="news-date">
+            <span class="day">15</span>
+            <span class="month">APR</span>
+          </div>
+          <div class="news-content">
+            <h3>First Tournament Announced</h3>
+            <p>Join our inaugural Chess2 tournament! Compete with the best players and win exclusive rewards.</p>
+            <div class="news-footer">
+              <span class="news-tag">Event</span>
+              <span class="news-tag">Tournament</span>
+            </div>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="news-date">
+            <span class="day">01</span>
+            <span class="month">APR</span>
+          </div>
+          <div class="news-content">
+            <h3>Version 1.0 Released</h3>
+            <p>The first version of Chess2 is now live! Create your account, play matches, and start your journey.</p>
+            <div class="news-footer">
+              <span class="news-tag">Release</span>
+              <span class="news-tag">Milestone</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="cta-content">
+        <h2>Ready to Play?</h2>
+        <p>Join thousands of players already enjoying Chess2.</p>
+        <div class="cta-buttons">
+          <a href="sign_in.html" class="btn primary-btn large">
+            <i class="fas fa-user-plus"></i> Sign Up Now
+          </a>
+          <a href="https://github.com/KaVoshnik/Chess_2" class="btn outline-btn">
+            <i class="fab fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-logo">Chess<span>2</span></div>
+      <div class="footer-links">
+        <a href="/index.html">Home</a>
+        <a href="/leaderboard.html">Leaderboard</a>
+        <a href="https://github.com/KaVoshnik/Chess_2">GitHub</a>
+      </div>
+      <div class="footer-social">
+        <a href="https://t.me/AdKavoshnik"><i class="fab fa-telegram"></i></a>
+        <a href="https://github.com/KaVoshnik/Chess_2"><i class="fab fa-github"></i></a>
+      </div>
     </div>
-  </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Chess2. All rights reserved.</p>
+    </div>
+  </footer>
 
   <script src="/js/profile_avatar.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Проверяем, авторизован ли пользователь
+      const userId = localStorage.getItem('userId');
+      const token = localStorage.getItem('token');
+      
+      // Если пользователь авторизован, обновляем информацию о нем
+      if (userId && token) {
+        // Обновляем аватар на основе имени пользователя
+        fetch(`/api/user/${userId}`)
+          .then(response => {
+            if (!response.ok) throw new Error('Failed to fetch user data');
+            return response.json();
+          })
+          .then(userData => {
+            const username = userData.username || 'Player';
+            document.getElementById('username').textContent = username;
+            
+            // Генерируем аватар на основе имени пользователя
+            const seed = username || 'default';
+            const avatarUrl = `https://avatars.dicebear.com/api/identicon/${seed}.svg`;
+            
+            document.getElementById('profile-avatar').src = avatarUrl;
+            document.getElementById('menu-avatar').src = avatarUrl;
+          })
+          .catch(error => {
+            console.error('Error loading user data:', error);
+          });
+      } else {
+        // Если пользователь не авторизован, показываем соответствующую информацию
+        document.getElementById('username').textContent = 'Guest';
+        document.querySelector('.profile-buttons').innerHTML = `
+          <a href="sign_in.html"><i class="fas fa-sign-in-alt"></i> Sign In</a>
+          <a href="sign_in.html"><i class="fas fa-user-plus"></i> Register</a>
+        `;
+      }
+      
+      // Добавляем анимацию появления для карточек новостей и функций
+      const animateElements = document.querySelectorAll('.feature-card, .news-card');
+      animateElements.forEach((el, index) => {
+        setTimeout(() => {
+          el.classList.add('animate-in');
+        }, 100 * index);
+      });
+    });
+  </script>
 </body>
 </html>
