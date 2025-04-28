@@ -1,23 +1,21 @@
 CREATE TABLE users (
     user_id SERIAL PRIMARY KEY,
     username VARCHAR(50) NOT NULL UNIQUE,
-    password VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,   
     created_at TIMESTAMP DEFAULT NOW()
 );
 
 CREATE TABLE chess_players (
     player_id SERIAL PRIMARY KEY,
     user_id INT REFERENCES users(user_id) ON DELETE CASCADE,
-    rank INT DEFAULT NULL,
-    wins INT DEFAULT 0,
-    losses INT DEFAULT 0,
-    total_games INT DEFAULT 0,
-    draws INT DEFAULT 0,
+    wins INT DEFAULT 0,                 
+    losses INT DEFAULT 0,               
+    draws INT DEFAULT 0,                
+    total_games INT DEFAULT 0,          
     win_rate DECIMAL(5, 2) DEFAULT 0.00,
-    cr DECIMAL(10, 2) DEFAULT 0.00
+    cr DECIMAL(10, 2) DEFAULT 0.00,     
+    rank INT DEFAULT NULL               
 );
-
--- Views
 
 CREATE OR REPLACE VIEW chess_players_with_rank AS
 SELECT 
