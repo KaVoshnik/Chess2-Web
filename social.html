@@ -23,10 +23,10 @@
       <a href="/devlog.html"><i class="fas fa-scroll"></i> Blog</a>
     </nav>
     <div class="user-profile">
-      <img src="https://avatars.dicebear.com/api/identicon/default.svg" alt="User Avatar" class="profile-avatar" id="profile-avatar">
+      <img src="/img/profile.jpg" alt="User Avatar" class="profile-avatar" id="profile-avatar">
       <div class="profile-menu hidden">
         <div class="profile-info">
-          <img src="https://avatars.dicebear.com/api/identicon/default.svg" alt="User Avatar" id="menu-avatar">
+          <img src="/img/profile.jpg" alt="User Avatar" id="menu-avatar">
           <p class="username" id="username">Guest</p>
         </div>
         <div class="profile-buttons">
@@ -37,198 +37,202 @@
     </div>
   </header>
 
-  <main class="social-page">
-    <div class="social-container">
-      <!-- Left panel (contacts) -->
-      <div class="social-sidebar">
-        <div class="sidebar-header">
-          <h2><i class="fas fa-users"></i> Contacts</h2>
-          <button id="new-contact-btn" class="icon-button" title="Add Friend">
-            <i class="fas fa-user-plus"></i>
+  <main class="community-page">
+    <!-- Боковая панель: Друзья и запросы -->
+    <aside class="community-sidebar">
+      <div class="sidebar-header">
+        <h2>Сообщество</h2>
+        <button id="new-contact-btn" class="add-friend-btn" title="Добавить друга">
+          <i class="fas fa-user-plus"></i>
+        </button>
+      </div>
+      
+      <div class="tabs-container">
+        <div class="tabs-header">
+          <button class="tab-btn active" data-tab="friends">
+            <i class="fas fa-user-friends"></i>
+            <span>Друзья</span>
           </button>
-        </div>
-        
-        <div class="sidebar-tabs">
-          <button class="tab-button active" data-tab="friends">
-            <i class="fas fa-user-friends"></i> Friends
-          </button>
-          <button class="tab-button" data-tab="requests">
-            <i class="fas fa-user-clock"></i> Requests
+          <button class="tab-btn" data-tab="requests">
+            <i class="fas fa-user-clock"></i>
+            <span>Запросы</span>
             <span class="badge" id="request-badge">0</span>
           </button>
         </div>
         
-        <div class="search-bar">
-          <input type="text" id="contact-search" placeholder="Search friends...">
-          <button><i class="fas fa-search"></i></button>
-        </div>
-        
-        <div class="tab-content" id="friends-tab">
-          <div class="friends-list" id="friends-list">
-            <div class="empty-state" id="no-friends">
-              <i class="fas fa-user-friends"></i>
-              <p>Your friends list is empty</p>
-              <button id="find-friends-btn" class="text-button">
-                Find Friends
-              </button>
-            </div>
-            
-            <!-- Friends will be added here dynamically -->
+        <div class="search-wrapper">
+          <div class="search-input">
+            <i class="fas fa-search"></i>
+            <input type="text" id="contact-search" placeholder="Поиск друзей...">
           </div>
         </div>
         
-        <div class="tab-content hidden" id="requests-tab">
-          <div class="requests-list" id="requests-list">
-            <div class="empty-state" id="no-requests">
-              <i class="fas fa-user-clock"></i>
-              <p>No pending friend requests</p>
+        <div class="tab-panel active" id="friends-tab">
+          <div id="friends-list" class="friends-list">
+            <div class="empty-state" id="no-friends">
+              <div class="empty-icon">
+                <i class="fas fa-user-friends"></i>
+              </div>
+              <h3>Ваш список друзей пуст</h3>
+              <p>Найдите друзей для общения</p>
+              <button id="find-friends-btn" class="action-button">
+                <i class="fas fa-search"></i> Найти друзей
+              </button>
             </div>
-            
-            <!-- Friend requests will be added here dynamically -->
+            <!-- Друзья будут добавлены здесь динамически -->
+          </div>
+        </div>
+        
+        <div class="tab-panel" id="requests-tab">
+          <div id="requests-list" class="requests-list">
+            <div class="empty-state" id="no-requests">
+              <div class="empty-icon">
+                <i class="fas fa-user-clock"></i>
+              </div>
+              <h3>Нет запросов в друзья</h3>
+              <p>Здесь появятся входящие запросы на дружбу</p>
+            </div>
+            <!-- Запросы на дружбу будут добавлены здесь динамически -->
+          </div>
+        </div>
+      </div>
+    </aside>
+    
+    <!-- Основная область: Чат или приветствие -->
+    <section class="community-main">
+      <!-- Начальный экран приветствия -->
+      <div class="welcome-panel" id="welcome-screen">
+        <div class="welcome-artwork">
+          <div class="artwork-container">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="welcomeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#9eff9e" stop-opacity="0.7" />
+                  <stop offset="100%" stop-color="#6a5acd" stop-opacity="0.7" />
+                </linearGradient>
+                <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur stdDeviation="5" result="blur" />
+                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                </filter>
+              </defs>
+              <circle cx="100" cy="100" r="80" fill="url(#welcomeGradient)" filter="url(#glow)" />
+              <g fill="none" stroke="#ffffff" stroke-width="3" opacity="0.8">
+                <path d="M50,100 Q100,150 150,100" />
+                <circle cx="60" cy="80" r="8" fill="#ffffff" />
+                <circle cx="140" cy="80" r="8" fill="#ffffff" />
+              </g>
+              <g class="sparkles" fill="#ffffff">
+                <circle cx="40" cy="50" r="2">
+                  <animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite" begin="0.2s" />
+                </circle>
+                <circle cx="160" cy="50" r="2">
+                  <animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite" begin="0.5s" />
+                </circle>
+                <circle cx="100" cy="30" r="2">
+                  <animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite" begin="0.8s" />
+                </circle>
+                <circle cx="100" cy="170" r="2">
+                  <animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite" begin="1.2s" />
+                </circle>
+                <circle cx="30" cy="100" r="2">
+                  <animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite" begin="1.5s" />
+                </circle>
+                <circle cx="170" cy="100" r="2">
+                  <animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite" begin="1.8s" />
+                </circle>
+              </g>
+            </svg>
+          </div>
+        </div>
+        <div class="welcome-content">
+          <h2>Добро пожаловать в сообщество Chess2</h2>
+          <p>Общайтесь с другими игроками, обсуждайте стратегии и находите новых друзей.</p>
+          <div class="welcome-actions">
+            <button id="welcome-find-friends" class="primary-btn pulse-animation">
+              <i class="fas fa-user-plus"></i> Найти друзей
+            </button>
+            <div class="welcome-tip">
+              <i class="fas fa-lightbulb"></i>
+              <span>Выберите друга из списка слева, чтобы начать общение</span>
+            </div>
           </div>
         </div>
       </div>
       
-      <!-- Right panel (chat/content) -->
-      <div class="social-content">
-        <div class="content-welcome" id="welcome-screen">
-          <div class="welcome-visual">
-            <svg width="150" height="150" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="welcomeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#9eff9e" stop-opacity="0.3" />
-                  <stop offset="100%" stop-color="#6a5acd" stop-opacity="0.3" />
-                </linearGradient>
-              </defs>
-              <circle cx="75" cy="75" r="60" fill="url(#welcomeGradient)" />
-              <path d="M50,75 Q75,100 100,75" stroke="#9eff9e" stroke-width="2" fill="none" />
-              <circle cx="50" cy="60" r="5" fill="#9eff9e" />
-              <circle cx="100" cy="60" r="5" fill="#9eff9e" />
-            </svg>
+      <!-- Панель чата -->
+      <div class="chat-panel hidden" id="chat-container">
+        <div class="chat-header">
+          <div class="user-info">
+            <div class="user-avatar-wrapper">
+              <img src="" alt="Friend Avatar" id="chat-avatar" class="user-avatar">
+              <span class="status-indicator" id="status-indicator"></span>
+            </div>
+            <div class="user-details">
+              <h3 id="chat-name"></h3>
+              <p id="chat-status" class="user-status"></p>
+            </div>
           </div>
-          <h2>Welcome to the Chess2 Community!</h2>
-          <p>Connect with other players, chat with friends, and invite them to games.</p>
-          <button id="welcome-find-friends" class="primary-button">
-            <i class="fas fa-user-plus"></i> Find Friends
-          </button>
+          <div class="chat-actions">
+            <button id="view-profile-btn" class="icon-button" title="Просмотр профиля">
+              <i class="fas fa-user"></i>
+            </button>
+          </div>
         </div>
         
-        <div class="chat-container hidden" id="chat-container">
-          <div class="chat-header">
-            <img src="" alt="Friend Avatar" id="chat-avatar" class="chat-avatar">
-            <div class="chat-info">
-              <h3 id="chat-name"></h3>
-              <p id="chat-status"></p>
-            </div>
-            <div class="chat-actions">
-              <button class="icon-button" id="invite-game-btn" title="Invite to Game">
-                <i class="fas fa-chess-knight"></i>
-              </button>
-              <button class="icon-button" id="view-profile-btn" title="View Profile">
-                <i class="fas fa-user"></i>
-              </button>
-            </div>
+        <div class="messages-container" id="chat-messages">
+          <div class="date-separator">
+            <span>Сегодня</span>
           </div>
           
-          <div class="chat-messages" id="chat-messages">
-            <div class="chat-day-divider">
-              <span>Today</span>
-            </div>
-            
-            <!-- Messages will be added here dynamically -->
-            
-            <div class="chat-loading" id="chat-loading">
-              <div class="loading-spinner"></div>
-              <p>Loading messages...</p>
-            </div>
-          </div>
+          <!-- Сообщения будут добавлены здесь динамически -->
           
-          <div class="chat-input">
-            <textarea id="message-input" placeholder="Type a message..." rows="1"></textarea>
-            <button id="send-message" class="icon-button" title="Send Message">
+          <div class="loading-overlay" id="chat-loading">
+            <div class="loading-spinner">
+              <div class="spinner-circle"></div>
+            </div>
+            <p>Загрузка сообщений...</p>
+          </div>
+        </div>
+        
+        <div class="message-composer">
+          <div class="composer-container">
+            <textarea id="message-input" placeholder="Введите сообщение..." rows="1"></textarea>
+            <button id="send-message" class="send-button" title="Отправить">
               <i class="fas fa-paper-plane"></i>
             </button>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   </main>
   
-  <!-- Add Friend Modal -->
+  <!-- Модальное окно добавления друзей -->
   <div class="modal" id="add-friend-modal">
     <div class="modal-content">
       <div class="modal-header">
-        <h2><i class="fas fa-user-plus"></i> Find Friends</h2>
-        <button class="close-modal">&times;</button>
+        <h2><i class="fas fa-user-plus"></i> Поиск друзей</h2>
+        <button class="close-modal"><i class="fas fa-times"></i></button>
       </div>
       <div class="modal-body">
-        <div class="search-container">
-          <input type="text" id="user-search" placeholder="Search by username...">
-          <button id="search-user-btn">
-            <i class="fas fa-search"></i> Search
-          </button>
+        <div class="search-box">
+          <div class="search-input-wrapper">
+            <input type="text" id="user-search" placeholder="Введите имя пользователя...">
+            <button id="search-user-btn" class="search-btn">
+              <i class="fas fa-search"></i> Поиск
+            </button>
+          </div>
         </div>
         
         <div class="search-results" id="search-results">
           <div class="empty-state" id="no-results">
-            <i class="fas fa-search"></i>
-            <p>Search for users to add as friends</p>
+            <div class="empty-icon">
+              <i class="fas fa-search"></i>
+            </div>
+            <h3>Найдите новых друзей</h3>
+            <p>Введите имя пользователя для поиска</p>
           </div>
           
-          <!-- Search results will be added here dynamically -->
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <!-- Game Invitation Modal -->
-  <div class="modal" id="game-invite-modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2><i class="fas fa-chess-knight"></i> Invite to Game</h2>
-        <button class="close-modal">&times;</button>
-      </div>
-      <div class="modal-body">
-        <p>Send a game invitation to <span id="invite-username"></span>.</p>
-        
-        <div class="game-options">
-          <div class="option-group">
-            <label>Time Control</label>
-            <div class="option-buttons">
-              <button class="option-button active" data-time="5">5 min</button>
-              <button class="option-button" data-time="10">10 min</button>
-              <button class="option-button" data-time="15">15 min</button>
-              <button class="option-button" data-time="30">30 min</button>
-            </div>
-          </div>
-          
-          <div class="option-group">
-            <label>Side</label>
-            <div class="option-buttons">
-              <button class="option-button active" data-side="random">Random</button>
-              <button class="option-button" data-side="white">White</button>
-              <button class="option-button" data-side="black">Black</button>
-            </div>
-          </div>
-          
-          <div class="option-group">
-            <label>Game Mode</label>
-            <div class="option-buttons">
-              <button class="option-button active" data-mode="standard">Standard</button>
-              <button class="option-button" data-mode="advanced">Advanced</button>
-            </div>
-          </div>
-        </div>
-        
-        <div class="invite-message">
-          <label for="invite-message-input">Optional message:</label>
-          <textarea id="invite-message-input" placeholder="Let's play a game!" rows="2"></textarea>
-        </div>
-        
-        <div class="invite-actions">
-          <button id="send-invite-btn" class="primary-button">
-            <i class="fas fa-paper-plane"></i> Send Invitation
-          </button>
+          <!-- Результаты поиска будут добавлены здесь динамически -->
         </div>
       </div>
     </div>
@@ -268,13 +272,19 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // DOM elements
+      // Проверка авторизации
       const userId = localStorage.getItem('userId');
       const token = localStorage.getItem('token');
       
+      if (!userId || !token) {
+        window.location.href = 'sign_in.html';
+        return;
+      }
+      
+      // DOM-элементы
       const friendsTab = document.getElementById('friends-tab');
       const requestsTab = document.getElementById('requests-tab');
-      const tabButtons = document.querySelectorAll('.tab-button');
+      const tabButtons = document.querySelectorAll('.tab-btn');
       
       const friendsList = document.getElementById('friends-list');
       const requestsList = document.getElementById('requests-list');
@@ -286,6 +296,7 @@
       const chatAvatar = document.getElementById('chat-avatar');
       const chatName = document.getElementById('chat-name');
       const chatStatus = document.getElementById('chat-status');
+      const statusIndicator = document.getElementById('status-indicator');
       const chatMessages = document.getElementById('chat-messages');
       const chatLoading = document.getElementById('chat-loading');
       
@@ -302,12 +313,6 @@
       const userSearchInput = document.getElementById('user-search');
       const searchResults = document.getElementById('search-results');
       const noResults = document.getElementById('no-results');
-      
-      const gameInviteModal = document.getElementById('game-invite-modal');
-      const inviteGameBtn = document.getElementById('invite-game-btn');
-      const inviteUsername = document.getElementById('invite-username');
-      const sendInviteBtn = document.getElementById('send-invite-btn');
-      const optionButtons = document.querySelectorAll('.option-button');
       
       let currentChatUser = null;
       let socket = null;
@@ -351,12 +356,9 @@
             const username = userData.username || 'Player';
             document.getElementById('username').textContent = username;
             
-            // Generate avatar based on username
-            const seed = username || 'default';
-            const avatarUrl = `https://avatars.dicebear.com/api/identicon/${seed}.svg`;
-            
-            document.getElementById('profile-avatar').src = avatarUrl;
-            document.getElementById('menu-avatar').src = avatarUrl;
+            // Используем заглушку аватара для всех пользователей
+            document.getElementById('profile-avatar').src = '/img/profile.jpg';
+            document.getElementById('menu-avatar').src = '/img/profile.jpg';
           })
           .catch(error => {
             console.error('Error loading user data:', error);
@@ -405,9 +407,7 @@
               updateFriendStatus(data.userId, data.status);
               break;
               
-            case 'game_invite':
-              handleGameInvite(data.invite);
-              break;
+            // Обработка игровых приглашений удалена
           }
         };
         
@@ -425,52 +425,81 @@
       
       // Setup event listeners
       function setupEventListeners() {
-        // Tab switching
+        // Переключение вкладок
         tabButtons.forEach(button => {
-          button.addEventListener('click', () => {
-            // Remove active class from all buttons
-            tabButtons.forEach(btn => btn.classList.remove('active'));
+          button.addEventListener('click', function() {
+            // Убираем активный класс у всех кнопок
+            tabButtons.forEach(btn => {
+              btn.classList.remove('active');
+            });
             
-            // Add active class to clicked button
-            button.classList.add('active');
+            // Скрываем все панели
+            document.querySelectorAll('.tab-panel').forEach(panel => {
+              panel.classList.remove('active');
+            });
             
-            // Hide all tab content
-            friendsTab.classList.add('hidden');
-            requestsTab.classList.add('hidden');
+            // Добавляем активный класс текущей кнопке
+            this.classList.add('active');
             
-            // Show selected tab content
-            const tabName = button.getAttribute('data-tab');
-            document.getElementById(`${tabName}-tab`).classList.remove('hidden');
+            // Отображаем соответствующую панель
+            const tabName = this.getAttribute('data-tab');
+            document.getElementById(tabName + '-tab').classList.add('active');
+            
+            // Обновляем список при переключении вкладок
+            if (tabName === 'friends') {
+              refreshFriends();
+            } else if (tabName === 'requests') {
+              refreshFriendRequests();
+            }
           });
         });
         
-        // Open add friend modal
+        // Открытие модального окна добавления друзей
         newContactBtn.addEventListener('click', () => {
           addFriendModal.style.display = 'block';
+          addFriendModal.classList.add('active');
           userSearchInput.focus();
+          userSearchInput.value = '';
+          searchResults.innerHTML = '';
+          searchResults.appendChild(noResults);
         });
         
         findFriendsBtn.addEventListener('click', () => {
           addFriendModal.style.display = 'block';
+          addFriendModal.classList.add('active');
           userSearchInput.focus();
+          userSearchInput.value = '';
+          searchResults.innerHTML = '';
+          searchResults.appendChild(noResults);
         });
         
         welcomeFindFriends.addEventListener('click', () => {
           addFriendModal.style.display = 'block';
+          addFriendModal.classList.add('active');
           userSearchInput.focus();
+          userSearchInput.value = '';
+          searchResults.innerHTML = '';
+          searchResults.appendChild(noResults);
         });
         
-        // Close modals
+        // Закрытие модальных окон
         closeModalButtons.forEach(button => {
           button.addEventListener('click', () => {
-            button.closest('.modal').style.display = 'none';
+            const modal = button.closest('.modal');
+            modal.classList.remove('active');
+            setTimeout(() => {
+              modal.style.display = 'none';
+            }, 300);
           });
         });
         
-        // Close modal when clicking outside
+        // Закрытие модального окна при клике вне его
         window.addEventListener('click', (event) => {
           if (event.target.classList.contains('modal')) {
-            event.target.style.display = 'none';
+            event.target.classList.remove('active');
+            setTimeout(() => {
+              event.target.style.display = 'none';
+            }, 300);
           }
         });
         
@@ -515,36 +544,7 @@
         });
         
         // Open game invitation modal
-        inviteGameBtn.addEventListener('click', () => {
-          if (currentChatUser) {
-            inviteUsername.textContent = currentChatUser.username;
-            gameInviteModal.style.display = 'block';
-          }
-        });
-        
-        // Game options selection
-        optionButtons.forEach(button => {
-          button.addEventListener('click', () => {
-            const optionGroup = button.closest('.option-group');
-            const groupButtons = optionGroup.querySelectorAll('.option-button');
-            
-            groupButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-          });
-        });
-        
-        // Send game invitation
-        sendInviteBtn.addEventListener('click', () => {
-          if (currentChatUser) {
-            const timeControl = document.querySelector('.option-button.active[data-time]').getAttribute('data-time');
-            const side = document.querySelector('.option-button.active[data-side]').getAttribute('data-side');
-            const mode = document.querySelector('.option-button.active[data-mode]').getAttribute('data-mode');
-            const message = document.getElementById('invite-message-input').value.trim();
-            
-            sendGameInvitation(currentChatUser.id, timeControl, side, mode, message);
-            gameInviteModal.style.display = 'none';
-          }
-        });
+        // Игровые функции удалены, т.к. игра будет реализована в отдельном десктопном приложении
         
         // Auto-resize textarea
         messageInput.addEventListener('input', () => {
@@ -646,6 +646,7 @@
         if (friends.length === 0) {
           noFriends.style.display = 'flex';
           friendsList.innerHTML = '';
+          friendsList.appendChild(noFriends);
           return;
         }
         
@@ -654,21 +655,36 @@
         
         friends.forEach(friend => {
           const friendElement = document.createElement('div');
-          friendElement.className = 'friend-item';
+          friendElement.className = 'contact-item';
           friendElement.setAttribute('data-user-id', friend.id);
           
           const statusClass = friend.online ? 'online' : 'offline';
+          const statusText = friend.online ? 'В сети' : 'Не в сети';
           
           friendElement.innerHTML = `
-            <img src="https://avatars.dicebear.com/api/identicon/${friend.username}.svg" alt="${friend.username}" class="friend-avatar">
-            <div class="friend-info">
-              <p class="friend-name">${friend.username}</p>
-              <p class="friend-status ${statusClass}">${friend.online ? 'Online' : 'Offline'}</p>
+            <img src="/img/profile.jpg" alt="${friend.username}" class="contact-avatar">
+            <div class="contact-info">
+              <h4 class="contact-name ${statusClass}">${friend.username}</h4>
+              <p class="contact-status">${statusText}</p>
+            </div>
+            <div class="contact-meta">
+              <div class="contact-actions">
+                <button class="icon-button view-profile-btn" title="Просмотр профиля">
+                  <i class="fas fa-user"></i>
+                </button>
+              </div>
             </div>
           `;
           
           friendElement.addEventListener('click', () => {
             openChat(friend);
+          });
+          
+          // Обработчик для кнопки профиля
+          const profileBtn = friendElement.querySelector('.view-profile-btn');
+          profileBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // Предотвращаем открытие чата
+            window.location.href = `user_profile.html?id=${friend.id}`;
           });
           
           friendsList.appendChild(friendElement);
@@ -680,6 +696,7 @@
         if (requests.length === 0) {
           noRequests.style.display = 'flex';
           requestsList.innerHTML = '';
+          requestsList.appendChild(noRequests);
           return;
         }
         
@@ -688,27 +705,29 @@
         
         requests.forEach(request => {
           const requestElement = document.createElement('div');
-          requestElement.className = 'request-item';
+          requestElement.className = 'contact-item request';
           requestElement.setAttribute('data-request-id', request.id);
           
           requestElement.innerHTML = `
-            <img src="https://avatars.dicebear.com/api/identicon/${request.username}.svg" alt="${request.username}" class="request-avatar">
-            <div class="request-info">
-              <p class="request-name">${request.username}</p>
-              <p class="request-time">${formatTime(request.createdAt)}</p>
+            <img src="/img/profile.jpg" alt="${request.username}" class="contact-avatar">
+            <div class="contact-info">
+              <h4 class="contact-name">${request.username}</h4>
+              <p class="contact-status">Запрос на добавление в друзья</p>
             </div>
-            <div class="request-actions">
-              <button class="accept-request" title="Accept Request">
-                <i class="fas fa-check"></i>
-              </button>
-              <button class="decline-request" title="Decline Request">
-                <i class="fas fa-times"></i>
-              </button>
+            <div class="contact-meta">
+              <div class="contact-actions">
+                <button class="primary-button accept-btn" title="Принять">
+                  <i class="fas fa-check"></i>
+                </button>
+                <button class="secondary-btn decline-btn" title="Отклонить">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
             </div>
           `;
           
-          const acceptButton = requestElement.querySelector('.accept-request');
-          const declineButton = requestElement.querySelector('.decline-request');
+          const acceptButton = requestElement.querySelector('.accept-btn');
+          const declineButton = requestElement.querySelector('.decline-btn');
           
           acceptButton.addEventListener('click', (event) => {
             event.stopPropagation();
@@ -729,27 +748,40 @@
         currentChatUser = user;
         
         // Update chat header
-        chatAvatar.src = `https://avatars.dicebear.com/api/identicon/${user.username}.svg`;
+        chatAvatar.src = '/img/profile.jpg';
         chatAvatar.alt = user.username;
         chatName.textContent = user.username;
-        chatStatus.textContent = user.online ? 'Online' : 'Last seen ' + formatTime(user.lastSeen);
-        chatStatus.className = user.online ? 'online' : 'offline';
+        
+        // Обновление статуса пользователя
+        const statusIndicator = document.getElementById('status-indicator');
+        if (user.online) {
+          chatStatus.textContent = 'В сети';
+          statusIndicator.classList.add('online');
+        } else {
+          chatStatus.textContent = 'Был(а) в сети ' + formatTime(user.lastSeen || new Date());
+          statusIndicator.classList.remove('online');
+        }
         
         // Show chat container, hide welcome screen
-        welcomeScreen.classList.add('hidden');
-        chatContainer.classList.remove('hidden');
+        welcomeScreen.style.display = 'none';
+        chatContainer.style.display = 'flex';
         
         // Load chat history
         loadChatHistory(user.id);
         
         // Mark friend as active
-        const friendItems = document.querySelectorAll('.friend-item');
-        friendItems.forEach(item => item.classList.remove('active'));
+        const contactItems = document.querySelectorAll('.contact-item');
+        contactItems.forEach(item => item.classList.remove('active'));
         
-        const activeItem = document.querySelector(`.friend-item[data-user-id="${user.id}"]`);
+        const activeItem = document.querySelector(`.contact-item[data-user-id="${user.id}"]`);
         if (activeItem) {
           activeItem.classList.add('active');
         }
+        
+        // Очистка и фокус на поле ввода
+        messageInput.value = '';
+        messageInput.style.height = 'auto';
+        setTimeout(() => messageInput.focus(), 300);
       }
       
       // Load chat history
@@ -777,8 +809,11 @@
             // Show error message
             chatMessages.innerHTML = `
               <div class="chat-error">
-                <i class="fas fa-exclamation-circle"></i>
-                <p>Failed to load chat history. Please try again later.</p>
+                <div class="error-icon">
+                  <i class="fas fa-exclamation-circle"></i>
+                </div>
+                <h3>Ошибка загрузки</h3>
+                <p>Не удалось загрузить историю сообщений. Попробуйте позже.</p>
               </div>
             `;
           });
@@ -792,7 +827,11 @@
         if (messages.length === 0) {
           chatMessages.innerHTML = `
             <div class="chat-empty">
-              <p>No messages yet. Say hello!</p>
+              <div class="empty-icon">
+                <i class="far fa-comment-dots"></i>
+              </div>
+              <h3>История сообщений пуста</h3>
+              <p>Напишите первое сообщение, чтобы начать общение</p>
             </div>
           `;
           return;
@@ -814,11 +853,11 @@
             let dayText = '';
             
             if (messageDay === today) {
-              dayText = 'Today';
+              dayText = 'Сегодня';
             } else if (messageDay === yesterday) {
-              dayText = 'Yesterday';
+              dayText = 'Вчера';
             } else {
-              dayText = messageDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+              dayText = messageDate.toLocaleDateString('ru-RU', { year: 'numeric', month: 'long', day: 'numeric' });
             }
             
             const dayDivider = document.createElement('div');
@@ -832,7 +871,7 @@
           const messageElement = document.createElement('div');
           messageElement.className = message.senderId === parseInt(userId) ? 'message outgoing' : 'message incoming';
           
-          const timeString = messageDate.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+          const timeString = messageDate.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
           
           messageElement.innerHTML = `
             <div class="message-content">
@@ -865,7 +904,7 @@
         messageElement.className = 'message outgoing';
         
         const now = new Date();
-        const timeString = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+        const timeString = now.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
         
         messageElement.innerHTML = `
           <div class="message-content">
@@ -892,7 +931,7 @@
           messageElement.className = 'message incoming';
           
           const messageDate = new Date(message.timestamp);
-          const timeString = messageDate.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+          const timeString = messageDate.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
           
           messageElement.innerHTML = `
             <div class="message-content">
@@ -915,8 +954,10 @@
         searchResults.innerHTML = '';
         noResults.style.display = 'flex';
         noResults.innerHTML = `
-          <div class="loading-spinner"></div>
-          <p>Searching...</p>
+          <div class="loading-spinner">
+            <div class="spinner-circle"></div>
+          </div>
+          <p>Поиск пользователей...</p>
         `;
         
         fetch(`/api/users/search?query=${query}`, {
@@ -936,8 +977,11 @@
             console.error('Error searching users:', error);
             
             noResults.innerHTML = `
-              <i class="fas fa-exclamation-circle"></i>
-              <p>An error occurred. Please try again later.</p>
+              <div class="error-icon">
+                <i class="fas fa-exclamation-circle"></i>
+              </div>
+              <h3>Ошибка</h3>
+              <p>Произошла ошибка при поиске. Попробуйте позже.</p>
             `;
           });
       }
@@ -949,8 +993,11 @@
         if (users.length === 0) {
           noResults.style.display = 'flex';
           noResults.innerHTML = `
-            <i class="fas fa-search"></i>
-            <p>No users found</p>
+            <div class="empty-icon">
+              <i class="fas fa-search"></i>
+            </div>
+            <h3>Пользователи не найдены</h3>
+            <p>Попробуйте другой запрос</p>
           `;
           return;
         }
@@ -970,20 +1017,20 @@
           let actionButton = '';
           
           if (isFriend) {
-            actionButton = `<button class="primary-button disabled">Friends</button>`;
+            actionButton = `<button class="primary-button disabled">В друзьях</button>`;
           } else if (isPending) {
-            actionButton = `<button class="primary-button disabled">Request Sent</button>`;
+            actionButton = `<button class="primary-button disabled">Запрос отправлен</button>`;
           } else if (user.id === parseInt(userId)) {
-            actionButton = `<button class="primary-button disabled">You</button>`;
+            actionButton = `<button class="primary-button disabled">Это вы</button>`;
           } else {
-            actionButton = `<button class="add-friend-btn primary-button" data-user-id="${user.id}">Add Friend</button>`;
+            actionButton = `<button class="add-friend-btn primary-button" data-user-id="${user.id}">Добавить в друзья</button>`;
           }
           
           userElement.innerHTML = `
-            <img src="https://avatars.dicebear.com/api/identicon/${user.username}.svg" alt="${user.username}" class="user-avatar">
+            <img src="/img/profile.jpg" alt="${user.username}" class="user-avatar">
             <div class="user-info">
               <p class="user-name">${user.username}</p>
-              <p class="user-stats">Ranking: ${user.rating || 'Unranked'}</p>
+              <p class="user-stats">Рейтинг: ${user.rating || 'Без рейтинга'}</p>
             </div>
             <div class="user-actions">
               ${actionButton}
@@ -996,7 +1043,7 @@
             addFriendBtn.addEventListener('click', () => {
               sendFriendRequest(user.id);
               addFriendBtn.disabled = true;
-              addFriendBtn.textContent = 'Request Sent';
+              addFriendBtn.textContent = 'Запрос отправлен';
               addFriendBtn.classList.add('disabled');
             });
           }
@@ -1109,36 +1156,20 @@
         
         // Update current chat if needed
         if (currentChatUser && currentChatUser.id === friendId) {
-          chatStatus.textContent = status === 'online' ? 'Online' : 'Last seen just now';
+          chatStatus.textContent = status === 'online' ? 'В сети' : 'Был в сети недавно';
           chatStatus.className = status === 'online' ? 'online' : 'offline';
         }
       }
       
       // Send game invitation
-      function sendGameInvitation(userId, timeControl, side, mode, message) {
-        const invitation = {
-          type: 'game_invite',
-          userId,
-          settings: {
-            timeControl,
-            side,
-            mode
-          },
-          message
-        };
-        
-        socket.send(JSON.stringify(invitation));
-      }
+      // Функция отправки игровых приглашений удалена, т.к. игра будет реализована отдельно
       
       // Handle game invitation
-      function handleGameInvite(invite) {
-        // TODO: Show game invitation notification
-        console.log('Game invitation received:', invite);
-      }
+      // Функция обработки игровых приглашений удалена, т.к. игра будет реализована отдельно
       
       // Format time helper function
       function formatTime(timestamp) {
-        if (!timestamp) return 'Never';
+        if (!timestamp) return 'Никогда';
         
         const date = new Date(timestamp);
         const now = new Date();
@@ -1149,15 +1180,36 @@
         const diffDays = Math.floor(diffHours / 24);
         
         if (diffSecs < 60) {
-          return 'Just now';
+          return 'Только что';
         } else if (diffMins < 60) {
-          return `${diffMins} minute${diffMins > 1 ? 's' : ''} ago`;
+          // Правильные окончания для русского языка
+          let minutesText = 'минут';
+          if (diffMins % 10 === 1 && diffMins % 100 !== 11) {
+            minutesText = 'минуту';
+          } else if ([2, 3, 4].includes(diffMins % 10) && ![12, 13, 14].includes(diffMins % 100)) {
+            minutesText = 'минуты';
+          }
+          return `${diffMins} ${minutesText} назад`;
         } else if (diffHours < 24) {
-          return `${diffHours} hour${diffHours > 1 ? 's' : ''} ago`;
+          // Правильные окончания для русского языка
+          let hoursText = 'часов';
+          if (diffHours % 10 === 1 && diffHours % 100 !== 11) {
+            hoursText = 'час';
+          } else if ([2, 3, 4].includes(diffHours % 10) && ![12, 13, 14].includes(diffHours % 100)) {
+            hoursText = 'часа';
+          }
+          return `${diffHours} ${hoursText} назад`;
         } else if (diffDays < 7) {
-          return `${diffDays} day${diffDays > 1 ? 's' : ''} ago`;
+          // Правильные окончания для русского языка
+          let daysText = 'дней';
+          if (diffDays % 10 === 1 && diffDays % 100 !== 11) {
+            daysText = 'день';
+          } else if ([2, 3, 4].includes(diffDays % 10) && ![12, 13, 14].includes(diffDays % 100)) {
+            daysText = 'дня';
+          }
+          return `${diffDays} ${daysText} назад`;
         } else {
-          return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+          return date.toLocaleDateString('ru-RU', { year: 'numeric', month: 'long', day: 'numeric' });
         }
       }
     });
