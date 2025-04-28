@@ -9,3 +9,10 @@ This is a site for the game Chess 2
   - JavaScript: To add interactivity and dynamic content. 
   - Node.js: For the application backend. 
   - Postgresql: to store data about users and their statistics.
+
+P.s.
+``` js
+server.listen(PORT, '127.0.0.1', () => {
+  console.log(`Server running on http://127.0.0.1:${PORT}`);
+});
+```
