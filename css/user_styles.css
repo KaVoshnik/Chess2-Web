@@ -181,7 +181,7 @@ body {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
-.achievement-card img {
+.achievement-card img, .achievement-card svg {
   width: 100%;
   height: 100px;
   object-fit: cover;
@@ -192,4 +192,21 @@ body {
 .achievement-card p {
   font-size: 0.9rem;
   color: #fff;
+}
+
+.profile-page {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+@media (max-width: 768px) {
+  .stats-container {
+    flex-direction: column;
+  }
+  
+  .achievement-cards {
+    flex-direction: column;
+    align-items: center;
+  }
 }

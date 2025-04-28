@@ -1,6 +1,6 @@
 body {
   font-family: 'JetBrains Mono', sans-serif;
-  background-color: #f0f4f8;
+  background-color: #1e1e2e;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,17 +9,18 @@ body {
 }
 
 .container {
-  background: #ffffff;
+  background: #2a2a40;
   padding: 30px;
   border-radius: 10px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   width: 350px;
   text-align: center;
 }
 
 h1 {
-  color: #333;
+  color: #9eff9e;
   margin-bottom: 20px;
+  font-size: 1.8rem;
 }
 
 .form-group {
@@ -29,20 +30,22 @@ h1 {
 .form-group input {
   width: 100%;
   padding: 12px;
-  border: 1px solid #ccc;
+  border: 1px solid #444;
   border-radius: 5px;
   transition: border-color 0.3s;
+  background-color: #1a1a2e;
+  color: #fff;
 }
 
 .form-group input:focus {
-  border-color: #007bff;
+  border-color: #9eff9e;
   outline: none;
 }
 
 .button {
   width: 100%;
   padding: 12px;
-  background-color: #007bff;
+  background-color: #6a5acd;
   color: white;
   border: none;
   border-radius: 5px;
@@ -52,13 +55,13 @@ h1 {
 }
 
 .button:hover {
-  background-color: #0056b3;
+  background-color: #5849b4;
 }
 
 .toggle-button {
   margin-top: 15px;
   cursor: pointer;
-  color: #007bff;
+  color: #9eff9e;
   font-size: 14px;
 }
 

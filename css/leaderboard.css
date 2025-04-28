@@ -1,120 +1,119 @@
 body {
-    font-family: 'JetBrains Mono', sans-serif;
-    background-color: #1e1e2e;
-    color: #fff;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background-color: #1f292e;
-  }
-  
-  .navbar .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #9eff9e;
-  }
-  
-  .navbar nav a {
-    margin: 0 1rem;
-    text-decoration: none;
-    color: #fff;
-  }
-  
-  .navbar .user-profile .profile-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-  }
-  
-  /* Header */
-  .leaderboard-header {
-    text-align: center;
-    padding: 2rem 0;
-    background-color: #28373d;
-    border-bottom: 2px solid #444;
-  }
-  
-  .leaderboard-header h1 {
-    margin: 0;
-    font-size: 2rem;
-    color: #9eff9e;
-  }
-  
-  .leaderboard-header p {
-    margin: 0.5rem 0 0;
-    color: #ccc;
-  }
-  
-  /* Board */
-  .leaderboard {
-    width: 90%;
-    margin: 2rem auto;
-    border-collapse: collapse;
-    background-color: #28373d;
-    border-radius: 8px;
-    overflow: hidden;
-  }
-  
-  .leaderboard-header-row {
-    display: flex;
-    background-color: #1f292e;
-    padding: 0.5rem 1rem;
-    color: #9eff9e;
-    font-weight: bold;
-    text-transform: uppercase;
-  }
-  
-  .leaderboard-row {
-    display: flex;
-    justify-content: space-between;
-    padding: 0.5rem 1rem;
-    background-color: #2a2a40;
-    border-bottom: 1px solid #444;
-    transition: background-color 0.2s ease-in-out;
-  }
-  
-  .leaderboard-row:nth-child(even) {
-    background-color: #303a42;
-  }
-  
-  .leaderboard-row:hover {
-    background-color: #3b4751;
-  }
-  
-  .leaderboard-col {
-    flex: 1;
-    text-align: center;
-  }
-  
-  .leaderboard-col.rank {
-    flex: 0.5;
-  }
-  
-  .leaderboard-col.username {
-    flex: 2;
-  }
+  font-family: 'JetBrains Mono', sans-serif;
+  background-color: #1e1e2e;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
 
-  .leaderboard-col.country {
-    flex: 1;
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #1f292e;
+}
+
+.navbar .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #9eff9e;
+}
+
+.navbar nav a {
+  margin: 0 1rem;
+  text-decoration: none;
+  color: #fff;
+}
+
+.navbar .user-profile .profile-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+/* Header */
+.leaderboard-header {
+  text-align: center;
+  padding: 2rem 0;
+  background-color: #28373d;
+  border-bottom: 2px solid #444;
+}
+
+.leaderboard-header h1 {
+  margin: 0;
+  font-size: 2rem;
+  color: #9eff9e;
+}
+
+.leaderboard-header p {
+  margin: 0.5rem 0 0;
+  color: #ccc;
+}
+
+/* Board */
+.leaderboard {
+  width: 90%;
+  margin: 2rem auto;
+  border-collapse: collapse;
+  background-color: #28373d;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.leaderboard-header-row {
+  display: flex;
+  background-color: #1f292e;
+  padding: 0.5rem 1rem;
+  color: #9eff9e;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.leaderboard-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  background-color: #2a2a40;
+  border-bottom: 1px solid #444;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.leaderboard-row:nth-child(even) {
+  background-color: #303a42;
+}
+
+.leaderboard-row:hover {
+  background-color: #3b4751;
+}
+
+.leaderboard-col {
+  flex: 1;
+  text-align: center;
+}
+
+.leaderboard-col.rank {
+  flex: 0.5;
+}
+
+.leaderboard-col.username {
+  flex: 2;
+}
+
+.leaderboard-col.country {
+  flex: 1;
+}
+
+.leaderboard-col.stats,
+.leaderboard-col.winrate,
+.leaderboard-col.games {
+  flex: 1;
+}
+
+/* Adaptive */
+@media (max-width: 768px) {
+  .leaderboard-header-row,
+  .leaderboard-row {
+    font-size: 0.8rem;
   }
-  
-  .leaderboard-col.stats,
-  .leaderboard-col.winrate,
-  .leaderboard-col.games {
-    flex: 1;
-  }
-  
-  /* Adaptive */
-  @media (max-width: 768px) {
-    .leaderboard-header-row,
-    .leaderboard-row {
-      font-size: 0.8rem;
-    }
-  }
-  
+}
