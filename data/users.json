@@ -1,0 +1,20 @@
+[
+  {
+    "user_id": 1,
+    "username": "testuser",
+    "password": "$2b$10$oduIBmxC4Bx..bdwZUWPB.RppwVHHnznD.TKhmOLzKvhpUSGfmu4G",
+    "created_at": "2025-04-28T14:54:40.167Z"
+  },
+  {
+    "user_id": 2,
+    "username": "kavo",
+    "password": "$2b$10$i6XabgdGcFqTU4CXqRL9tOUBay5QkvW/bvSJNUGn/AvkIGT6uxInm",
+    "created_at": "2025-04-28T14:55:44.370Z"
+  },
+  {
+    "user_id": 3,
+    "username": "testuser2",
+    "password": "$2b$10$gfg5BfwdgGFcX14ce9dMwe4ZsLy5wQ8yww/1Gj9eGAjgMkGuw3jKO",
+    "created_at": "2025-04-28T15:06:24.526Z"
+  }
+]

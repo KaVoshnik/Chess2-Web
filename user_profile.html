@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/user_styles.css">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/user_styles.css">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
     <header class="navbar">
@@ -16,13 +16,13 @@
             <a href="/index.html">Home</a>
             <a href="/leaderboard.html">Leaderboard</a>
             <a href="https://t.me/AdKavoshnik">Community</a>
-            <a href="#">Help</a>
+            <a href="https://github.com/KaVoshnik/Chess_2/issues">Help</a>
         </nav>
         <div class="user-profile">
-            <img src="/img/profile.jpg" alt="User Avatar" class="profile-avatar" id="profile-avatar">
+            <img src="https://via.placeholder.com/40" alt="User Avatar" class="profile-avatar" id="profile-avatar">
             <div class="profile-menu hidden">
-                <div class="profile-menu-info">
-                    <img src="/img/profile.jpg" alt="User Avatar" class="profile-avatar-large">
+                <div class="profile-info">
+                    <img src="https://via.placeholder.com/50" alt="User Avatar" class="profile-avatar-large">
                     <p class="username" id="username">Player_PlayerId</p>
                 </div>
                 <div class="profile-buttons">
@@ -36,14 +36,25 @@
     <main class="profile-page">
         <section class="profile-header">
             <div class="background-banner">
-                <img src="/img/background.jpg" alt="Background" class="background-image">
+                <svg width="100%" height="100%" viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="100%" height="100%" fill="#1f292e" />
+                    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                        <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#2a2a40" stroke-width="1"/>
+                    </pattern>
+                    <rect width="100%" height="100%" fill="url(#grid)" />
+                </svg>
             </div>
             <div class="profile-info">
-                <img src="/img/profile.jpg" alt="User Avatar" class="profile-avatar-large">
+                <img src="https://via.placeholder.com/80" alt="User Avatar" class="profile-avatar-large">
                 <div class="user-info">
                     <h1 id="player-name">Player_PlayerId</h1>
                     <p>
-                        <img src="/img/russia_flag.png" alt="Country Flag"> Russian Federation
+                        <svg width="20" height="15" viewBox="0 0 20 15" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="20" height="5" fill="#fff" />
+                            <rect y="5" width="20" height="5" fill="#0039A6" />
+                            <rect y="10" width="20" height="5" fill="#D52B1E" />
+                        </svg>
+                        Russian Federation
                     </p>
                 </div>
             </div>
@@ -53,23 +64,23 @@
             <div class="stats-container">
                 <div class="stats">
                     <h2>Play count</h2>
-                    <p id="play-count"></p>
+                    <p id="play-count">0</p>
                 </div>
                 <div class="stats">
                     <h2>Wins</h2>
-                    <p id="wins"></p>
+                    <p id="wins">0</p>
                 </div>
                 <div class="stats">
                     <h2>Losses</h2>
-                    <p id="losses"></p>
+                    <p id="losses">0</p>
                 </div>
                 <div class="stats">
                     <h2>Draws</h2>
-                    <p id="draws"></p>
+                    <p id="draws">0</p>
                 </div>
                 <div class="stats">
                     <h2>Chess Rating</h2>
-                    <p id="CR"></p>
+                    <p id="CR">0</p>
                 </div>
               </div>
         </section>
@@ -79,25 +90,34 @@
             <div class="achievement-list">
                 <div class="achievement-cards">
                     <div class="achievement-card">
-                        <img src="achievement1.jpg" alt="Achievement Icon">
-                        <p>Test Achievement</p>
+                        <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="50" r="45" fill="#1e1e2e" stroke="#9eff9e" stroke-width="2" />
+                            <text x="50" y="55" text-anchor="middle" fill="#9eff9e" font-size="12">Achievement</text>
+                        </svg>
+                        <p>First Game</p>
                     </div>
                     <div class="achievement-card">
-                        <img src="achievement2.jpg" alt="Achievement Icon">
-                        <p>Test Achievement</p>
+                        <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="50" r="45" fill="#1e1e2e" stroke="#9eff9e" stroke-width="2" />
+                            <text x="50" y="55" text-anchor="middle" fill="#9eff9e" font-size="12">Achievement</text>
+                        </svg>
+                        <p>First Win</p>
                     </div>
                     <div class="achievement-card">
-                        <img src="achievement3.jpg" alt="Achievement Icon">
-                        <p>Test Achievement</p>
+                        <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="50" r="45" fill="#1e1e2e" stroke="#9eff9e" stroke-width="2" />
+                            <text x="50" y="55" text-anchor="middle" fill="#9eff9e" font-size="12">Achievement</text>
+                        </svg>
+                        <p>Top 100</p>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <script src="js/profile_avatar.js"></script>
+    <script src="/js/profile_avatar.js"></script>
     <script>
-        window.onload = async () => {
+        document.addEventListener('DOMContentLoaded', async () => {
             const userId = localStorage.getItem('userId');
             if (!userId) {
                 window.location.href = 'sign_in.html';
@@ -105,32 +125,34 @@
             }
 
             try {
-                const response = await fetch(`http://localhost:3000/user/${userId}`);
-                console.log('Response status:', response.status);
-
+                const response = await fetch(`/api/user/${userId}`);
+                
                 if (!response.ok) {
                     const errorMessage = await response.text();
                     console.error('Error loading user data:', errorMessage);
-                    alert('Error loading user data: ' + errorMessage);
+                    alert('Error loading user data. Please try again later.');
                     return;
                 }
 
                 const userData = await response.json();
-                console.log('User Data:', userData);
-
                 
-                document.getElementById('player-name').textContent = userData.username;
-                document.getElementById('play-count').textContent = userData.total_games;
-                document.getElementById('wins').textContent = userData.wins;
-                document.getElementById('losses').textContent = userData.losses;
-                document.getElementById('draws').textContent = userData.draws;
-                document.getElementById('CR').textContent = userData.cr;
-                document.getElementById('username').textContent = userData.username;
+                document.getElementById('player-name').textContent = userData.username || 'Player';
+                document.getElementById('play-count').textContent = userData.total_games || '0';
+                document.getElementById('wins').textContent = userData.wins || '0';
+                document.getElementById('losses').textContent = userData.losses || '0';
+                document.getElementById('draws').textContent = userData.draws || '0';
+                document.getElementById('CR').textContent = userData.cr || '0';
+                
+                // Also update the username in the navbar
+                const usernameElement = document.getElementById('username');
+                if (usernameElement) {
+                    usernameElement.textContent = userData.username || 'Player';
+                }
             } catch (error) {
                 console.error('Error loading user data:', error);
                 alert('Error loading user data. Please try again later.');
             }
-        };
+        });
     </script>
 </body>
 </html>
