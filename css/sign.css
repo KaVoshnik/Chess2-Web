@@ -1,74 +1,174 @@
 body {
   font-family: 'JetBrains Mono', sans-serif;
   background-color: #1e1e2e;
+  background-image: linear-gradient(135deg, #1e1e2e 0%, #2d2b42 100%);
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   margin: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  z-index: -1;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="50" height="50" x="0" y="0" fill="%23ffffff10"/><rect width="50" height="50" x="50" y="50" fill="%23ffffff10"/></svg>');
+  background-size: 50px 50px;
+  opacity: 0.05;
+  transform: rotate(15deg);
 }
 
 .container {
-  background: #2a2a40;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  width: 350px;
+  background: rgba(42, 42, 64, 0.9);
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  width: 380px;
   text-align: center;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #9eff9e, #6a5acd, #ff79c6);
+  z-index: 1;
 }
 
 h1 {
   color: #9eff9e;
-  margin-bottom: 20px;
-  font-size: 1.8rem;
+  margin-bottom: 25px;
+  font-size: 2rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: 1px;
 }
 
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 22px;
+  position: relative;
 }
 
 .form-group input {
   width: 100%;
-  padding: 12px;
-  border: 1px solid #444;
-  border-radius: 5px;
-  transition: border-color 0.3s;
-  background-color: #1a1a2e;
+  padding: 14px 16px;
+  border: 2px solid rgba(68, 68, 68, 0.5);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  background-color: rgba(26, 26, 46, 0.7);
   color: #fff;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  box-sizing: border-box;
 }
 
 .form-group input:focus {
   border-color: #9eff9e;
   outline: none;
+  box-shadow: 0 0 0 4px rgba(158, 255, 158, 0.2);
+  transform: translateY(-2px);
 }
 
 .button {
   width: 100%;
-  padding: 12px;
-  background-color: #6a5acd;
+  padding: 14px;
+  background: linear-gradient(135deg, #6a5acd 0%, #5849b4 100%);
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
   font-size: 16px;
-  transition: background-color 0.3s;
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(106, 90, 205, 0.4);
+  position: relative;
+  overflow: hidden;
 }
 
 .button:hover {
-  background-color: #5849b4;
+  background: linear-gradient(135deg, #5849b4 0%, #483d95 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(106, 90, 205, 0.5);
+}
+
+.button:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 5px rgba(106, 90, 205, 0.4);
 }
 
 .toggle-button {
-  margin-top: 15px;
+  margin-top: 20px;
   cursor: pointer;
   color: #9eff9e;
-  font-size: 14px;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  display: inline-block;
+  padding: 5px;
+  border-radius: 4px;
 }
 
 .toggle-button:hover {
   text-decoration: underline;
+  color: #b3ffb3;
+  background-color: rgba(158, 255, 158, 0.1);
 }
 
 #confirm-password {
   display: block;
+}
+
+.error-message {
+  color: #ff5555;
+  font-size: 14px;
+  margin-top: 5px;
+  display: none;
+  text-align: left;
+  padding-left: 5px;
+}
+
+.form-group.error input {
+  border-color: #ff5555;
+}
+
+.form-group.error .error-message {
+  display: block;
+}
+
+/* Добавляем логотип и название сайта */
+.logo {
+  margin-bottom: 20px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: white;
+  text-shadow: 0 2px 10px rgba(106, 90, 205, 0.8);
+  letter-spacing: 2px;
+}
+
+.logo span {
+  color: #9eff9e;
+}
+
+/* Добавляем анимацию фокуса для инпутов */
+@keyframes focusPulse {
+  0% { box-shadow: 0 0 0 0 rgba(158, 255, 158, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(158, 255, 158, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(158, 255, 158, 0); }
+}
+
+.form-group input:focus {
+  animation: focusPulse 1.5s infinite;
 }

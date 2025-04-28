@@ -3,31 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
+    <title>Chess2 - Profile</title>
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/normalize.css">
     <link rel="stylesheet" href="/css/user_styles.css">
     <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta name="theme-color" content="#1e1e2e">
 </head>
 <body>
     <header class="navbar">
-        <div class="logo">Chess2</div>
+        <div class="logo">Chess<span>2</span></div>
         <nav>
-            <a href="/index.html">Home</a>
-            <a href="/leaderboard.html">Leaderboard</a>
-            <a href="https://t.me/AdKavoshnik">Community</a>
-            <a href="https://github.com/KaVoshnik/Chess_2/issues">Help</a>
+            <a href="/index.html"><i class="fas fa-home"></i> Home</a>
+            <a href="/leaderboard.html"><i class="fas fa-trophy"></i> Leaderboard</a>
+            <a href="https://t.me/AdKavoshnik"><i class="fab fa-telegram"></i> Community</a>
+            <a href="https://github.com/KaVoshnik/Chess_2/issues"><i class="fas fa-question-circle"></i> Help</a>
         </nav>
         <div class="user-profile">
-            <img src="/img/profile.jpg" alt="User Avatar" class="profile-avatar" id="profile-avatar">
+            <img src="https://avatars.dicebear.com/api/identicon/default.svg" alt="User Avatar" class="profile-avatar" id="profile-avatar">
             <div class="profile-menu hidden">
                 <div class="profile-info">
-                    <img src="/img/profile.jpg" alt="User Avatar" class="profile-avatar-large">
-                    <p class="username" id="username">Player_PlayerId</p>
+                    <img src="https://avatars.dicebear.com/api/identicon/default.svg" alt="User Avatar" class="profile-avatar-large" id="menu-avatar">
+                    <p class="username" id="username">Loading...</p>
                 </div>
                 <div class="profile-buttons">
-                    <a href="user_profile.html">View Profile</a>
-                    <a href="#" id="logoutButton">Logout</a>
+                    <a href="user_profile.html"><i class="fas fa-user"></i> View Profile</a>
+                    <a href="#" id="logoutButton"><i class="fas fa-sign-out-alt"></i> Logout</a>
                 </div>
             </div>
         </div>
@@ -36,26 +38,33 @@
     <main class="profile-page">
         <section class="profile-header">
             <div class="background-banner">
-                <svg width="100%" height="100%" viewBox="0 0 800 200" xmlns="/img/profile.jpg">
-                    <rect width="100%" height="100%" fill="#1f292e" />
-                    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
-                        <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#2a2a40" stroke-width="1"/>
-                    </pattern>
+                <svg width="100%" height="100%" viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="headerGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#1f292e" />
+                            <stop offset="100%" stop-color="#2a2a40" />
+                        </linearGradient>
+                        <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+                            <path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(158, 255, 158, 0.1)" stroke-width="1"/>
+                        </pattern>
+                    </defs>
+                    <rect width="100%" height="100%" fill="url(#headerGradient)" />
                     <rect width="100%" height="100%" fill="url(#grid)" />
+                    <text x="50%" y="50%" text-anchor="middle" fill="rgba(158, 255, 158, 0.03)" font-size="120" font-weight="bold">CHESS2</text>
                 </svg>
             </div>
             <div class="profile-info">
-                <img src="/img/profile.jpg" alt="User Avatar" class="profile-avatar-large">
+                <img src="https://avatars.dicebear.com/api/identicon/default.svg" alt="User Avatar" class="profile-avatar-large" id="profile-large-avatar">
                 <div class="user-info">
-                    <h1 id="player-name">Player_PlayerId</h1>
+                    <h1 id="player-name">Loading...</h1>
                     <p>
-                        <svg width="20" height="15" viewBox="0 0 20 15" xmlns="/img/profile.jpg">
-                            <rect width="20" height="5" fill="#fff" />
-                            <rect y="5" width="20" height="5" fill="#0039A6" />
-                            <rect y="10" width="20" height="5" fill="#D52B1E" />
-                        </svg>
-                        Russian Federation
+                        <i class="fas fa-chess-knight" style="color: #9eff9e; font-size: 1.2rem;"></i>
+                        <span>Chess2 Player</span>
                     </p>
+                    <div class="player-badges">
+                        <span class="badge" title="Member since 2025"><i class="fas fa-calendar-alt"></i> 2025</span>
+                        <span class="badge" id="rank-badge" title="Player Rank"><i class="fas fa-star"></i> Rookie</span>
+                    </div>
                 </div>
             </div>
         </section>
@@ -63,22 +72,27 @@
         <section class="stats-section">
             <div class="stats-container">
                 <div class="stats">
+                    <i class="fas fa-gamepad"></i>
                     <h2>Play count</h2>
                     <p id="play-count">0</p>
                 </div>
                 <div class="stats">
+                    <i class="fas fa-medal"></i>
                     <h2>Wins</h2>
                     <p id="wins">0</p>
                 </div>
                 <div class="stats">
+                    <i class="fas fa-times-circle"></i>
                     <h2>Losses</h2>
                     <p id="losses">0</p>
                 </div>
                 <div class="stats">
+                    <i class="fas fa-handshake"></i>
                     <h2>Draws</h2>
                     <p id="draws">0</p>
                 </div>
-                <div class="stats">
+                <div class="stats highlight-stat">
+                    <i class="fas fa-chart-line"></i>
                     <h2>Chess Rating</h2>
                     <p id="CR">0</p>
                 </div>
@@ -86,34 +100,88 @@
         </section>
 
         <section class="achievements">
-            <h2>Achievements</h2>
+            <h2><i class="fas fa-award"></i> Achievements</h2>
             <div class="achievement-list">
                 <div class="achievement-cards">
-                    <div class="achievement-card">
-                        <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="50" cy="50" r="45" fill="#1e1e2e" stroke="#9eff9e" stroke-width="2" />
-                            <text x="50" y="55" text-anchor="middle" fill="#9eff9e" font-size="12">Achievement</text>
+                    <div class="achievement-card" id="first-game">
+                        <svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="60" cy="60" r="55" fill="#1e1e2e" stroke="#9eff9e" stroke-width="2" />
+                            <text x="60" y="45" text-anchor="middle" fill="#9eff9e" font-size="14" font-weight="bold">FIRST</text>
+                            <text x="60" y="65" text-anchor="middle" fill="#9eff9e" font-size="14" font-weight="bold">GAME</text>
+                            <path d="M45,80 L75,80" stroke="#9eff9e" stroke-width="2" />
+                            <circle cx="60" cy="90" r="3" fill="#9eff9e" />
                         </svg>
                         <p>First Game</p>
+                        <span class="achievement-status" id="first-game-status">Locked</span>
                     </div>
-                    <div class="achievement-card">
-                        <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="50" cy="50" r="45" fill="#1e1e2e" stroke="#9eff9e" stroke-width="2" />
-                            <text x="50" y="55" text-anchor="middle" fill="#9eff9e" font-size="12">Achievement</text>
+                    <div class="achievement-card" id="first-win">
+                        <svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="60" cy="60" r="55" fill="#1e1e2e" stroke="#9eff9e" stroke-width="2" />
+                            <path d="M40,60 L55,75 L80,50" stroke="#9eff9e" stroke-width="3" fill="none" />
+                            <text x="60" y="90" text-anchor="middle" fill="#9eff9e" font-size="14" font-weight="bold">VICTORY</text>
                         </svg>
                         <p>First Win</p>
+                        <span class="achievement-status" id="first-win-status">Locked</span>
                     </div>
-                    <div class="achievement-card">
-                        <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="50" cy="50" r="45" fill="#1e1e2e" stroke="#9eff9e" stroke-width="2" />
-                            <text x="50" y="55" text-anchor="middle" fill="#9eff9e" font-size="12">Achievement</text>
+                    <div class="achievement-card" id="top-100">
+                        <svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="60" cy="60" r="55" fill="#1e1e2e" stroke="#9eff9e" stroke-width="2" />
+                            <path d="M60,30 L60,90" stroke="#9eff9e" stroke-width="2" />
+                            <path d="M40,50 L80,50" stroke="#9eff9e" stroke-width="2" />
+                            <path d="M45,70 L75,70" stroke="#9eff9e" stroke-width="2" />
+                            <text x="60" y="45" text-anchor="middle" fill="#9eff9e" font-size="18" font-weight="bold">TOP</text>
+                            <text x="60" y="85" text-anchor="middle" fill="#9eff9e" font-size="18" font-weight="bold">100</text>
                         </svg>
                         <p>Top 100</p>
+                        <span class="achievement-status" id="top-100-status">Locked</span>
+                    </div>
+                    <div class="achievement-card" id="chess-master">
+                        <svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="60" cy="60" r="55" fill="#1e1e2e" stroke="#9eff9e" stroke-width="2" />
+                            <path d="M40,50 C40,40 60,30 60,50 C60,30 80,40 80,50 C80,60 70,55 70,70 L50,70 C50,55 40,60 40,50 Z" stroke="#9eff9e" stroke-width="2" fill="none" />
+                            <rect x="45" y="70" width="30" height="10" stroke="#9eff9e" stroke-width="2" fill="none" />
+                            <text x="60" y="95" text-anchor="middle" fill="#9eff9e" font-size="10" font-weight="bold">CHESS MASTER</text>
+                        </svg>
+                        <p>Chess Master</p>
+                        <span class="achievement-status" id="chess-master-status">Locked</span>
                     </div>
                 </div>
             </div>
         </section>
+        
+        <section class="recent-activity">
+            <h2><i class="fas fa-history"></i> Recent Activity</h2>
+            <div class="activity-timeline" id="activity-timeline">
+                <div class="activity-item">
+                    <div class="activity-icon"><i class="fas fa-user-plus"></i></div>
+                    <div class="activity-content">
+                        <h3>Account Created</h3>
+                        <p>Welcome to Chess2!</p>
+                        <span class="activity-time">Just now</span>
+                    </div>
+                </div>
+                <div class="empty-state">No other recent activity</div>
+            </div>
+        </section>
     </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">Chess<span>2</span></div>
+            <div class="footer-links">
+                <a href="/index.html">Home</a>
+                <a href="/leaderboard.html">Leaderboard</a>
+                <a href="https://github.com/KaVoshnik/Chess_2">GitHub</a>
+            </div>
+            <div class="footer-social">
+                <a href="https://t.me/AdKavoshnik"><i class="fab fa-telegram"></i></a>
+                <a href="https://github.com/KaVoshnik/Chess_2"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Chess2. All rights reserved.</p>
+        </div>
+    </footer>
 
     <script src="/js/profile_avatar.js"></script>
     <script>
@@ -124,33 +192,124 @@
                 return;
             }
 
+            // Генерируем аватар на основе имени пользователя
+            function updateAvatars(username) {
+                const seed = username || 'default';
+                const avatarUrl = `https://avatars.dicebear.com/api/identicon/${seed}.svg`;
+                
+                document.getElementById('profile-avatar').src = avatarUrl;
+                document.getElementById('menu-avatar').src = avatarUrl;
+                document.getElementById('profile-large-avatar').src = avatarUrl;
+            }
+            
+            // Определение ранга игрока по CR
+            function getRank(cr) {
+                const crValue = parseFloat(cr);
+                if (crValue >= 2000) return "Grandmaster";
+                if (crValue >= 1800) return "Master";
+                if (crValue >= 1600) return "Expert";
+                if (crValue >= 1400) return "Veteran";
+                if (crValue >= 1200) return "Advanced";
+                if (crValue >= 1000) return "Intermediate";
+                if (crValue >= 800) return "Casual";
+                if (crValue >= 600) return "Beginner";
+                return "Rookie";
+            }
+            
+            // Обновление статуса достижений
+            function updateAchievements(userData) {
+                // First Game
+                if (userData.total_games > 0) {
+                    document.getElementById('first-game').classList.add('achieved');
+                    document.getElementById('first-game-status').textContent = 'Unlocked';
+                }
+                
+                // First Win
+                if (userData.wins > 0) {
+                    document.getElementById('first-win').classList.add('achieved');
+                    document.getElementById('first-win-status').textContent = 'Unlocked';
+                }
+                
+                // Top 100 (предполагается, что при CR > 1200 игрок входит в топ-100)
+                if (parseFloat(userData.cr) > 1200) {
+                    document.getElementById('top-100').classList.add('achieved');
+                    document.getElementById('top-100-status').textContent = 'Unlocked';
+                }
+                
+                // Chess Master (предполагается, что при CR > 1800 игрок становится мастером)
+                if (parseFloat(userData.cr) > 1800) {
+                    document.getElementById('chess-master').classList.add('achieved');
+                    document.getElementById('chess-master-status').textContent = 'Unlocked';
+                }
+            }
+
             try {
+                // Показываем индикатор загрузки
+                document.querySelectorAll('.stats p').forEach(el => {
+                    el.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+                });
+                
                 const response = await fetch(`/api/user/${userId}`);
                 
                 if (!response.ok) {
                     const errorMessage = await response.text();
                     console.error('Error loading user data:', errorMessage);
-                    alert('Error loading user data. Please try again later.');
+                    
+                    // Показываем ошибку загрузки
+                    document.getElementById('activity-timeline').innerHTML = `
+                        <div class="activity-item error">
+                            <div class="activity-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                            <div class="activity-content">
+                                <h3>Error Loading Data</h3>
+                                <p>There was a problem loading your profile. Please try again later.</p>
+                            </div>
+                        </div>
+                    `;
                     return;
                 }
 
                 const userData = await response.json();
                 
-                document.getElementById('player-name').textContent = userData.username || 'Player';
+                // Обновляем имя пользователя
+                const username = userData.username || 'Player';
+                document.getElementById('player-name').textContent = username;
+                document.getElementById('username').textContent = username;
+                
+                // Обновляем статистику
                 document.getElementById('play-count').textContent = userData.total_games || '0';
                 document.getElementById('wins').textContent = userData.wins || '0';
                 document.getElementById('losses').textContent = userData.losses || '0';
                 document.getElementById('draws').textContent = userData.draws || '0';
                 document.getElementById('CR').textContent = userData.cr || '0';
                 
-                // Also update the username in the navbar
-                const usernameElement = document.getElementById('username');
-                if (usernameElement) {
-                    usernameElement.textContent = userData.username || 'Player';
-                }
+                // Обновляем ранг
+                const rank = getRank(userData.cr);
+                document.getElementById('rank-badge').textContent = rank;
+                
+                // Обновляем аватар
+                updateAvatars(username);
+                
+                // Обновляем достижения
+                updateAchievements(userData);
+                
+                // Анимируем появление статистики
+                document.querySelectorAll('.stats').forEach((el, index) => {
+                    setTimeout(() => {
+                        el.classList.add('animate-in');
+                    }, index * 100);
+                });
+                
             } catch (error) {
                 console.error('Error loading user data:', error);
-                alert('Error loading user data. Please try again later.');
+                document.getElementById('activity-timeline').innerHTML = `
+                    <div class="activity-item error">
+                        <div class="activity-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                        <div class="activity-content">
+                            <h3>Error Loading Data</h3>
+                            <p>There was a problem loading your profile. Please try again later.</p>
+                        </div>
+                    </div>
+                `;
             }
         });
     </script>
