@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chess2 - Community</title>
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/user_styles.css">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/social.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <meta name="theme-color" content="#1e1e2e">
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">Chess<span>2</span></div>
+    <div class="mobile-menu-toggle" id="mobile-menu-toggle">
+      <i class="fas fa-bars"></i>
+    </div>
+    <nav id="main-nav">
+      <a href="/index.html"><i class="fas fa-home"></i> Home</a>
+      <a href="/leaderboard.html"><i class="fas fa-trophy"></i> Leaderboard</a>
+      <a href="/social.html" class="active"><i class="fas fa-users"></i> Community</a>
+      <a href="/devlog.html"><i class="fas fa-scroll"></i> Blog</a>
+    </nav>
+    <div class="user-profile">
+      <img src="https://avatars.dicebear.com/api/identicon/default.svg" alt="User Avatar" class="profile-avatar" id="profile-avatar">
+      <div class="profile-menu hidden">
+        <div class="profile-info">
+          <img src="https://avatars.dicebear.com/api/identicon/default.svg" alt="User Avatar" id="menu-avatar">
+          <p class="username" id="username">Guest</p>
+        </div>
+        <div class="profile-buttons">
+          <a href="user_profile.html"><i class="fas fa-user"></i> View Profile</a>
+          <a href="#" id="logoutButton"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="social-page">
+    <div class="social-container">
+      <!-- Left panel (contacts) -->
+      <div class="social-sidebar">
+        <div class="sidebar-header">
+          <h2><i class="fas fa-users"></i> Contacts</h2>
+          <button id="new-contact-btn" class="icon-button" title="Add Friend">
+            <i class="fas fa-user-plus"></i>
+          </button>
+        </div>
+        
+        <div class="sidebar-tabs">
+          <button class="tab-button active" data-tab="friends">
+            <i class="fas fa-user-friends"></i> Friends
+          </button>
+          <button class="tab-button" data-tab="requests">
+            <i class="fas fa-user-clock"></i> Requests
+            <span class="badge" id="request-badge">0</span>
+          </button>
+        </div>
+        
+        <div class="search-bar">
+          <input type="text" id="contact-search" placeholder="Search friends...">
+          <button><i class="fas fa-search"></i></button>
+        </div>
+        
+        <div class="tab-content" id="friends-tab">
+          <div class="friends-list" id="friends-list">
+            <div class="empty-state" id="no-friends">
+              <i class="fas fa-user-friends"></i>
+              <p>Your friends list is empty</p>
+              <button id="find-friends-btn" class="text-button">
+                Find Friends
+              </button>
+            </div>
+            
+            <!-- Friends will be added here dynamically -->
+          </div>
+        </div>
+        
+        <div class="tab-content hidden" id="requests-tab">
+          <div class="requests-list" id="requests-list">
+            <div class="empty-state" id="no-requests">
+              <i class="fas fa-user-clock"></i>
+              <p>No pending friend requests</p>
+            </div>
+            
+            <!-- Friend requests will be added here dynamically -->
+          </div>
+        </div>
+      </div>
+      
+      <!-- Right panel (chat/content) -->
+      <div class="social-content">
+        <div class="content-welcome" id="welcome-screen">
+          <div class="welcome-visual">
+            <svg width="150" height="150" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="welcomeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#9eff9e" stop-opacity="0.3" />
+                  <stop offset="100%" stop-color="#6a5acd" stop-opacity="0.3" />
+                </linearGradient>
+              </defs>
+              <circle cx="75" cy="75" r="60" fill="url(#welcomeGradient)" />
+              <path d="M50,75 Q75,100 100,75" stroke="#9eff9e" stroke-width="2" fill="none" />
+              <circle cx="50" cy="60" r="5" fill="#9eff9e" />
+              <circle cx="100" cy="60" r="5" fill="#9eff9e" />
+            </svg>
+          </div>
+          <h2>Welcome to the Chess2 Community!</h2>
+          <p>Connect with other players, chat with friends, and invite them to games.</p>
+          <button id="welcome-find-friends" class="primary-button">
+            <i class="fas fa-user-plus"></i> Find Friends
+          </button>
+        </div>
+        
+        <div class="chat-container hidden" id="chat-container">
+          <div class="chat-header">
+            <img src="" alt="Friend Avatar" id="chat-avatar" class="chat-avatar">
+            <div class="chat-info">
+              <h3 id="chat-name"></h3>
+              <p id="chat-status"></p>
+            </div>
+            <div class="chat-actions">
+              <button class="icon-button" id="invite-game-btn" title="Invite to Game">
+                <i class="fas fa-chess-knight"></i>
+              </button>
+              <button class="icon-button" id="view-profile-btn" title="View Profile">
+                <i class="fas fa-user"></i>
+              </button>
+            </div>
+          </div>
+          
+          <div class="chat-messages" id="chat-messages">
+            <div class="chat-day-divider">
+              <span>Today</span>
+            </div>
+            
+            <!-- Messages will be added here dynamically -->
+            
+            <div class="chat-loading" id="chat-loading">
+              <div class="loading-spinner"></div>
+              <p>Loading messages...</p>
+            </div>
+          </div>
+          
+          <div class="chat-input">
+            <textarea id="message-input" placeholder="Type a message..." rows="1"></textarea>
+            <button id="send-message" class="icon-button" title="Send Message">
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <!-- Add Friend Modal -->
+  <div class="modal" id="add-friend-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2><i class="fas fa-user-plus"></i> Find Friends</h2>
+        <button class="close-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="search-container">
+          <input type="text" id="user-search" placeholder="Search by username...">
+          <button id="search-user-btn">
+            <i class="fas fa-search"></i> Search
+          </button>
+        </div>
+        
+        <div class="search-results" id="search-results">
+          <div class="empty-state" id="no-results">
+            <i class="fas fa-search"></i>
+            <p>Search for users to add as friends</p>
+          </div>
+          
+          <!-- Search results will be added here dynamically -->
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Game Invitation Modal -->
+  <div class="modal" id="game-invite-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2><i class="fas fa-chess-knight"></i> Invite to Game</h2>
+        <button class="close-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>Send a game invitation to <span id="invite-username"></span>.</p>
+        
+        <div class="game-options">
+          <div class="option-group">
+            <label>Time Control</label>
+            <div class="option-buttons">
+              <button class="option-button active" data-time="5">5 min</button>
+              <button class="option-button" data-time="10">10 min</button>
+              <button class="option-button" data-time="15">15 min</button>
+              <button class="option-button" data-time="30">30 min</button>
+            </div>
+          </div>
+          
+          <div class="option-group">
+            <label>Side</label>
+            <div class="option-buttons">
+              <button class="option-button active" data-side="random">Random</button>
+              <button class="option-button" data-side="white">White</button>
+              <button class="option-button" data-side="black">Black</button>
+            </div>
+          </div>
+          
+          <div class="option-group">
+            <label>Game Mode</label>
+            <div class="option-buttons">
+              <button class="option-button active" data-mode="standard">Standard</button>
+              <button class="option-button" data-mode="advanced">Advanced</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="invite-message">
+          <label for="invite-message-input">Optional message:</label>
+          <textarea id="invite-message-input" placeholder="Let's play a game!" rows="2"></textarea>
+        </div>
+        
+        <div class="invite-actions">
+          <button id="send-invite-btn" class="primary-button">
+            <i class="fas fa-paper-plane"></i> Send Invitation
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">
+        <div class="logo">Chess<span>2</span></div>
+        <p>The next generation of chess</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-links-column">
+          <h3>Navigation</h3>
+          <a href="/index.html">Home</a>
+          <a href="/leaderboard.html">Leaderboard</a>
+          <a href="/social.html">Community</a>
+          <a href="/devlog.html">Blog</a>
+        </div>
+        <div class="footer-links-column">
+          <h3>Resources</h3>
+          <a href="https://github.com/KaVoshnik/Chess_2">GitHub</a>
+        </div>
+        <div class="footer-links-column">
+          <h3>Connect</h3>
+          <a href="#"><i class="fab fa-discord"></i> Discord</a>
+          <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+          <a href="#"><i class="fab fa-github"></i> GitHub</a>
+          <a href="mailto:info@chess2.app"><i class="fas fa-envelope"></i> Email</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Chess2. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // DOM elements
+      const userId = localStorage.getItem('userId');
+      const token = localStorage.getItem('token');
+      
+      const friendsTab = document.getElementById('friends-tab');
+      const requestsTab = document.getElementById('requests-tab');
+      const tabButtons = document.querySelectorAll('.tab-button');
+      
+      const friendsList = document.getElementById('friends-list');
+      const requestsList = document.getElementById('requests-list');
+      const noFriends = document.getElementById('no-friends');
+      const noRequests = document.getElementById('no-requests');
+      
+      const welcomeScreen = document.getElementById('welcome-screen');
+      const chatContainer = document.getElementById('chat-container');
+      const chatAvatar = document.getElementById('chat-avatar');
+      const chatName = document.getElementById('chat-name');
+      const chatStatus = document.getElementById('chat-status');
+      const chatMessages = document.getElementById('chat-messages');
+      const chatLoading = document.getElementById('chat-loading');
+      
+      const messageInput = document.getElementById('message-input');
+      const sendMessage = document.getElementById('send-message');
+      
+      const addFriendModal = document.getElementById('add-friend-modal');
+      const newContactBtn = document.getElementById('new-contact-btn');
+      const findFriendsBtn = document.getElementById('find-friends-btn');
+      const welcomeFindFriends = document.getElementById('welcome-find-friends');
+      const closeModalButtons = document.querySelectorAll('.close-modal');
+      
+      const searchUserBtn = document.getElementById('search-user-btn');
+      const userSearchInput = document.getElementById('user-search');
+      const searchResults = document.getElementById('search-results');
+      const noResults = document.getElementById('no-results');
+      
+      const gameInviteModal = document.getElementById('game-invite-modal');
+      const inviteGameBtn = document.getElementById('invite-game-btn');
+      const inviteUsername = document.getElementById('invite-username');
+      const sendInviteBtn = document.getElementById('send-invite-btn');
+      const optionButtons = document.querySelectorAll('.option-button');
+      
+      let currentChatUser = null;
+      let socket = null;
+      let friends = [];
+      let requests = [];
+      let chats = {};
+      
+      // Check if user is logged in
+      if (userId && token) {
+        initializeApp();
+      } else {
+        // Redirect to login page if not logged in
+        window.location.href = 'sign_in.html';
+      }
+      
+      // Initialize the application
+      function initializeApp() {
+        // Update user profile information
+        updateUserProfile();
+        
+        // Initialize WebSocket connection
+        initializeSocket();
+        
+        // Fetch friends, requests and chats
+        refreshFriends();
+        refreshFriendRequests();
+        refreshChats();
+        
+        // Setup event listeners
+        setupEventListeners();
+      }
+      
+      // Update user profile information
+      function updateUserProfile() {
+        fetch(`/api/user/${userId}`)
+          .then(response => {
+            if (!response.ok) throw new Error('Failed to fetch user data');
+            return response.json();
+          })
+          .then(userData => {
+            const username = userData.username || 'Player';
+            document.getElementById('username').textContent = username;
+            
+            // Generate avatar based on username
+            const seed = username || 'default';
+            const avatarUrl = `https://avatars.dicebear.com/api/identicon/${seed}.svg`;
+            
+            document.getElementById('profile-avatar').src = avatarUrl;
+            document.getElementById('menu-avatar').src = avatarUrl;
+          })
+          .catch(error => {
+            console.error('Error loading user data:', error);
+          });
+      }
+      
+      // Initialize WebSocket connection
+      function initializeSocket() {
+        const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+        const wsUrl = `${protocol}//${window.location.host}/ws`;
+        
+        socket = new WebSocket(wsUrl);
+        
+        socket.onopen = () => {
+          console.log('WebSocket connected');
+          
+          // Authenticate WebSocket connection
+          socket.send(JSON.stringify({
+            type: 'auth',
+            userId: userId,
+            token: token
+          }));
+        };
+        
+        socket.onmessage = (event) => {
+          const data = JSON.parse(event.data);
+          
+          switch (data.type) {
+            case 'auth_success':
+              console.log('WebSocket authenticated');
+              break;
+              
+            case 'auth_error':
+              console.error('WebSocket authentication failed:', data.message);
+              break;
+              
+            case 'chat_message':
+              handleNewMessage(data.message);
+              break;
+              
+            case 'friend_request':
+              handleFriendRequest(data.request);
+              break;
+              
+            case 'friend_status':
+              updateFriendStatus(data.userId, data.status);
+              break;
+              
+            case 'game_invite':
+              handleGameInvite(data.invite);
+              break;
+          }
+        };
+        
+        socket.onclose = () => {
+          console.log('WebSocket disconnected');
+          
+          // Attempt to reconnect after 5 seconds
+          setTimeout(initializeSocket, 5000);
+        };
+        
+        socket.onerror = (error) => {
+          console.error('WebSocket error:', error);
+        };
+      }
+      
+      // Setup event listeners
+      function setupEventListeners() {
+        // Tab switching
+        tabButtons.forEach(button => {
+          button.addEventListener('click', () => {
+            // Remove active class from all buttons
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Add active class to clicked button
+            button.classList.add('active');
+            
+            // Hide all tab content
+            friendsTab.classList.add('hidden');
+            requestsTab.classList.add('hidden');
+            
+            // Show selected tab content
+            const tabName = button.getAttribute('data-tab');
+            document.getElementById(`${tabName}-tab`).classList.remove('hidden');
+          });
+        });
+        
+        // Open add friend modal
+        newContactBtn.addEventListener('click', () => {
+          addFriendModal.style.display = 'block';
+          userSearchInput.focus();
+        });
+        
+        findFriendsBtn.addEventListener('click', () => {
+          addFriendModal.style.display = 'block';
+          userSearchInput.focus();
+        });
+        
+        welcomeFindFriends.addEventListener('click', () => {
+          addFriendModal.style.display = 'block';
+          userSearchInput.focus();
+        });
+        
+        // Close modals
+        closeModalButtons.forEach(button => {
+          button.addEventListener('click', () => {
+            button.closest('.modal').style.display = 'none';
+          });
+        });
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', (event) => {
+          if (event.target.classList.contains('modal')) {
+            event.target.style.display = 'none';
+          }
+        });
+        
+        // Search for users
+        searchUserBtn.addEventListener('click', () => {
+          const query = userSearchInput.value.trim();
+          
+          if (query.length > 0) {
+            searchUsers(query);
+          }
+        });
+        
+        userSearchInput.addEventListener('keypress', (event) => {
+          if (event.key === 'Enter') {
+            const query = userSearchInput.value.trim();
+            
+            if (query.length > 0) {
+              searchUsers(query);
+            }
+          }
+        });
+        
+        // Send message
+        sendMessage.addEventListener('click', () => {
+          const message = messageInput.value.trim();
+          
+          if (message.length > 0 && currentChatUser) {
+            sendChatMessage(message);
+          }
+        });
+        
+        messageInput.addEventListener('keypress', (event) => {
+          if (event.key === 'Enter' && !event.shiftKey) {
+            event.preventDefault();
+            
+            const message = messageInput.value.trim();
+            
+            if (message.length > 0 && currentChatUser) {
+              sendChatMessage(message);
+            }
+          }
+        });
+        
+        // Open game invitation modal
+        inviteGameBtn.addEventListener('click', () => {
+          if (currentChatUser) {
+            inviteUsername.textContent = currentChatUser.username;
+            gameInviteModal.style.display = 'block';
+          }
+        });
+        
+        // Game options selection
+        optionButtons.forEach(button => {
+          button.addEventListener('click', () => {
+            const optionGroup = button.closest('.option-group');
+            const groupButtons = optionGroup.querySelectorAll('.option-button');
+            
+            groupButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+          });
+        });
+        
+        // Send game invitation
+        sendInviteBtn.addEventListener('click', () => {
+          if (currentChatUser) {
+            const timeControl = document.querySelector('.option-button.active[data-time]').getAttribute('data-time');
+            const side = document.querySelector('.option-button.active[data-side]').getAttribute('data-side');
+            const mode = document.querySelector('.option-button.active[data-mode]').getAttribute('data-mode');
+            const message = document.getElementById('invite-message-input').value.trim();
+            
+            sendGameInvitation(currentChatUser.id, timeControl, side, mode, message);
+            gameInviteModal.style.display = 'none';
+          }
+        });
+        
+        // Auto-resize textarea
+        messageInput.addEventListener('input', () => {
+          messageInput.style.height = 'auto';
+          messageInput.style.height = (messageInput.scrollHeight) + 'px';
+        });
+        
+        // Profile toggle
+        const profileAvatar = document.querySelector('.profile-avatar');
+        const profileMenu = document.querySelector('.profile-menu');
+        
+        profileAvatar.addEventListener('click', () => {
+          profileMenu.classList.toggle('hidden');
+        });
+        
+        // Close profile menu when clicking outside
+        document.addEventListener('click', (e) => {
+          if (!e.target.closest('.user-profile')) {
+            profileMenu.classList.add('hidden');
+          }
+        });
+        
+        // Logout functionality
+        document.getElementById('logoutButton').addEventListener('click', (e) => {
+          e.preventDefault();
+          
+          localStorage.removeItem('userId');
+          localStorage.removeItem('token');
+          
+          window.location.href = 'sign_in.html';
+        });
+      }
+      
+      // Fetch friends list
+      function refreshFriends() {
+        fetch('/api/friends', {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        })
+          .then(response => {
+            if (!response.ok) throw new Error('Failed to fetch friends');
+            return response.json();
+          })
+          .then(data => {
+            friends = data;
+            renderFriendsList();
+          })
+          .catch(error => {
+            console.error('API error (/api/friends):', error);
+            console.error('Error refreshing friends:', error);
+          });
+      }
+      
+      // Fetch friend requests
+      function refreshFriendRequests() {
+        fetch('/api/friends/requests', {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        })
+          .then(response => {
+            if (!response.ok) throw new Error('Failed to fetch friend requests');
+            return response.json();
+          })
+          .then(data => {
+            requests = data;
+            renderFriendRequests();
+            updateRequestBadge();
+          })
+          .catch(error => {
+            console.error('API error (/api/friends/requests):', error);
+            console.error('Error refreshing friend requests:', error);
+          });
+      }
+      
+      // Fetch chats
+      function refreshChats() {
+        fetch('/api/chats', {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        })
+          .then(response => {
+            if (!response.ok) throw new Error('Failed to fetch chats');
+            return response.json();
+          })
+          .then(data => {
+            chats = data;
+          })
+          .catch(error => {
+            console.error('API error (/api/chats):', error);
+            console.error('Error refreshing chats:', error);
+          });
+      }
+      
+      // Render friends list
+      function renderFriendsList() {
+        if (friends.length === 0) {
+          noFriends.style.display = 'flex';
+          friendsList.innerHTML = '';
+          return;
+        }
+        
+        noFriends.style.display = 'none';
+        friendsList.innerHTML = '';
+        
+        friends.forEach(friend => {
+          const friendElement = document.createElement('div');
+          friendElement.className = 'friend-item';
+          friendElement.setAttribute('data-user-id', friend.id);
+          
+          const statusClass = friend.online ? 'online' : 'offline';
+          
+          friendElement.innerHTML = `
+            <img src="https://avatars.dicebear.com/api/identicon/${friend.username}.svg" alt="${friend.username}" class="friend-avatar">
+            <div class="friend-info">
+              <p class="friend-name">${friend.username}</p>
+              <p class="friend-status ${statusClass}">${friend.online ? 'Online' : 'Offline'}</p>
+            </div>
+          `;
+          
+          friendElement.addEventListener('click', () => {
+            openChat(friend);
+          });
+          
+          friendsList.appendChild(friendElement);
+        });
+      }
+      
+      // Render friend requests
+      function renderFriendRequests() {
+        if (requests.length === 0) {
+          noRequests.style.display = 'flex';
+          requestsList.innerHTML = '';
+          return;
+        }
+        
+        noRequests.style.display = 'none';
+        requestsList.innerHTML = '';
+        
+        requests.forEach(request => {
+          const requestElement = document.createElement('div');
+          requestElement.className = 'request-item';
+          requestElement.setAttribute('data-request-id', request.id);
+          
+          requestElement.innerHTML = `
+            <img src="https://avatars.dicebear.com/api/identicon/${request.username}.svg" alt="${request.username}" class="request-avatar">
+            <div class="request-info">
+              <p class="request-name">${request.username}</p>
+              <p class="request-time">${formatTime(request.createdAt)}</p>
+            </div>
+            <div class="request-actions">
+              <button class="accept-request" title="Accept Request">
+                <i class="fas fa-check"></i>
+              </button>
+              <button class="decline-request" title="Decline Request">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+          `;
+          
+          const acceptButton = requestElement.querySelector('.accept-request');
+          const declineButton = requestElement.querySelector('.decline-request');
+          
+          acceptButton.addEventListener('click', (event) => {
+            event.stopPropagation();
+            acceptFriendRequest(request.id);
+          });
+          
+          declineButton.addEventListener('click', (event) => {
+            event.stopPropagation();
+            declineFriendRequest(request.id);
+          });
+          
+          requestsList.appendChild(requestElement);
+        });
+      }
+      
+      // Open chat with a friend
+      function openChat(user) {
+        currentChatUser = user;
+        
+        // Update chat header
+        chatAvatar.src = `https://avatars.dicebear.com/api/identicon/${user.username}.svg`;
+        chatAvatar.alt = user.username;
+        chatName.textContent = user.username;
+        chatStatus.textContent = user.online ? 'Online' : 'Last seen ' + formatTime(user.lastSeen);
+        chatStatus.className = user.online ? 'online' : 'offline';
+        
+        // Show chat container, hide welcome screen
+        welcomeScreen.classList.add('hidden');
+        chatContainer.classList.remove('hidden');
+        
+        // Load chat history
+        loadChatHistory(user.id);
+        
+        // Mark friend as active
+        const friendItems = document.querySelectorAll('.friend-item');
+        friendItems.forEach(item => item.classList.remove('active'));
+        
+        const activeItem = document.querySelector(`.friend-item[data-user-id="${user.id}"]`);
+        if (activeItem) {
+          activeItem.classList.add('active');
+        }
+      }
+      
+      // Load chat history
+      function loadChatHistory(friendId) {
+        // Show loading indicator
+        chatMessages.innerHTML = '';
+        chatLoading.style.display = 'flex';
+        
+        fetch(`/api/chats/${friendId}`, {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        })
+          .then(response => {
+            if (!response.ok) throw new Error('Failed to fetch chat history');
+            return response.json();
+          })
+          .then(data => {
+            renderChatHistory(data);
+          })
+          .catch(error => {
+            console.error('Error loading chat history:', error);
+            chatLoading.style.display = 'none';
+            
+            // Show error message
+            chatMessages.innerHTML = `
+              <div class="chat-error">
+                <i class="fas fa-exclamation-circle"></i>
+                <p>Failed to load chat history. Please try again later.</p>
+              </div>
+            `;
+          });
+      }
+      
+      // Render chat history
+      function renderChatHistory(messages) {
+        chatLoading.style.display = 'none';
+        chatMessages.innerHTML = '';
+        
+        if (messages.length === 0) {
+          chatMessages.innerHTML = `
+            <div class="chat-empty">
+              <p>No messages yet. Say hello!</p>
+            </div>
+          `;
+          return;
+        }
+        
+        let currentDay = null;
+        
+        messages.forEach(message => {
+          const messageDate = new Date(message.timestamp);
+          const messageDay = messageDate.toDateString();
+          
+          // Add day divider if needed
+          if (messageDay !== currentDay) {
+            currentDay = messageDay;
+            
+            const today = new Date().toDateString();
+            const yesterday = new Date(Date.now() - 86400000).toDateString();
+            
+            let dayText = '';
+            
+            if (messageDay === today) {
+              dayText = 'Today';
+            } else if (messageDay === yesterday) {
+              dayText = 'Yesterday';
+            } else {
+              dayText = messageDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+            }
+            
+            const dayDivider = document.createElement('div');
+            dayDivider.className = 'chat-day-divider';
+            dayDivider.innerHTML = `<span>${dayText}</span>`;
+            
+            chatMessages.appendChild(dayDivider);
+          }
+          
+          // Add message
+          const messageElement = document.createElement('div');
+          messageElement.className = message.senderId === parseInt(userId) ? 'message outgoing' : 'message incoming';
+          
+          const timeString = messageDate.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+          
+          messageElement.innerHTML = `
+            <div class="message-content">
+              <p>${message.content}</p>
+              <span class="message-time">${timeString}</span>
+            </div>
+          `;
+          
+          chatMessages.appendChild(messageElement);
+        });
+        
+        // Scroll to bottom
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+      
+      // Send chat message
+      function sendChatMessage(content) {
+        if (!currentChatUser || !socket || socket.readyState !== WebSocket.OPEN) return;
+        
+        const message = {
+          type: 'chat_message',
+          recipientId: currentChatUser.id,
+          content: content
+        };
+        
+        socket.send(JSON.stringify(message));
+        
+        // Add message to UI immediately
+        const messageElement = document.createElement('div');
+        messageElement.className = 'message outgoing';
+        
+        const now = new Date();
+        const timeString = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+        
+        messageElement.innerHTML = `
+          <div class="message-content">
+            <p>${content}</p>
+            <span class="message-time">${timeString}</span>
+          </div>
+        `;
+        
+        chatMessages.appendChild(messageElement);
+        
+        // Clear input
+        messageInput.value = '';
+        messageInput.style.height = 'auto';
+        
+        // Scroll to bottom
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+      
+      // Handle incoming message
+      function handleNewMessage(message) {
+        // If chat is open with the sender, add message to UI
+        if (currentChatUser && message.senderId === currentChatUser.id) {
+          const messageElement = document.createElement('div');
+          messageElement.className = 'message incoming';
+          
+          const messageDate = new Date(message.timestamp);
+          const timeString = messageDate.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+          
+          messageElement.innerHTML = `
+            <div class="message-content">
+              <p>${message.content}</p>
+              <span class="message-time">${timeString}</span>
+            </div>
+          `;
+          
+          chatMessages.appendChild(messageElement);
+          
+          // Scroll to bottom
+          chatMessages.scrollTop = chatMessages.scrollHeight;
+        } else {
+          // TODO: Show notification for new message
+        }
+      }
+      
+      // Search for users
+      function searchUsers(query) {
+        searchResults.innerHTML = '';
+        noResults.style.display = 'flex';
+        noResults.innerHTML = `
+          <div class="loading-spinner"></div>
+          <p>Searching...</p>
+        `;
+        
+        fetch(`/api/users/search?query=${query}`, {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        })
+          .then(response => {
+            if (!response.ok) throw new Error('Failed to search users');
+            return response.json();
+          })
+          .then(data => {
+            renderSearchResults(data);
+          })
+          .catch(error => {
+            console.error('API error (/api/users/search?query=' + query + '):', error);
+            console.error('Error searching users:', error);
+            
+            noResults.innerHTML = `
+              <i class="fas fa-exclamation-circle"></i>
+              <p>An error occurred. Please try again later.</p>
+            `;
+          });
+      }
+      
+      // Render search results
+      function renderSearchResults(users) {
+        searchResults.innerHTML = '';
+        
+        if (users.length === 0) {
+          noResults.style.display = 'flex';
+          noResults.innerHTML = `
+            <i class="fas fa-search"></i>
+            <p>No users found</p>
+          `;
+          return;
+        }
+        
+        noResults.style.display = 'none';
+        
+        users.forEach(user => {
+          const userElement = document.createElement('div');
+          userElement.className = 'user-item';
+          
+          // Check if user is already a friend
+          const isFriend = friends.some(friend => friend.id === user.id);
+          
+          // Check if there's a pending request
+          const isPending = requests.some(request => request.id === user.id);
+          
+          let actionButton = '';
+          
+          if (isFriend) {
+            actionButton = `<button class="primary-button disabled">Friends</button>`;
+          } else if (isPending) {
+            actionButton = `<button class="primary-button disabled">Request Sent</button>`;
+          } else if (user.id === parseInt(userId)) {
+            actionButton = `<button class="primary-button disabled">You</button>`;
+          } else {
+            actionButton = `<button class="add-friend-btn primary-button" data-user-id="${user.id}">Add Friend</button>`;
+          }
+          
+          userElement.innerHTML = `
+            <img src="https://avatars.dicebear.com/api/identicon/${user.username}.svg" alt="${user.username}" class="user-avatar">
+            <div class="user-info">
+              <p class="user-name">${user.username}</p>
+              <p class="user-stats">Ranking: ${user.rating || 'Unranked'}</p>
+            </div>
+            <div class="user-actions">
+              ${actionButton}
+            </div>
+          `;
+          
+          const addFriendBtn = userElement.querySelector('.add-friend-btn');
+          
+          if (addFriendBtn) {
+            addFriendBtn.addEventListener('click', () => {
+              sendFriendRequest(user.id);
+              addFriendBtn.disabled = true;
+              addFriendBtn.textContent = 'Request Sent';
+              addFriendBtn.classList.add('disabled');
+            });
+          }
+          
+          searchResults.appendChild(userElement);
+        });
+      }
+      
+      // Send friend request
+      function sendFriendRequest(userId) {
+        fetch('/api/friends/request', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify({ userId })
+        })
+          .then(response => {
+            if (!response.ok) throw new Error('Failed to send friend request');
+            return response.json();
+          })
+          .then(data => {
+            console.log('Friend request sent:', data);
+          })
+          .catch(error => {
+            console.error('Error sending friend request:', error);
+          });
+      }
+      
+      // Accept friend request
+      function acceptFriendRequest(requestId) {
+        fetch(`/api/friends/requests/${requestId}/accept`, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        })
+          .then(response => {
+            if (!response.ok) throw new Error('Failed to accept friend request');
+            return response.json();
+          })
+          .then(data => {
+            // Remove request from list
+            requests = requests.filter(request => request.id !== requestId);
+            renderFriendRequests();
+            updateRequestBadge();
+            
+            // Add new friend to list
+            refreshFriends();
+          })
+          .catch(error => {
+            console.error('Error accepting friend request:', error);
+          });
+      }
+      
+      // Decline friend request
+      function declineFriendRequest(requestId) {
+        fetch(`/api/friends/requests/${requestId}/decline`, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        })
+          .then(response => {
+            if (!response.ok) throw new Error('Failed to decline friend request');
+            return response.json();
+          })
+          .then(data => {
+            // Remove request from list
+            requests = requests.filter(request => request.id !== requestId);
+            renderFriendRequests();
+            updateRequestBadge();
+          })
+          .catch(error => {
+            console.error('Error declining friend request:', error);
+          });
+      }
+      
+      // Handle friend request
+      function handleFriendRequest(request) {
+        requests.push(request);
+        renderFriendRequests();
+        updateRequestBadge();
+      }
+      
+      // Update request badge count
+      function updateRequestBadge() {
+        const badge = document.getElementById('request-badge');
+        
+        if (requests.length > 0) {
+          badge.textContent = requests.length;
+          badge.style.display = 'inline-flex';
+        } else {
+          badge.style.display = 'none';
+        }
+      }
+      
+      // Update friend status
+      function updateFriendStatus(friendId, status) {
+        // Update friends list
+        friends = friends.map(friend => {
+          if (friend.id === friendId) {
+            return { ...friend, online: status === 'online' };
+          }
+          return friend;
+        });
+        
+        renderFriendsList();
+        
+        // Update current chat if needed
+        if (currentChatUser && currentChatUser.id === friendId) {
+          chatStatus.textContent = status === 'online' ? 'Online' : 'Last seen just now';
+          chatStatus.className = status === 'online' ? 'online' : 'offline';
+        }
+      }
+      
+      // Send game invitation
+      function sendGameInvitation(userId, timeControl, side, mode, message) {
+        const invitation = {
+          type: 'game_invite',
+          userId,
+          settings: {
+            timeControl,
+            side,
+            mode
+          },
+          message
+        };
+        
+        socket.send(JSON.stringify(invitation));
+      }
+      
+      // Handle game invitation
+      function handleGameInvite(invite) {
+        // TODO: Show game invitation notification
+        console.log('Game invitation received:', invite);
+      }
+      
+      // Format time helper function
+      function formatTime(timestamp) {
+        if (!timestamp) return 'Never';
+        
+        const date = new Date(timestamp);
+        const now = new Date();
+        const diffMs = now - date;
+        const diffSecs = Math.floor(diffMs / 1000);
+        const diffMins = Math.floor(diffSecs / 60);
+        const diffHours = Math.floor(diffMins / 60);
+        const diffDays = Math.floor(diffHours / 24);
+        
+        if (diffSecs < 60) {
+          return 'Just now';
+        } else if (diffMins < 60) {
+          return `${diffMins} minute${diffMins > 1 ? 's' : ''} ago`;
+        } else if (diffHours < 24) {
+          return `${diffHours} hour${diffHours > 1 ? 's' : ''} ago`;
+        } else if (diffDays < 7) {
+          return `${diffDays} day${diffDays > 1 ? 's' : ''} ago`;
+        } else {
+          return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+        }
+      }
+    });
+  </script>
+</body>
+</html>

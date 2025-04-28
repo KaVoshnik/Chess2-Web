@@ -14,17 +14,20 @@
 <body>
     <header class="navbar">
         <div class="logo">Chess<span>2</span></div>
-        <nav>
+        <div class="mobile-menu-toggle" id="mobile-menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav id="main-nav">
             <a href="/index.html"><i class="fas fa-home"></i> Home</a>
             <a href="/leaderboard.html"><i class="fas fa-trophy"></i> Leaderboard</a>
-            <a href="https://t.me/AdKavoshnik"><i class="fab fa-telegram"></i> Community</a>
-            <a href="https://github.com/KaVoshnik/Chess_2/issues"><i class="fas fa-question-circle"></i> Help</a>
+            <a href="/social.html"><i class="fas fa-users"></i> Community</a>
+            <a href="/devlog.html"><i class="fas fa-scroll"></i> Blog</a>
         </nav>
         <div class="user-profile">
             <img src="https://avatars.dicebear.com/api/identicon/default.svg" alt="User Avatar" class="profile-avatar" id="profile-avatar">
             <div class="profile-menu hidden">
                 <div class="profile-info">
-                    <img src="https://avatars.dicebear.com/api/identicon/default.svg" alt="User Avatar" class="profile-avatar-large" id="menu-avatar">
+                    <img src="https://avatars.dicebear.com/api/identicon/default.svg" alt="User Avatar" id="menu-avatar">
                     <p class="username" id="username">Loading...</p>
                 </div>
                 <div class="profile-buttons">
@@ -171,6 +174,8 @@
             <div class="footer-links">
                 <a href="/index.html">Home</a>
                 <a href="/leaderboard.html">Leaderboard</a>
+                <a href="/social.html">Community</a>
+                <a href="/devlog.html">Blog</a>
                 <a href="https://github.com/KaVoshnik/Chess_2">GitHub</a>
             </div>
             <div class="footer-social">

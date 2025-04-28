@@ -44,32 +44,57 @@ body {
 
 .navbar nav a {
   position: relative;
-  padding: 0.5rem 0.2rem;
+  padding: 0.6rem 1rem;
+  margin: 0 0.2rem;
   text-decoration: none;
   color: #fff;
   font-weight: 500;
   transition: all 0.3s ease;
   letter-spacing: 0.5px;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid transparent;
 }
 
 .navbar nav a::after {
   content: '';
   position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: 0;
-  left: 0;
+  height: 3px;
+  bottom: -5px;
+  left: 50%;
+  right: 50%;
   background-color: #9eff9e;
-  transition: width 0.3s ease;
+  transition: all 0.3s ease;
+  opacity: 0;
+  border-radius: 3px;
+  box-shadow: 0 0 8px rgba(158, 255, 158, 0.5);
 }
 
-.navbar nav a:hover {
+.navbar nav a:hover, .navbar nav a.active {
   color: #9eff9e;
   transform: translateY(-2px);
+  background-color: rgba(158, 255, 158, 0.1);
+  border-color: rgba(158, 255, 158, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-.navbar nav a:hover::after {
-  width: 100%;
+.navbar nav a:hover::after, .navbar nav a.active::after {
+  left: 10%;
+  right: 10%;
+  opacity: 1;
+}
+
+.navbar nav a i {
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.navbar nav a:hover i, .navbar nav a.active i {
+  transform: scale(1.2);
+  text-shadow: 0 0 10px rgba(158, 255, 158, 0.8);
 }
 
 .navbar .user-profile {
@@ -94,32 +119,126 @@ body {
 
 .profile-menu {
   position: absolute;
-  top: 100%;
+  top: calc(100% + 10px);
   right: 0;
-  width: 200px;
+  width: 250px;
   background-color: rgba(42, 42, 64, 0.95);
-  border-radius: 8px;
-  padding: 1rem;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
-  z-index: 10;
-  transition: all 0.3s ease;
+  border-radius: 12px;
+  padding: 1.2rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  z-index: 100;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(158, 255, 158, 0.2);
   opacity: 0;
-  transform: translateY(10px);
+  transform: translateY(10px) scale(0.95);
   pointer-events: none;
+  margin-top: 5px;
 }
 
 .profile-menu.visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
   pointer-events: auto;
 }
 
 .profile-menu.hidden {
   opacity: 0;
-  transform: translateY(10px);
+  transform: translateY(10px) scale(0.95);
   pointer-events: none;
+}
+
+.profile-menu::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  right: 20px;
+  width: 12px;
+  height: 12px;
+  background-color: rgba(42, 42, 64, 0.95);
+  transform: rotate(45deg);
+  border-top: 1px solid rgba(158, 255, 158, 0.2);
+  border-left: 1px solid rgba(158, 255, 158, 0.2);
+}
+
+.profile-menu .profile-info {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid rgba(158, 255, 158, 0.1);
+}
+
+.profile-menu .profile-info img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #9eff9e;
+  box-shadow: 0 0 10px rgba(158, 255, 158, 0.3);
+  margin-right: 1rem;
+}
+
+.profile-menu .profile-info p {
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.profile-menu .profile-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.profile-menu .profile-buttons a {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid transparent;
+}
+
+.profile-menu .profile-buttons a:hover {
+  background-color: rgba(158, 255, 158, 0.1);
+  transform: translateX(5px);
+  color: #9eff9e;
+  border-color: rgba(158, 255, 158, 0.2);
+}
+
+.profile-menu .profile-buttons a i {
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  min-width: 20px;
+  text-align: center;
+}
+
+.profile-menu .profile-buttons a:hover i {
+  transform: scale(1.2);
+  color: #9eff9e;
+}
+
+#logoutButton {
+  margin-top: 0.5rem;
+  border-top: 1px solid rgba(158, 255, 158, 0.1);
+  padding-top: 1.2rem;
+  background-color: rgba(255, 85, 85, 0.05);
+}
+
+#logoutButton:hover {
+  background-color: rgba(255, 85, 85, 0.1);
+  color: #ff5555;
+  border-color: rgba(255, 85, 85, 0.2);
+}
+
+#logoutButton:hover i {
+  color: #ff5555;
 }
 
 /* Профиль шапка */
@@ -750,7 +869,16 @@ body {
   }
   
   .navbar nav {
-    gap: 1rem;
+    gap: 0.6rem;
+  }
+  
+  .navbar nav a {
+    font-size: 0.85rem;
+    padding: 0.5rem 0.7rem;
+  }
+  
+  .navbar nav a i {
+    font-size: 0.9rem;
   }
   
   .profile-info {
@@ -800,7 +928,68 @@ body {
   }
   
   .navbar nav {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background-color: rgba(31, 41, 46, 0.98);
+    flex-direction: column;
+    padding: 1rem;
+    gap: 0.8rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    border-top: 1px solid rgba(158, 255, 158, 0.1);
+    backdrop-filter: blur(10px);
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    z-index: 99;
+  }
+  
+  .navbar nav.show-mobile-menu {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  .navbar nav a {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+  }
+  
+  .mobile-menu-toggle {
     display: none;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(158, 255, 158, 0.1);
+    border-radius: 8px;
+    border: 1px solid rgba(158, 255, 158, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .mobile-menu-toggle:hover {
+    background-color: rgba(158, 255, 158, 0.2);
+  }
+  
+  .mobile-menu-toggle i {
+    color: #fff;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+  }
+  
+  .mobile-menu-toggle:hover i {
+    color: #9eff9e;
+  }
+  
+  @media (max-width: 480px) {
+    .mobile-menu-toggle {
+      display: flex;
+    }
   }
   
   .profile-header {
