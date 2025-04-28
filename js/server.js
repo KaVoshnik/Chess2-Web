@@ -21,27 +21,69 @@ app.use(express.json());
 
 app.post('/register', async (req, res) => {
   const { username, password } = req.body;
-  const hashedPassword = await bcrypt.hash(password, 10);
+  
+  // Валидация входных данных
+  if (!username || !password) {
+    return res.status(400).json({ error: 'Username and password are required' });
+  }
 
   try {
-    const result = await pool.query(
-      'INSERT INTO users (username, password) VALUES ($1, $2) RETURNING *',
+    const hashedPassword = await bcrypt.hash(password, 10);
+    
+    // Проверяем существование пользователя перед регистрацией
+    const userExists = await pool.query(
+      'SELECT 1 FROM users WHERE username = $1 LIMIT 1', 
+      [username]
+    );
+    
+    if (userExists.rows.length > 0) {
+      return res.status(409).json({ 
+        error: 'Username already exists',
+        suggestion: 'Please choose a different username'
+      });
+    }
+
+    // Начинаем транзакцию
+    await pool.query('BEGIN');
+    
+    const userResult = await pool.query(
+      'INSERT INTO users (username, password) VALUES ($1, $2) RETURNING user_id',
       [username, hashedPassword]
     );
 
-    const newUserId = result.rows[0].user_id;
+    const newUserId = userResult.rows[0].user_id;
 
     await pool.query(
-      'INSERT INTO chess_players (user_id, wins, losses, total_games, cr) VALUES ($1, $2, $3, $4, $5)',
-      [newUserId, 0, 0, 0, 0]
+      'INSERT INTO chess_players (user_id) VALUES ($1)',
+      [newUserId]
     );
-
-    res.status(201).json({ id: newUserId, username: result.rows[0].username });
+    
+    await pool.query('COMMIT');
+    
+    res.status(201).json({ 
+      id: newUserId, 
+      username,
+      message: 'Registration successful' 
+    });
+    
   } catch (error) {
-    console.error('Error during registration:', error);
-    res.status(400).json({ error: 'User with this name found, do you want to login?' });
+    await pool.query('ROLLBACK');
+    console.error('Registration error:', error);
+    
+    if (error.code === '23505') { // Код ошибки UNIQUE violation в PostgreSQL
+      return res.status(409).json({ 
+        error: 'Username already exists',
+        solution: 'Try a different username or login with existing account'
+      });
+    }
+    
+    res.status(500).json({ 
+      error: 'Registration failed',
+      details: 'Internal server error' 
+    });
   }
 });
+
 
 app.post('/login', async (req, res) => {
   const { username, password } = req.body;
