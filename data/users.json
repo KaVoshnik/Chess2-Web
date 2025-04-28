@@ -16,5 +16,11 @@
     "username": "testuser2",
     "password": "$2b$10$gfg5BfwdgGFcX14ce9dMwe4ZsLy5wQ8yww/1Gj9eGAjgMkGuw3jKO",
     "created_at": "2025-04-28T15:06:24.526Z"
+  },
+  {
+    "user_id": 4,
+    "username": "nigga",
+    "password": "$2b$10$Szf/I04keZYu3l.cXfKZE.kKW6zTnhWh1NZf7XgXC9kSDbtNNoiBW",
+    "created_at": "2025-04-28T20:52:28.304Z"
   }
 ]

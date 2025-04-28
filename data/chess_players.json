@@ -28,5 +28,15 @@
     "total_games": 1,
     "win_rate": 0,
     "cr": 7
+  },
+  {
+    "player_id": 4,
+    "user_id": 4,
+    "wins": 10,
+    "losses": 0,
+    "draws": 0,
+    "total_games": 10,
+    "win_rate": 780,
+    "cr": 1000
   }
 ]
