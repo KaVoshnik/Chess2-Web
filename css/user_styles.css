@@ -927,70 +927,39 @@ body {
     font-size: 1.5rem;
   }
   
-  .navbar nav {
-    position: fixed;
-    top: 70px;
-    left: 0;
-    width: 100%;
-    background-color: rgba(31, 41, 46, 0.98);
-    flex-direction: column;
-    padding: 1rem;
-    gap: 0.8rem;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-    border-top: 1px solid rgba(158, 255, 158, 0.1);
-    backdrop-filter: blur(10px);
-    transform: translateY(-100%);
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.3s ease;
-    z-index: 99;
+  .navbar {
+    flex-wrap: wrap;
+    padding: 10px;
+    justify-content: center;
   }
   
-  .navbar nav.show-mobile-menu {
-    transform: translateY(0);
+  .navbar nav {
+    position: static;
+    width: 100%;
+    background-color: transparent;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 5px 0;
+    gap: 5px;
+    box-shadow: none;
+    border-top: 1px solid rgba(158, 255, 158, 0.1);
+    transform: none;
     opacity: 1;
     pointer-events: auto;
+    transition: none;
   }
   
   .navbar nav a {
-    width: 100%;
-    justify-content: flex-start;
-    padding: 0.8rem 1rem;
-    font-size: 1rem;
-  }
-  
-  .mobile-menu-toggle {
-    display: none;
-    align-items: center;
+    width: auto;
     justify-content: center;
-    width: 40px;
-    height: 40px;
-    background-color: rgba(158, 255, 158, 0.1);
-    border-radius: 8px;
-    border: 1px solid rgba(158, 255, 158, 0.2);
-    cursor: pointer;
-    transition: all 0.3s ease;
+    padding: 8px 10px;
+    font-size: 0.9rem;
+    margin: 2px;
+    border-radius: 5px;
   }
   
-  .mobile-menu-toggle:hover {
-    background-color: rgba(158, 255, 158, 0.2);
-  }
-  
-  .mobile-menu-toggle i {
-    color: #fff;
-    font-size: 1.2rem;
-    transition: all 0.3s ease;
-  }
-  
-  .mobile-menu-toggle:hover i {
-    color: #9eff9e;
-  }
-  
-  @media (max-width: 480px) {
-    .mobile-menu-toggle {
-      display: flex;
-    }
-  }
+  /* Мобильное меню удалено */
   
   .profile-header {
     border-radius: 0;

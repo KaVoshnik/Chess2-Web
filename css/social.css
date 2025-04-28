@@ -889,6 +889,49 @@
   transform: translateY(-2px);
 }
 
+/* Улучшенные кнопки с анимациями */
+.primary-button {
+  background-color: #9eff9e;
+  color: #1e1e2e;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.primary-button:hover {
+  background-color: #7cf97c;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.primary-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.primary-button i {
+  font-size: 16px;
+}
+
+.primary-button.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: #9eff9e;
+  transform: none;
+  box-shadow: none;
+}
+
 .secondary-btn {
   padding: 0.8rem 1.5rem;
   border-radius: 8px;

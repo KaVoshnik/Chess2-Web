@@ -21,33 +21,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
   
-  // Мобильное меню
-  const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+  // Обработка адаптивного меню для мобильных устройств
   const mainNav = document.getElementById('main-nav');
   
-  if (mobileMenuToggle && mainNav) {
-    mobileMenuToggle.addEventListener('click', () => {
-      mainNav.classList.toggle('show-mobile-menu');
-      // Меняем иконку при открытии/закрытии меню
-      const icon = mobileMenuToggle.querySelector('i');
-      if (icon.classList.contains('fa-bars')) {
-        icon.classList.remove('fa-bars');
-        icon.classList.add('fa-times');
-      } else {
-        icon.classList.remove('fa-times');
-        icon.classList.add('fa-bars');
-      }
-    });
-    
+  if (mainNav) {
     // Закрываем мобильное меню при клике на пункт меню
     const navLinks = mainNav.querySelectorAll('a');
     navLinks.forEach(link => {
       link.addEventListener('click', () => {
         if (mainNav.classList.contains('show-mobile-menu')) {
           mainNav.classList.remove('show-mobile-menu');
-          const icon = mobileMenuToggle.querySelector('i');
-          icon.classList.remove('fa-times');
-          icon.classList.add('fa-bars');
         }
       });
     });
