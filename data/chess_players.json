@@ -38,5 +38,21 @@
     "total_games": 10,
     "win_rate": 780,
     "cr": 1000
+  },
+  {
+    "player_id": 5,
+    "user_id": 5,
+    "wins": 0,
+    "losses": 0,
+    "draws": 0,
+    "total_games": 0,
+    "win_rate": 0,
+    "cr": 0,
+    "rating_history": [
+      {
+        "date": "2025-04-29T03:23:03.351Z",
+        "rating": 0
+      }
+    ]
   }
 ]
