@@ -3,76 +3,204 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chess 2</title>
+  <title>Chess 2 - Login</title>
   <link rel="stylesheet" href="/css/reset.css">
   <link rel="stylesheet" href="/css/normalize.css">
   <link rel="stylesheet" href="/css/sign.css">
   <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+  <header class="navbar">
+    <div class="logo">Chess<span>2</span></div>
+
+    <nav id="main-nav">
+      <a href="/index.html"><i class="fas fa-home"></i> Home</a>
+      <a href="/leaderboard.html"><i class="fas fa-trophy"></i> Leaderboard</a>
+      <a href="/social.html"><i class="fas fa-users"></i> Community</a>
+      <a href="/devlog.html"><i class="fas fa-scroll"></i> Blog</a>
+    </nav>
+  </header>
+
   <div class="container">
+    <div class="logo">Chess<span>2</span></div>
     <h1 id="form-title">Register</h1>
     <form id="auth-form">
       <div class="form-group">
         <input type="text" id="username" placeholder="Username" required>
+        <div class="error-message" id="username-error">Please enter a valid username</div>
       </div>
       <div class="form-group">
         <input type="password" id="password" placeholder="Password" required>
+        <div class="error-message" id="password-error">Password must be at least 6 characters</div>
       </div>
-      <button type="submit" class="button" id="submit-button">Register</button>
+      <button type="submit" class="button" id="submit-button">
+        <i class="fas fa-user-plus" id="button-icon"></i> 
+        <span id="button-text">Register</span>
+      </button>
     </form>
     <div class="toggle-button" id="toggle-button">Already have an account? Login!</div>
+    <div id="status-message"></div>
   </div>
 
   <script>
     const formTitle = document.getElementById('form-title');
     const submitButton = document.getElementById('submit-button');
+    const buttonText = document.getElementById('button-text');
+    const buttonIcon = document.getElementById('button-icon');
     const toggleButton = document.getElementById('toggle-button');
     const authForm = document.getElementById('auth-form');
+    const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
+    const usernameError = document.getElementById('username-error');
+    const passwordError = document.getElementById('password-error');
+    const statusMessage = document.getElementById('status-message');
 
     let isRegistering = true;
 
+    // Функция для показа состояния загрузки
+    function setLoading(isLoading) {
+      submitButton.disabled = isLoading;
+      if (isLoading) {
+        buttonIcon.className = 'fas fa-spinner fa-spin';
+        buttonText.textContent = isRegistering ? 'Registering...' : 'Signing in...';
+      } else {
+        buttonIcon.className = isRegistering ? 'fas fa-user-plus' : 'fas fa-sign-in-alt';
+        buttonText.textContent = isRegistering ? 'Register' : 'Sign in';
+      }
+    }
+
+    // Функция для отображения сообщения о статусе
+    function showStatusMessage(message, isError = false) {
+      statusMessage.textContent = message;
+      statusMessage.style.display = 'block';
+      statusMessage.style.color = isError ? '#ff5555' : '#9eff9e';
+      statusMessage.style.padding = '10px';
+      statusMessage.style.marginTop = '15px';
+      statusMessage.style.borderRadius = '5px';
+      statusMessage.style.backgroundColor = isError ? 'rgba(255, 85, 85, 0.1)' : 'rgba(158, 255, 158, 0.1)';
+
+      // Автоматически скрываем сообщение через 5 секунд
+      setTimeout(() => {
+        statusMessage.style.display = 'none';
+      }, 5000);
+    }
+
+    // Функция валидации данных
+    function validateForm() {
+      let isValid = true;
+
+      // Валидация имени пользователя
+      if (!usernameInput.value || usernameInput.value.length < 3) {
+        usernameInput.parentElement.classList.add('error');
+        usernameError.textContent = 'Username must be at least 3 characters';
+        isValid = false;
+      } else {
+        usernameInput.parentElement.classList.remove('error');
+      }
+
+      // Валидация пароля
+      if (!passwordInput.value || passwordInput.value.length < 6) {
+        passwordInput.parentElement.classList.add('error');
+        passwordError.textContent = 'Password must be at least 6 characters';
+        isValid = false;
+      } else {
+        passwordInput.parentElement.classList.remove('error');
+      }
+
+      return isValid;
+    }
+
+    // Обработчик переключения между формами
     toggleButton.addEventListener('click', () => {
       isRegistering = !isRegistering;
+
+      // Сбрасываем все ошибки при переключении форм
+      document.querySelectorAll('.form-group').forEach(group => 
+        group.classList.remove('error')
+      );
+
       if (isRegistering) {
         formTitle.textContent = 'Register';
-        submitButton.textContent = 'Register';
+        buttonIcon.className = 'fas fa-user-plus';
+        buttonText.textContent = 'Register';
         toggleButton.textContent = 'Already have an account? Login!';
       } else {
         formTitle.textContent = 'Login';
-        submitButton.textContent = 'Sign in';
+        buttonIcon.className = 'fas fa-sign-in-alt';
+        buttonText.textContent = 'Sign in';
         toggleButton.textContent = 'Don\'t have an account? Register!';
       }
+
+      // Смена заголовка страницы
+      document.title = isRegistering ? 'Chess 2 - Register' : 'Chess 2 - Login';
     });
 
+    // Обработчик события отправки формы
     authForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const username = document.getElementById('username').value;
-      const password = document.getElementById('password').value;
+
+      // Валидируем форму перед отправкой
+      if (!validateForm()) {
+        return;
+      }
+
+      const username = usernameInput.value;
+      const password = passwordInput.value;
 
       try {
+        setLoading(true);
+
         const endpoint = isRegistering ? '/api/register' : '/api/login';
-        
-        const response = await fetch(endpoint, {
+        const serverUrl = window.location.origin;
+        const fullUrl = `${serverUrl}${endpoint}`;
+
+        console.log('Sending request to:', fullUrl);
+
+        const response = await fetch(fullUrl, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ username, password })
         });
 
         const data = await response.json();
-        
+        console.log('Response:', data);
+
         if (response.ok) {
           localStorage.setItem('token', data.token);
           localStorage.setItem('userId', data.user_id);
-          window.location.href = 'user_profile.html';
+
+          showStatusMessage(isRegistering ? 'Registration successful! Redirecting...' : 'Login successful! Redirecting...');
+
+          // Добавляем небольшую задержку перед редиректом для лучшего UX
+          setTimeout(() => {
+            window.location.href = 'user_profile.html';
+          }, 1000);
         } else {
-          alert(data.error || 'Authentication failed. Please try again.');
+          setLoading(false);
+          showStatusMessage(data.error || 'Authentication failed. Please try again.', true);
         }
       } catch (error) {
         console.error('Authentication error:', error);
-        alert('A connection error occurred. Please try again later.');
+        setLoading(false);
+        showStatusMessage('A connection error occurred. Please try again later.', true);
+      }
+    });
+
+    // Валидация при вводе
+    usernameInput.addEventListener('input', () => {
+      if (usernameInput.value.length >= 3) {
+        usernameInput.parentElement.classList.remove('error');
+      }
+    });
+
+    passwordInput.addEventListener('input', () => {
+      if (passwordInput.value.length >= 6) {
+        passwordInput.parentElement.classList.remove('error');
       }
     });
   </script>
+
+  <script src="/js/profile_avatar.js"></script>
 </body>
 </html>

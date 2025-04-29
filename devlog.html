@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chess2 - Developer Blog</title>
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/user_styles.css">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/devlog.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <meta name="theme-color" content="#1e1e2e">
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">Chess<span>2</span></div>
+
+    <nav id="main-nav">
+      <a href="/index.html"><i class="fas fa-home"></i> Home</a>
+      <a href="/leaderboard.html"><i class="fas fa-trophy"></i> Leaderboard</a>
+      <a href="/social.html"><i class="fas fa-users"></i> Community</a>
+      <a href="/devlog.html" class="active"><i class="fas fa-scroll"></i> Blog</a>
+    </nav>
+    <div class="user-profile">
+      <img src="/img/profile.jpg" alt="User Avatar" class="profile-avatar" id="profile-avatar">
+      <div class="profile-menu hidden">
+        <div class="profile-info">
+          <img src="/img/profile.jpg" alt="User Avatar" id="menu-avatar">
+          <p class="username" id="username">Guest</p>
+        </div>
+        <div class="profile-buttons">
+          <a href="user_profile.html"><i class="fas fa-user"></i> View Profile</a>
+          <a href="#" id="logoutButton"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="devlog-page">
+    <section class="devlog-hero">
+      <div class="devlog-hero-content">
+        <h1><i class="fas fa-scroll"></i> Блог разработчиков</h1>
+        <p>Будьте в курсе последних функций и улучшений Chess2</p>
+        <div class="devlog-search">
+          <input type="text" placeholder="Поиск статей..." id="blog-search">
+          <button><i class="fas fa-search"></i></button>
+        </div>
+      </div>
+      <div class="devlog-hero-visual">
+        <div class="animated-shapes">
+          <div class="shape shape-1"></div>
+          <div class="shape shape-2"></div>
+          <div class="shape shape-3"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="devlog-filter">
+      <button class="filter-button active" data-filter="all">Все посты</button>
+      <button class="filter-button" data-filter="updates">Обновления</button>
+      <button class="filter-button" data-filter="features">Новые функции</button>
+      <button class="filter-button" data-filter="tech">Технические</button>
+    </section>
+
+    <section class="devlog-grid">
+      <!-- Featured Post -->
+      <div class="devlog-entry featured" data-category="updates">
+        <div class="entry-image">
+          <span class="featured-badge">Избранное</span>
+          <img src="https://images.unsplash.com/photo-1587572076021-5a1aa94ac0a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Chess2 3.0">
+        </div>
+        <div class="entry-content">
+          <span class="entry-date">April 28, 2025</span>
+          <span class="entry-author">Alexander K.</span>
+          <h2>Глобальное расширение: Chess2 теперь доступен на английском</h2>
+          <div class="entry-tags">
+            <span class="tag updates">Обновление</span>
+            <span class="tag features">Новые функции</span>
+          </div>
+          <p>Мы рады сообщить, что Chess2 теперь полностью доступен на английском языке! Мы перевели все страницы и функции Сообщества, чтобы сделать нашу платформу доступной для игроков по всему миру.</p>
+          <p>Помимо языкового обновления, мы также улучшили наш блог разработчиков с расширенной функцией поиска, улучшенными возможностями фильтрации и более адаптивным дизайном для всех устройств.</p>
+          <a href="#" class="read-more" data-entry-id="1">Читать подробнее <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Post 2 -->
+      <div class="devlog-entry" data-category="features">
+        <div class="entry-image">
+          <img src="https://images.unsplash.com/photo-1543286386-2e659306cd6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Social Features">
+        </div>
+        <div class="entry-content">
+          <span class="entry-date">April 25, 2025</span>
+          <span class="entry-author">Anna P.</span>
+          <h2>Социальные функции: Друзья и Чаты</h2>
+          <div class="entry-tags">
+            <span class="tag features">Новые функции</span>
+          </div>
+          <p>Сегодня мы запускаем новый раздел "Сообщество" в Chess2! Теперь вы можете добавлять других игроков в друзья, общаться с ними через чат и создавать приватные игры. Наша система использует WebSockets для мгновенного обмена сообщениями и обновления статусов.</p>
+          <a href="#" class="read-more" data-entry-id="2">Читать подробнее <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Post 3 -->
+      <div class="devlog-entry" data-category="updates">
+        <div class="entry-image">
+          <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="New Design">
+        </div>
+        <div class="entry-content">
+          <span class="entry-date">April 20, 2025</span>
+          <span class="entry-author">Elena S.</span>
+          <h2>Новый дизайн и улучшенный интерфейс</h2>
+          <div class="entry-tags">
+            <span class="tag updates">Обновление</span>
+          </div>
+          <p>Представляем полностью обновленный интерфейс Chess2 с современным дизайном, улучшенной навигацией и адаптивной версткой. Мы переосмыслили каждый элемент интерфейса, чтобы сделать его не только красивым, но и максимально функциональным.</p>
+          <a href="#" class="read-more" data-entry-id="3">Читать подробнее <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Post 4 -->
+      <div class="devlog-entry" data-category="tech">
+        <div class="entry-image">
+          <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Performance Optimization">
+        </div>
+        <div class="entry-content">
+          <span class="entry-date">April 15, 2025</span>
+          <span class="entry-author">Dmitry V.</span>
+          <h2>Оптимизация производительности и хранения данных</h2>
+          <div class="entry-tags">
+            <span class="tag tech">Технические детали</span>
+          </div>
+          <p>В этом техническом обновлении мы перешли на более легкую и быструю систему хранения на основе JSON, оптимизировали клиентский код и внедрили WebSockets для передачи данных в реальном времени.</p>
+          <a href="#" class="read-more" data-entry-id="4">Читать подробнее <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Post 5 -->
+      <div class="devlog-entry" data-category="features">
+        <div class="entry-image">
+          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Support Center">
+        </div>
+        <div class="entry-content">
+          <span class="entry-date">April 10, 2025</span>
+          <span class="entry-author">Anna P.</span>
+          <h2>Обновление документации</h2>
+          <div class="entry-tags">
+            <span class="tag features">Новые функции</span>
+          </div>
+          <p>Мы обновили документацию по игре с FAQ и подробными инструкциями. Здесь вы найдете ответы на все вопросы о правилах игры, механике и управлении аккаунтом.</p>
+          <a href="#" class="read-more" data-entry-id="5">Читать подробнее <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Post 6 -->
+      <div class="devlog-entry" data-category="updates">
+        <div class="entry-image">
+          <img src="https://images.unsplash.com/photo-1529119513315-c7c361862fc7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Meet Our Team">
+        </div>
+        <div class="entry-content">
+          <span class="entry-date">April 5, 2025</span>
+          <span class="entry-author">Alexander K.</span>
+          <h2>О нашем проекте</h2>
+          <div class="entry-tags">
+            <span class="tag updates">Обновление</span>
+          </div>
+          <p>Мы хотим рассказать вам больше о людях, стоящих за проектом Chess2, и нашей миссии. Проект создается небольшой, но преданной командой энтузиастов, увлеченных шахматами и играми.</p>
+          <a href="#" class="read-more" data-entry-id="6">Читать подробнее <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <div class="devlog-pagination">
+      <button id="load-more" class="load-more">Загрузить еще <i class="fas fa-chevron-down"></i></button>
+    </div>
+
+    <div class="newsletter-block">
+      <h3>Подпишитесь на обновления разработчиков</h3>
+      <p>Получайте последние новости о функциях и улучшениях Chess2 на вашу почту</p>
+      <form class="subscribe-form">
+        <input type="email" placeholder="Ваш email" required>
+        <button type="submit">Подписаться</button>
+      </form>
+    </div>
+  </main>
+
+  <!-- Modal for full posts -->
+  <div id="entry-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modal-title"></h2>
+        <span class="close-modal">&times;</span>
+      </div>
+      <div class="modal-image">
+        <img id="modal-image" src="" alt="">
+      </div>
+      <div class="modal-info">
+        <span id="modal-date" class="modal-date"></span>
+        <span id="modal-author" class="modal-author"></span>
+      </div>
+      <div id="modal-content" class="modal-body">
+        <!-- Content will be loaded dynamically -->
+      </div>
+      <div class="modal-footer">
+        <div class="modal-share">
+          <span>Поделиться:</span>
+          <a href="#" class="share-button"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="share-button"><i class="fab fa-facebook"></i></a>
+          <a href="#" class="share-button"><i class="fab fa-telegram"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">
+        <div class="logo">Chess<span>2</span></div>
+        <p>The next generation of chess</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-links-column">
+          <h3>Navigation</h3>
+          <a href="/index.html">Home</a>
+          <a href="/leaderboard.html">Leaderboard</a>
+          <a href="/social.html">Community</a>
+          <a href="/devlog.html">Blog</a>
+        </div>
+        <div class="footer-links-column">
+          <h3>Resources</h3>
+          <a href="https://github.com/KaVoshnik/Chess_2">GitHub</a>
+        </div>
+        <div class="footer-links-column">
+          <h3>Connect</h3>
+          <a href="https://github.com/Kavoshnik"><i class="fab fa-github"></i> GitHub</a>
+          <a href="mailto:hikkan008@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Chess2. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Check if user is logged in
+      const userId = localStorage.getItem('userId');
+      const token = localStorage.getItem('token');
+      
+      // If user is logged in, update their information
+      if (userId && token) {
+        fetch(`/api/user/${userId}`)
+          .then(response => {
+            if (!response.ok) throw new Error('Failed to fetch user data');
+            return response.json();
+          })
+          .then(userData => {
+            const username = userData.username || 'Player';
+            document.getElementById('username').textContent = username;
+            
+            // Generate avatar based on username
+            const seed = username || 'default';
+            const avatarUrl = `https://avatars.dicebear.com/api/identicon/${seed}.svg`;
+            
+            document.getElementById('profile-avatar').src = avatarUrl;
+            document.getElementById('menu-avatar').src = avatarUrl;
+          })
+          .catch(error => {
+            console.error('Error loading user data:', error);
+          });
+      } else {
+        // If user is not logged in, show guest information
+        document.getElementById('username').textContent = 'Guest';
+        document.querySelector('.profile-buttons').innerHTML = `
+          <a href="sign_in.html"><i class="fas fa-sign-in-alt"></i> Login</a>
+          <a href="sign_in.html"><i class="fas fa-user-plus"></i> Register</a>
+        `;
+      }
+
+      // Logout handler
+      document.getElementById('logoutButton')?.addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        localStorage.removeItem('userId');
+        localStorage.removeItem('token');
+        
+        window.location.href = 'sign_in.html';
+      });
+
+      // Profile menu toggle
+      document.querySelector('.profile-avatar').addEventListener('click', () => {
+        document.querySelector('.profile-menu').classList.toggle('hidden');
+      });
+
+      // Close profile menu when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.user-profile')) {
+          document.querySelector('.profile-menu').classList.add('hidden');
+        }
+      });
+
+      // Animate entries on scroll
+      function animateEntries() {
+        const entries = document.querySelectorAll('.devlog-entry:not(.animate-in)');
+        
+        entries.forEach(entry => {
+          const entryPosition = entry.getBoundingClientRect().top;
+          const screenPosition = window.innerHeight;
+          
+          if (entryPosition < screenPosition) {
+            entry.classList.add('animate-in');
+          }
+        });
+      }
+
+      // Initial animation on page load
+      setTimeout(animateEntries, 100);
+      
+      // Animation on scroll
+      window.addEventListener('scroll', animateEntries);
+
+      // Blog search functionality
+      const searchInput = document.getElementById('blog-search');
+      
+      searchInput.addEventListener('input', () => {
+        const searchTerm = searchInput.value.toLowerCase();
+        const entries = document.querySelectorAll('.devlog-entry');
+        
+        entries.forEach(entry => {
+          const title = entry.querySelector('h2').textContent.toLowerCase();
+          const content = entry.querySelector('p').textContent.toLowerCase();
+          
+          if (title.includes(searchTerm) || content.includes(searchTerm)) {
+            entry.style.display = 'flex';
+          } else {
+            entry.style.display = 'none';
+          }
+        });
+      });
+
+      // Filter blog posts
+      const filterButtons = document.querySelectorAll('.filter-button');
+      const entries = document.querySelectorAll('.devlog-entry');
+      
+      filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          // Activate button
+          filterButtons.forEach(btn => btn.classList.remove('active'));
+          button.classList.add('active');
+          
+          const filter = button.getAttribute('data-filter');
+          
+          entries.forEach(entry => {
+            if (filter === 'all' || entry.getAttribute('data-category') === filter) {
+              entry.style.display = 'flex';
+            } else {
+              entry.style.display = 'none';
+            }
+            
+            // Reset animation for reappearance
+            entry.classList.remove('animate-in');
+          });
+          
+          // Trigger animation again
+          setTimeout(animateEntries, 100);
+        });
+      });
+
+      // Modal for full posts
+      const modal = document.getElementById('entry-modal');
+      const closeModal = document.querySelector('.close-modal');
+      const readMoreLinks = document.querySelectorAll('.read-more');
+      
+      // Blog entry data
+      const blogEntries = [
+        {
+          id: 1,
+          title: "Глобальное расширение: Chess2 теперь доступен на английском",
+          date: "April 28, 2025",
+          author: "Alexander K.",
+          image: "https://images.unsplash.com/photo-1587572076021-5a1aa94ac0a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+          content: `
+            <p>Мы рады сообщить, что Chess2 теперь полностью доступен на английском языке! Мы перевели все страницы и функции Сообщества, чтобы сделать нашу платформу доступной для игроков по всему миру.</p>
+            
+            <p>Помимо языкового обновления, мы также улучшили наш блог разработчиков с расширенной функцией поиска, улучшенными возможностями фильтрации и более адаптивным дизайном для всех устройств.</p>
+            
+            <p>Ключевые обновления в этом релизе:</p>
+            
+            <ul>
+              <li><strong>Полный перевод на английский</strong> - все интерфейсы, содержимое и документация теперь доступны на английском языке.</li>
+              <li><strong>Улучшенный блог</strong> - улучшенный поиск, фильтрация и адаптивный дизайн для наших обновлений разработчиков.</li>
+              <li><strong>Унифицированная терминология</strong> - стандартизированные игровые и шахматные термины на всей платформе.</li>
+              <li><strong>Улучшенная доступность</strong> - улучшенная семантическая разметка и навигация для всех пользователей.</li>
+              <li><strong>Поддержка международного сообщества</strong> - функции чата и обмена сообщениями полностью переведены.</li>
+            </ul>
+            
+            <p>Эта работа по переводу является важной вехой в нашем пути к тому, чтобы сделать Chess2 действительно глобальной платформой. Хотя мы начинали с русского языка как основного, мы понимаем важность того, чтобы сделать нашу уникальную версию шахмат доступной для всех.</p>
+            
+            <p>Английская версия теперь установлена по умолчанию для новых пользователей, но существующие пользователи могут продолжать использовать русский интерфейс, если предпочитают. В будущем обновлении мы добавим возможность выбора языка, чтобы переключение между языками стало более удобным.</p>
+            
+            <p>Мы хотим поблагодарить членов нашего сообщества, которые помогли с переводами и предоставили ценные отзывы в ходе этого процесса. Ваш вклад был важен для обеспечения качества и точности нашей английской версии.</p>
+            
+            <p>Если вы заметили какие-либо проблемы с переводом или у вас есть предложения по улучшению, пожалуйста, не стесняйтесь обращаться в нашу службу поддержки.</p>
+            
+            <p>Спасибо за вашу постоянную поддержку, и мы с нетерпением ждем новых игроков со всего мира!</p>
+            
+            <p>С наилучшими пожеланиями,<br>Команда разработчиков Chess2</p>
+          `
+        },
+        {
+          id: 2,
+          title: "Социальные функции: Друзья и Чаты",
+          date: "April 25, 2025",
+          author: "Anna P.",
+          image: "https://images.unsplash.com/photo-1543286386-2e659306cd6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+          content: `
+            <p>Сегодня мы запускаем новый раздел "Сообщество" в Chess2! Теперь вы можете добавлять других игроков в друзья, общаться с ними через чат и создавать приватные игры.</p>
+            
+            <p>Наше сообщество постоянно растёт, и мы понимаем, насколько важно иметь возможность находить единомышленников и общаться с ними. Поэтому мы разработали полноценную социальную систему, которая позволит вам:</p>
+            
+            <ul>
+              <li><strong>Находить и добавлять друзей</strong> - находите других игроков по имени пользователя и добавляйте их в список друзей.</li>
+              <li><strong>Общаться в личных сообщениях</strong> - обсуждайте стратегии, делитесь впечатлениями или просто болтайте о чём угодно.</li>
+              <li><strong>Видеть, кто онлайн</strong> - обновления статуса друзей в реальном времени, чтобы вы всегда знали, кто доступен для игры.</li>
+              <li><strong>Отправлять приглашения в игру</strong> - создавайте приватные игры и приглашайте друзей присоединиться к ним.</li>
+            </ul>
+            
+            <p>Мы особенно гордимся системой чата, которая использует WebSocket для мгновенной доставки сообщений. Это означает, что вы будете получать сообщения от друзей в реальном времени без необходимости обновлять страницу.</p>
+            
+            <p>Важно отметить, что мы серьёзно относимся к безопасности и конфиденциальности. Все сообщения чата зашифрованы, и у вас всегда есть возможность заблокировать пользователя или сообщить о неподобающем поведении.</p>
+            
+            <p>Мы надеемся, что эти новые социальные функции сделают ваш опыт использования Chess2 ещё более приятным и интересным. Не стесняйтесь делиться своими мыслями и предложениями о том, как мы можем улучшить эти функции в будущем.</p>
+            
+            <p>Чтобы начать использовать новые функции, просто перейдите в раздел "Сообщество" в главном меню. Удачи и приятного общения!</p>
+          `
+        },
+        {
+          id: 3,
+          title: "Новый дизайн и улучшенный интерфейс",
+          date: "April 20, 2025",
+          author: "Elena S.",
+          image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+          content: `
+            <p>Представляем полностью обновлённый интерфейс Chess2 с современным дизайном, улучшенной навигацией и адаптивной версткой для мобильных устройств.</p>
+            
+            <p>Дизайн — это не только то, как выглядит приложение, но и то, как оно работает. Поэтому мы потратили много времени на переосмысление каждого элемента интерфейса, чтобы сделать его не только красивым, но и максимально функциональным.</p>
+            
+            <p>Основные улучшения дизайна:</p>
+            
+            <ul>
+              <li><strong>Минималистичный и современный стиль</strong> - мы убрали всё лишнее и сосредоточились на том, что действительно важно.</li>
+              <li><strong>Улучшенная цветовая схема</strong> - новые контрастные цвета для лучшей читаемости и визуального разделения элементов.</li>
+              <li><strong>Интуитивная навигация</strong> - более логичное расположение элементов управления и меню.</li>
+              <li><strong>Анимации и переходы</strong> - плавные анимации делают взаимодействие с приложением более приятным.</li>
+              <li><strong>Полная адаптивность</strong> - приложение теперь одинаково хорошо работает на экранах любого размера, от смартфонов до больших мониторов.</li>
+            </ul>
+            
+            <p>Мы уделили особое внимание игровому интерфейсу, сделав его более информативным и удобным. Теперь вы можете легко отслеживать историю ходов, видеть подсказки и просматривать статистику прямо во время игры.</p>
+            
+            <p>Мы также добавили тёмную тему, которая не только выглядит стильно, но и снижает нагрузку на глаза при игре в условиях низкой освещённости.</p>
+            
+            <p>Для тех, кто предпочитает классический вид, мы сохранили возможность переключиться на стандартные шахматные фигуры и доску в настройках.</p>
+            
+            <p>Мы надеемся, что новый дизайн сделает ваш опыт использования Chess2 ещё более приятным и комфортным. Не стесняйтесь делиться своими впечатлениями и предложениями по улучшению интерфейса.</p>
+          `
+        },
+        {
+          id: 4,
+          title: "Оптимизация производительности и хранения данных",
+          date: "April 15, 2025",
+          author: "Dmitry V.",
+          image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+          content: `
+            <p>Мы улучшили производительность приложения и оптимизировали систему хранения данных для более быстрой работы и снижения нагрузки на сервер.</p>
+            
+            <p>В этом техническом обновлении мы сосредоточились на "невидимых" улучшениях, которые, тем не менее, значительно влияют на скорость и стабильность приложения.</p>
+            
+            <h3>Оптимизация хранения данных</h3>
+            
+            <p>Мы перешли с PostgreSQL на более легкую и быструю систему хранения на основе JSON. Это решение идеально подходит для нашего приложения по нескольким причинам:</p>
+            
+            <ul>
+              <li>Упрощенная структура данных и более быстрый доступ</li>
+              <li>Отсутствие необходимости в сложных запросах и транзакциях</li>
+              <li>Сниженные накладные расходы на поддержание соединений с базой данных</li>
+              <li>Более простое резервное копирование и восстановление данных</li>
+            </ul>
+            
+            <p>Мы реализовали эффективную систему кэширования и индексации, которая позволяет быстро находить нужную информацию без необходимости полного сканирования файлов.</p>
+            
+            <h3>Улучшения во фронтенде</h3>
+            
+            <p>На стороне клиента мы также сделали несколько оптимизаций:</p>
+            
+            <ul>
+              <li>Минимизировали количество HTTP-запросов путем объединения ресурсов</li>
+              <li>Реализовали отложенную загрузку изображений и компонентов</li>
+              <li>Оптимизировали JavaScript-код для более быстрого выполнения</li>
+              <li>Улучшили алгоритмы рендеринга шахматной доски</li>
+            </ul>
+            
+            <h3>WebSocket для обмена в реальном времени</h3>
+            
+            <p>Одним из ключевых улучшений была реализация WebSocket для обмена данными в реальном времени. Это особенно важно для социальных функций и игрового процесса, где критична скорость передачи информации.</p>
+            
+            <p>Благодаря WebSocket мы смогли реализовать:</p>
+            
+            <ul>
+              <li>Мгновенную доставку сообщений в чатах</li>
+              <li>Обновления статуса пользователей в реальном времени</li>
+              <li>Более отзывчивый геймплей с минимальными задержками</li>
+            </ul>
+            
+            <p>Все эти изменения вместе должны привести к заметному улучшению производительности приложения, особенно при использовании на устройствах с ограниченными ресурсами.</p>
+            
+            <p>В наших тестах мы наблюдали сокращение времени загрузки страниц на 40% и снижение использования памяти на 30%. Надеемся, вы также заметите эти улучшения при использовании Chess2.</p>
+          `
+        },
+        {
+          id: 5,
+          title: "Обновление документации",
+          date: "April 10, 2025",
+          author: "Anna P.",
+          image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+          content: `
+            <p>Мы обновили документацию по игре с FAQ и подробными инструкциями.</p>
+            
+            <p>В Chess2 есть множество уникальных правил и механик, которые отличают нашу игру от классических шахмат. Мы понимаем, что новым игрокам может быть непросто сразу во всём разобраться, поэтому мы создали подробную документацию.</p>
+            
+            <h3>Часто задаваемые вопросы (FAQ)</h3>
+            
+            <p>Мы собрали наиболее распространенные вопросы и ответы на них, структурированные по категориям:</p>
+            
+            <ul>
+              <li>Аккаунт и регистрация</li>
+              <li>Игровой процесс</li>
+              <li>Технические проблемы</li>
+            </ul>
+            
+            <p>Это позволяет быстро найти нужную информацию без необходимости ждать ответа от службы поддержки.</p>
+            
+            <h3>Полная документация по правилам</h3>
+            
+            <p>Мы создали подробное руководство по правилам Chess2, включающее:</p>
+            
+            <ul>
+              <li>Основные правила игры</li>
+              <li>Особенности движения фигур</li>
+              <li>Специальные правила и механики</li>
+              <li>Стратегические советы для начинающих</li>
+            </ul>
+            
+            <p>Руководство иллюстрировано и содержит интерактивные примеры, что делает обучение более наглядным и понятным.</p>
+            
+            <h3>Обратная связь</h3>
+            
+            <p>Если вы не смогли найти ответ на свой вопрос в FAQ или документации, вы всегда можете связаться с нами через электронную почту или социальные сети. Мы гарантируем ответ в течение 24 часов в рабочие дни.</p>
+            
+            <h3>Сообщество и взаимопомощь</h3>
+            
+            <p>В разделе сообщества вы можете общаться с другими игроками, задавать вопросы или делиться своим опытом и знаниями.</p>
+            
+            <p>Мы считаем, что качественная документация и обучение являются ключевыми компонентами позитивного игрового опыта. Мы надеемся, что наша обновленная документация поможет вам получить максимум от Chess2.</p>
+            
+            <p>Не стесняйтесь обращаться к нам с любыми вопросами или предложениями по улучшению документации!</p>
+          `
+        },
+        {
+          id: 7,
+          title: "Международное обновление: Chess2 становится глобальным",
+          date: "April 29, 2025",
+          author: "Elena S.",
+          image: "https://images.unsplash.com/photo-1526920929362-5b26677ccc28?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+          content: `
+            <p>Мы рады сообщить, что Chess2 теперь полностью доступен на английском языке! Мы завершили перевод всех страниц сайта, чтобы сделать нашу игру доступной для игроков по всему миру.</p>
+            
+            <p>Это обновление включает переводы:</p>
+            
+            <ul>
+              <li><strong>Блог</strong> - наш блог разработчиков был полностью обновлён и переведён, с улучшенной функциональностью поиска и более современным интерфейсом.</li>
+              <li><strong>Документация</strong> - все обучающие материалы, правила игры и FAQ теперь доступны на английском языке.</li>
+              <li><strong>Сообщество</strong> - социальные функции и возможности сообщества теперь поддерживают английский язык, что облегчает взаимодействие с игроками из разных стран.</li>
+            </ul>
+            
+            <p>Процесс перевода был больше, чем просто преобразование текста с одного языка на другой. Мы воспользовались этой возможностью, чтобы обновить и улучшить многие разделы сайта:</p>
+            
+            <ul>
+              <li>Улучшенная навигация и пользовательский интерфейс на всех страницах</li>
+              <li>Повышенная адаптивность для мобильных устройств</li>
+              <li>Обновлённые визуальные элементы и анимации</li>
+              <li>Оптимизированный контент для лучшей понятности</li>
+            </ul>
+            
+            <p>Это только первый шаг в наших усилиях по интернационализации. В ближайшие месяцы мы планируем добавить поддержку дополнительных языков, чтобы сделать Chess2 по-настоящему глобальным. Если вы хотите помочь с переводами на ваш язык, пожалуйста, свяжитесь с нами через email или социальные сети.</p>
+            
+            <p>Мы будем рады услышать ваши отзывы о новой английской версии. Если вы заметили какие-либо проблемы с переводом или у вас есть предложения по улучшению, пожалуйста, дайте нам знать!</p>
+            
+            <p>Спасибо, что являетесь частью нашего растущего международного сообщества!</p>
+          `
+        },
+        {
+          id: 6,
+          title: "О нашем проекте",
+          date: "April 5, 2025",
+          author: "Alexander K.",
+          image: "https://images.unsplash.com/photo-1529119513315-c7c361862fc7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+          content: `
+            <p>Мы хотим рассказать вам больше о людях, стоящих за проектом Chess2, и нашей миссии.</p>
+            
+            <p>Проект Chess2 создаётся небольшой, но преданной командой энтузиастов. Мы считаем важным поделиться информацией о людях, которые работают над продуктом, их ценностями и видением.</p>
+            
+            <p>В этом посте мы расскажем о нашей команде:</p>
+            
+            <ul>
+              <li><strong>Александр К.</strong> - основатель и ведущий разработчик проекта, сочетающий свою страсть к шахматам и программированию.</li>
+              <li><strong>Елена С.</strong> - ведущий дизайнер, создающая визуальную идентичность Chess2 и заботящаяся о пользовательском опыте.</li>
+              <li><strong>Дмитрий В.</strong> - опытный бэкенд-разработчик, обеспечивающий надёжную и быструю работу всей системы.</li>
+              <li><strong>Максим Г.</strong> - международный мастер по шахматам и гейм-дизайнер, отвечающий за баланс и стратегическую глубину игры.</li>
+              <li><strong>Анна П.</strong> - специалист по тестированию и менеджер сообщества, поддерживающая связь с нашим растущим сообществом.</li>
+            </ul>
+            
+            <p>Мы также рассказываем о наших ценностях и принципах работы:</p>
+            
+            <ul>
+              <li><strong>Инновации</strong> - мы не боимся экспериментировать и находить новые подходы к традиционным вещам.</li>
+              <li><strong>Сообщество</strong> - мы ценим наших игроков и стремимся создать дружественную и поддерживающую атмосферу.</li>
+              <li><strong>Баланс</strong> - мы ищем идеальный баланс между новизной и традицией, между простотой и глубиной.</li>
+              <li><strong>Качество</strong> - мы уделяем внимание каждой детали, чтобы создать продукт, которым мы и наши пользователи могут гордиться.</li>
+            </ul>
+            
+            <p>Мы также используем эту страницу для привлечения новых талантов. Если вы разделяете наши ценности и хотите присоединиться к разработке Chess2, вы можете найти информацию о текущих вакансиях и способах связаться с нами.</p>
+            
+            <p>Мы надеемся, что эта информация поможет вам лучше понять, кто мы и почему мы создаём Chess2. Мы верим, что прозрачность и личностный подход помогают создать более крепкие отношения между разработчиками и сообществом.</p>
+            
+            <p>Следите за нашими обновлениями в блоге, чтобы узнать больше о развитии проекта!</p>
+          `
+        }
+      ];
+      
+      // Handlers for opening the modal
+      readMoreLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          
+          // Get entry ID
+          const entryId = parseInt(link.getAttribute('data-entry-id'));
+          
+          // Find entry data
+          const entry = blogEntries.find(entry => entry.id === entryId);
+          
+          if (entry) {
+            // Fill modal content
+            document.getElementById('modal-title').textContent = entry.title;
+            document.getElementById('modal-date').textContent = entry.date;
+            document.getElementById('modal-author').textContent = entry.author;
+            document.getElementById('modal-image').src = entry.image;
+            document.getElementById('modal-image').alt = entry.title;
+            document.getElementById('modal-content').innerHTML = entry.content;
+            
+            // Show modal
+            modal.classList.add('visible');
+            
+            // Prevent scrolling on the main page
+            document.body.style.overflow = 'hidden';
+          }
+        });
+      });
+      
+      // Close modal
+      closeModal.addEventListener('click', () => {
+        modal.classList.remove('visible');
+        document.body.style.overflow = 'auto';
+      });
+      
+      // Close modal when clicking outside content
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.classList.remove('visible');
+          document.body.style.overflow = 'auto';
+        }
+      });
+
+      // Subscribe form
+      const subscribeForm = document.querySelector('.subscribe-form');
+      
+      subscribeForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const email = subscribeForm.querySelector('input').value;
+        
+        if (email) {
+          // Logic for saving email could be added here
+          
+          // Show success message
+          subscribeForm.innerHTML = `
+            <div class="success-message">
+              <i class="fas fa-check-circle"></i>
+              <p>Спасибо за подписку! Мы будем держать вас в курсе.</p>
+            </div>
+          `;
+        }
+      });
+
+      // Load more button
+      const loadMoreBtn = document.getElementById('load-more');
+      
+      loadMoreBtn.addEventListener('click', () => {
+        // Logic for loading additional entries could be added here
+        // For demonstration just showing a message
+        loadMoreBtn.textContent = 'Больше постов пока нет';
+        loadMoreBtn.disabled = true;
+        
+        setTimeout(() => {
+          loadMoreBtn.innerHTML = 'Загрузить еще <i class="fas fa-chevron-down"></i>';
+          loadMoreBtn.disabled = false;
+        }, 3000);
+      });
+    });
+  </script>
+</body>
+</html>
