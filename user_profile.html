@@ -13,28 +13,28 @@
 </head>
 <body>
     <header class="navbar">
-        <div class="logo">Chess<span>2</span></div>
+    <div class="logo">Chess<span>2</span></div>
 
-        <nav id="main-nav">
-            <a href="/index.html"><i class="fas fa-home"></i> Home</a>
-            <a href="/leaderboard.html"><i class="fas fa-trophy"></i> Leaderboard</a>
-            <a href="/social.html"><i class="fas fa-users"></i> Community</a>
-            <a href="/devlog.html"><i class="fas fa-scroll"></i> Blog</a>
-        </nav>
-        <div class="user-profile">
-            <img src="https://avatars.dicebear.com/api/identicon/default.svg" alt="User Avatar" class="profile-avatar" id="profile-avatar">
-            <div class="profile-menu hidden">
-                <div class="profile-info">
-                    <img src="https://avatars.dicebear.com/api/identicon/default.svg" alt="User Avatar" id="menu-avatar">
-                    <p class="username" id="username">Loading...</p>
-                </div>
-                <div class="profile-buttons">
-                    <a href="user_profile.html"><i class="fas fa-user"></i> View Profile</a>
-                    <a href="#" id="logoutButton"><i class="fas fa-sign-out-alt"></i> Logout</a>
-                </div>
-            </div>
+    <nav id="main-nav">
+      <a href="/index.html"><i class="fas fa-home"></i> Home</a>
+      <a href="/leaderboard.html"><i class="fas fa-trophy"></i> Leaderboard</a>
+      <a href="/social.html" class="active"><i class="fas fa-users"></i> Community</a>
+      <a href="/devlog.html"><i class="fas fa-scroll"></i> Blog</a>
+    </nav>
+    <div class="user-profile">
+      <img src="/img/profile.jpg" alt="User Avatar" class="profile-avatar" id="profile-avatar">
+      <div class="profile-menu hidden">
+        <div class="profile-info">
+          <img src="/img/profile.jpg" alt="User Avatar" id="menu-avatar">
+          <p class="username" id="username">Guest</p>
         </div>
-    </header>
+        <div class="profile-buttons">
+          <a href="user_profile.html"><i class="fas fa-user"></i> View Profile</a>
+          <a href="#" id="logoutButton"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+      </div>
+    </div>
+  </header>
 
     <main class="profile-page">
         <section class="profile-header">
