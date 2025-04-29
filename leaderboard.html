@@ -112,7 +112,7 @@
         </div>
         <div class="info-content">
           <h3>Not on the Leaderboard?</h3>
-          <p>You need to play at least 5 matches to appear on the leaderboard. Keep playing and climbing the ranks!</p>
+          <p>You need to register in order for your account to appear on the leaderboard. Keep playing and climbing the ranks!</p>
         </div>
       </div>
     </section>
@@ -242,8 +242,8 @@
           
           // Создаем аватар игрока на основе имени
           const seed = player.username || 'default';
-          const avatarUrl = `https://avatars.dicebear.com/api/identicon/${seed}.svg`;
-          
+          const avatarUrl = `/img/profile.jpg`;
+                    
           playerRow.innerHTML = `
             <div class="leaderboard-col rank">
               ${index < 3 ? 
