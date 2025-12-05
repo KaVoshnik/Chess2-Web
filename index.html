@@ -1,233 +1,541 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chess2 - Home</title>
-  <link rel="stylesheet" href="/css/reset.css">
-  <link rel="stylesheet" href="/css/normalize.css">
-  <link rel="stylesheet" href="/css/user_styles.css">
-  <link rel="stylesheet" href="/css/styles.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <meta name="theme-color" content="#1e1e2e">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess 2</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-  <header class="navbar">
-    <div class="logo">Chess<span>2</span></div>
+    <div class="particles" id="particles"></div>
 
-    <nav id="main-nav">
-      <a href="/index.html" class="active"><i class="fas fa-home"></i> Home</a>
-      <a href="/leaderboard.html"><i class="fas fa-trophy"></i> Leaderboard</a>
-      <a href="/social.html"><i class="fas fa-users"></i> Community</a>
-      <a href="/devlog.html"><i class="fas fa-scroll"></i> Blog</a>
+    <nav class="navbar">
+        <div class="nav-logo">
+            <span class="logo-chess">Chess</span><span class="logo-2">2</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#hero">Главная</a></li>
+            <li><a href="#about">Об игре</a></li>
+            <li><a href="#modes">Режимы</a></li>
+            <li><a href="#cards">Карты</a></li>
+            <li><a href="#economy">Экономика</a></li>
+            <li><a href="#events">События</a></li>
+            <li><a href="#legendary">Легендарные</a></li>
+        </ul>
+        <div class="burger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </nav>
-    <div class="user-profile">
-      <img src="/img/profile.jpg" alt="User Avatar" class="profile-avatar" id="profile-avatar">
-      <div class="profile-menu hidden">
-        <div class="profile-info">
-          <img src="/img/profile.jpg" alt="User Avatar" id="menu-avatar">
-          <p class="username" id="username">Guest</p>
-        </div>
-        <div class="profile-buttons">
-          <a href="user_profile.html"><i class="fas fa-user"></i> View Profile</a>
-          <a href="#" id="logoutButton"><i class="fas fa-sign-out-alt"></i> Logout</a>
-        </div>
-      </div>
-    </div>
-  </header>
 
-  <main class="home-page">
-    <section class="hero-section">
-      <div class="hero-content">
-        <h1>Welcome to <span>Chess<span class="highlight">2</span></span></h1>
-        <p class="hero-description">The evolution of chess. New strategy. New rules. New era.</p>
-        <div class="hero-actions">
-          <a href="sign_in.html" class="btn primary-btn">
-            <i class="fas fa-play"></i> Play Now
-          </a>
-          <a href="leaderboard.html" class="btn secondary-btn">
-            <i class="fas fa-trophy"></i> Leaderboard
-          </a>
-        </div>
-      </div>
-      <div class="hero-visual">
-        <div class="chess-pattern">
-          <svg width="100%" height="100%" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="chessPattern" width="80" height="80" patternUnits="userSpaceOnUse">
-                <rect width="40" height="40" fill="#1e1e2e" />
-                <rect width="40" height="40" x="40" y="40" fill="#1e1e2e" />
-                <rect width="40" height="40" x="40" y="0" fill="#2a2a40" />
-                <rect width="40" height="40" x="0" y="40" fill="#2a2a40" />
-              </pattern>
-              <linearGradient id="heroGlow" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="rgba(158, 255, 158, 0.3)" />
-                <stop offset="100%" stop-color="rgba(106, 90, 205, 0.3)" />
-              </linearGradient>
-              <mask id="chessMask">
-                <rect width="100%" height="100%" fill="white" />
-                <circle cx="400" cy="300" r="200" fill="black" />
-              </mask>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#chessPattern)" mask="url(#chessMask)" />
-            <circle cx="400" cy="300" r="200" fill="url(#heroGlow)" />
-            <path d="M380 200 C380 180 420 180 420 200 L420 250 L440 250 L400 300 L360 250 L380 250 Z" fill="#9eff9e" opacity="0.9" />
-            <text x="400" y="400" text-anchor="middle" fill="#fff" font-size="30" font-weight="bold">CHESS2</text>
-          </svg>
-        </div>
-      </div>
-    </section>
-
-    <section class="features-section">
-      <h2 class="section-title"><i class="fas fa-star"></i> Features</h2>
-      <div class="features-container">
-        <div class="feature-card">
-          <div class="feature-icon">
-            <i class="fas fa-chess"></i>
-          </div>
-          <h3>New Rules</h3>
-          <p>Experience chess with revolutionary new rules that bring fresh strategies and excitement.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">
-            <i class="fas fa-users"></i>
-          </div>
-          <h3>Global Community</h3>
-          <p>Join players from around the world and become part of a growing competitive community.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">
-            <i class="fas fa-chart-line"></i>
-          </div>
-          <h3>Rankings & Stats</h3>
-          <p>Track your progress with detailed statistics and climb the global leaderboard.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">
-            <i class="fas fa-medal"></i>
-          </div>
-          <h3>Achievements</h3>
-          <p>Earn prestigious achievements as you master different aspects of Chess2.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="news-section">
-      <h2 class="section-title"><i class="fas fa-newspaper"></i> Latest News</h2>
-      <div class="news-container">
-        <div class="news-card">
-          <div class="news-date">
-            <span class="day">28</span>
-            <span class="month">APR</span>
-          </div>
-          <div class="news-content">
-            <h3>Version 2.0 Coming Soon</h3>
-            <p>We're working on exciting new features and improved UI. Stay tuned!</p>
-            <div class="news-footer">
-              <span class="news-tag">Update</span>
-              <span class="news-tag">Features</span>
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <div class="hero-badge animate-pulse">Новая эра стратегии</div>
+            <h1 class="hero-title">
+                <span class="title-chess">Chess</span>
+                <span class="title-2">2</span>
+            </h1>
+            <p class="hero-subtitle">Шахматы эволюционировали. Карты, события, уникальные фигуры и бесконечные
+                возможности.</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn btn-play"
+                    onclick="alert('Игра скоро будет доступна! Следите за обновлениями.'); return false;">Играть</a>
+                <a href="#about" class="btn btn-primary">Узнать больше</a>
+                <a href="#modes" class="btn btn-secondary">Режимы игры</a>
             </div>
-          </div>
         </div>
-        <div class="news-card">
-          <div class="news-date">
-            <span class="day">18</span>
-            <span class="month">Mar</span>
-          </div>
-          <div class="news-content">
-            <h3>Version 1.0 Released</h3>
-            <p>The first version of Chess2 is already in beta testing! Create your account, and start your journey.</p>
-            <div class="news-footer">
-              <span class="news-tag">Release</span>
-              <span class="news-tag">DevLog</span>
+        <div class="hero-visual">
+            <div class="chess-board-3d">
+                <div class="board-glow"></div>
+                <div class="floating-piece king"></div>
+                <div class="floating-piece queen"></div>
+                <div class="floating-piece rook"></div>
             </div>
-          </div>
         </div>
-      </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <span>Прокрутите вниз</span>
+        </div>
     </section>
 
-    <section class="cta-section">
-      <div class="cta-content">
-        <h2>Ready to Play?</h2>
-        <p>Join thousands of players already enjoying Chess2.</p>
-        <div class="cta-buttons">
-          <a href="sign_in.html" class="btn primary-btn large">
-            <i class="fas fa-user-plus"></i> Sign Up Now
-          </a>
-          <a href="https://github.com/KaVoshnik/Chess_2" class="btn outline-btn">
-            <i class="fab fa-github"></i> GitHub
-          </a>
+    <section id="about" class="about">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-badge">Об игре</span>
+                <h2 class="section-title">Что такое <span class="highlight">Chess 2</span>?</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-card reveal-left">
+                    <div class="card-icon strategy-icon">
+                        <div class="icon-inner"></div>
+                    </div>
+                    <h3>Стратегическая глубина</h3>
+                    <p>Классические шахматы встречаются с современными механиками. Каждый ход важен, каждое решение
+                        меняет игру.</p>
+                </div>
+                <div class="about-card reveal-up">
+                    <div class="card-icon cards-icon">
+                        <div class="icon-inner"></div>
+                    </div>
+                    <h3>Система карт</h3>
+                    <p>Коллекционируйте карты, накладывайте улучшения на фигуры и удивляйте противников неожиданными
+                        комбинациями.</p>
+                </div>
+                <div class="about-card reveal-right">
+                    <div class="card-icon events-icon">
+                        <div class="icon-inner"></div>
+                    </div>
+                    <h3>Динамические события</h3>
+                    <p>Поле битвы меняется! Туман войны, землетрясения и магнитные бури добавляют непредсказуемости.</p>
+                </div>
+            </div>
+            <div class="about-main reveal-up">
+                <div class="about-text">
+                    <p><strong>Chess2</strong> — это не просто шахматы, а гибрид классической настольной стратегии с
+                        элементами коллекционной карточной системы, экономики, динамических событий и множества игровых
+                        режимов.</p>
+                    <p>Игра сочетает в себе стратегическую глубину шахмат с прогрессией, кастомизацией и неожиданными
+                        поворотами благодаря картам, событиям и уникальным фигурам.</p>
+                </div>
+                <div class="about-features">
+                    <div class="feature">
+                        <span class="feature-number">4+</span>
+                        <span class="feature-text">Игровых режима</span>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-number">∞</span>
+                        <span class="feature-text">Возможностей</span>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-number">1</span>
+                        <span class="feature-text">Легендарная фигура</span>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
-  </main>
 
-  <footer class="footer">
-    <div class="footer-content">
-      <div class="footer-logo">Chess<span>2</span></div>
-      <div class="footer-links">
-        <a href="/index.html">Home</a>
-        <a href="/leaderboard.html">Leaderboard</a>
-        <a href="/social.html">Community</a>
-        <a href="/devlog.html">Blog</a>
-        <a href="https://github.com/KaVoshnik/Chess_2">GitHub</a>
-      </div>
-      <div class="footer-social">
-        <a href="https://t.me/AdKavoshnik"><i class="fab fa-telegram"></i></a>
-        <a href="https://github.com/KaVoshnik/Chess_2"><i class="fab fa-github"></i></a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2025 Chess2. All rights reserved.</p>
-    </div>
-  </footer>
+    <section id="modes" class="modes">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-badge">Режимы</span>
+                <h2 class="section-title">Выберите свой <span class="highlight">стиль игры</span></h2>
+            </div>
+            <div class="modes-grid">
+                <div class="mode-card reveal-up" data-mode="classic">
+                    <div class="mode-icon">
+                        <div class="crown-icon"></div>
+                    </div>
+                    <div class="mode-content">
+                        <h3>Классика+</h3>
+                        <p class="mode-subtitle">Standard+</p>
+                        <ul class="mode-features">
+                            <li>Классические шахматы с улучшениями</li>
+                            <li>Система карт и умений</li>
+                            <li>Ресурсы от заводов</li>
+                            <li>Рейтинговая система</li>
+                        </ul>
+                        <div class="mode-goal">
+                            <span class="goal-label">Цель:</span>
+                            <span class="goal-text">Мат королю противника</span>
+                        </div>
+                    </div>
+                    <div class="mode-glow"></div>
+                </div>
 
-  <script src="/js/profile_avatar.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Проверяем, авторизован ли пользователь
-      const userId = localStorage.getItem('userId');
-      const token = localStorage.getItem('token');
-      
-      // Если пользователь авторизован, обновляем информацию о нем
-      if (userId && token) {
-        // Обновляем аватар на основе имени пользователя
-        fetch(`/api/user/${userId}`)
-          .then(response => {
-            if (!response.ok) throw new Error('Failed to fetch user data');
-            return response.json();
-          })
-          .then(userData => {
-            const username = userData.username || 'Player';
-            document.getElementById('username').textContent = username;
-            
-            // Генерируем аватар на основе имени пользователя
-            const seed = username || 'default';
-            const avatarUrl = `https://avatars.dicebear.com/api/identicon/${seed}.svg`;
-            
-            document.getElementById('profile-avatar').src = avatarUrl;
-            document.getElementById('menu-avatar').src = avatarUrl;
-          })
-          .catch(error => {
-            console.error('Error loading user data:', error);
-          });
-      } else {
-        // Если пользователь не авторизован, показываем соответствующую информацию
-        document.getElementById('username').textContent = 'Guest';
-        document.querySelector('.profile-buttons').innerHTML = `
-          <a href="sign_in.html"><i class="fas fa-sign-in-alt"></i> Sign In</a>
-          <a href="sign_in.html"><i class="fas fa-user-plus"></i> Register</a>
-        `;
-      }
-      
-      // Добавляем анимацию появления для карточек новостей и функций
-      const animateElements = document.querySelectorAll('.feature-card, .news-card');
-      animateElements.forEach((el, index) => {
-        setTimeout(() => {
-          el.classList.add('animate-in');
-        }, 100 * index);
-      });
-    });
-  </script>
+                <div class="mode-card reveal-up" data-mode="battle-royale" style="--delay: 0.1s">
+                    <div class="mode-icon">
+                        <div class="swords-icon"></div>
+                    </div>
+                    <div class="mode-content">
+                        <h3>Королевская битва</h3>
+                        <p class="mode-subtitle">Battle Royale</p>
+                        <ul class="mode-features">
+                            <li>Большая доска 16×16</li>
+                            <li>От 4 до 8 игроков</li>
+                            <li>Фигуры с жизнями</li>
+                            <li>Сужающееся поле</li>
+                        </ul>
+                        <div class="mode-goal">
+                            <span class="goal-label">Цель:</span>
+                            <span class="goal-text">Стать последним выжившим</span>
+                        </div>
+                    </div>
+                    <div class="mode-glow"></div>
+                </div>
+
+                <div class="mode-card reveal-up" data-mode="open-world" style="--delay: 0.2s">
+                    <div class="mode-icon">
+                        <div class="world-icon"></div>
+                    </div>
+                    <div class="mode-content">
+                        <h3>Открытый мир</h3>
+                        <p class="mode-subtitle">Open World</p>
+                        <ul class="mode-features">
+                            <li>Исследование карты в стиле RPG</li>
+                            <li>Рейд-боссы</li>
+                            <li>Строительство заводов</li>
+                            <li>Сохранение прогрессии</li>
+                        </ul>
+                        <div class="mode-goal">
+                            <span class="goal-label">Цель:</span>
+                            <span class="goal-text">Исследуй, сражайся, развивайся</span>
+                        </div>
+                    </div>
+                    <div class="mode-glow"></div>
+                </div>
+
+                <div class="mode-card reveal-up" data-mode="tower-defense" style="--delay: 0.3s">
+                    <div class="mode-icon">
+                        <div class="tower-icon"></div>
+                    </div>
+                    <div class="mode-content">
+                        <h3>Tower Defense</h3>
+                        <p class="mode-subtitle">Защита короля</p>
+                        <ul class="mode-features">
+                            <li>Король — защищаемая цель</li>
+                            <li>Фигуры как башни</li>
+                            <li>Волны врагов</li>
+                            <li>Улучшения в реальном времени</li>
+                        </ul>
+                        <div class="mode-goal">
+                            <span class="goal-label">Цель:</span>
+                            <span class="goal-text">Защити короля любой ценой</span>
+                        </div>
+                    </div>
+                    <div class="mode-glow"></div>
+                </div>
+            </div>
+            <div class="modes-footer reveal-up">
+                <div class="rating-badge">
+                    <span class="badge-icon">★</span>
+                    <span>Все режимы поддерживают рейтинговые таблицы и систему достижений</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="cards" class="cards-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-badge">Карты</span>
+                <h2 class="section-title">Система <span class="highlight">карт и умений</span></h2>
+            </div>
+            <div class="cards-content">
+                <div class="cards-info reveal-left">
+                    <div class="info-block">
+                        <h3>Как работают карты?</h3>
+                        <ul class="info-list">
+                            <li><span class="list-icon">♦</span>Карты многоразовые — используйте снова и снова</li>
+                            <li><span class="list-icon">♦</span>До 2 карт на каждую фигуру одновременно</li>
+                            <li><span class="list-icon">♦</span>Эффекты длятся от 1 до нескольких ходов</li>
+                        </ul>
+                    </div>
+                    <div class="info-block">
+                        <h3>Как получить карты?</h3>
+                        <ul class="info-list">
+                            <li><span class="list-icon">◆</span>Гача-система за внутриигровую валюту</li>
+                            <li><span class="list-icon">◆</span>Награды за победы в матчах</li>
+                            <li><span class="list-icon">◆</span>Достижения и ежедневные задания</li>
+                            <li><span class="list-icon">◆</span>Ресурсы от ваших заводов</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="cards-showcase reveal-right">
+                    <div class="card-wrapper">
+                        <div class="card-flip-container shield-card">
+                            <div class="card-flipper">
+                                <div class="card-front">
+                                    <div class="card-glow"></div>
+                                    <div class="card-header">Щит</div>
+                                    <div class="card-visual">
+                                        <div class="shield-visual"></div>
+                                    </div>
+                                    <div class="card-effect">+2 HP на 2 хода</div>
+                                </div>
+                                <div class="card-back rare-back">
+                                    <div class="card-back-header">Условия</div>
+                                    <ul class="card-conditions">
+                                        <li>Можно использовать с 1 хода</li>
+                                        <li>Действует на любую свою фигуру</li>
+                                        <li>Перезарядка: 3 хода</li>
+                                        <li>Не суммируется с другими щитами</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-flip-hint">Нажмите</div>
+                        </div>
+                        <div class="card-rarity-label rare">Редкая</div>
+                    </div>
+                    <div class="card-wrapper">
+                        <div class="card-flip-container fog-card">
+                            <div class="card-flipper">
+                                <div class="card-front">
+                                    <div class="card-glow"></div>
+                                    <div class="card-header">Туман войны</div>
+                                    <div class="card-visual">
+                                        <div class="fog-visual"></div>
+                                    </div>
+                                    <div class="card-effect">Ограничивает обзор врага</div>
+                                </div>
+                                <div class="card-back epic-back">
+                                    <div class="card-back-header">Условия</div>
+                                    <ul class="card-conditions">
+                                        <li>Доступна с 5 хода</li>
+                                        <li>Радиус действия: 3 клетки</li>
+                                        <li>Длительность: 2 хода</li>
+                                        <li>Максимум 2 раза за игру</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-flip-hint">Нажмите</div>
+                        </div>
+                        <div class="card-rarity-label epic">Эпическая</div>
+                    </div>
+                    <div class="card-wrapper">
+                        <div class="card-flip-container steal-card">
+                            <div class="card-flipper">
+                                <div class="card-front">
+                                    <div class="card-glow legendary-glow"></div>
+                                    <div class="card-header">Кража</div>
+                                    <div class="card-visual">
+                                        <div class="steal-visual"></div>
+                                    </div>
+                                    <div class="card-effect">Укради любую фигуру врага</div>
+                                </div>
+                                <div class="card-back legendary-back">
+                                    <div class="card-back-header">Условия</div>
+                                    <ul class="card-conditions">
+                                        <li>Только с 10 хода</li>
+                                        <li>Только фигуры эпик и ниже</li>
+                                        <li>1 раз за всю игру</li>
+                                        <li>Нельзя украсть короля</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-flip-hint">Нажмите</div>
+                        </div>
+                        <div class="card-rarity-label legendary">Легендарная</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="economy" class="economy">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-badge">Экономика</span>
+                <h2 class="section-title">Заводы и <span class="highlight">ресурсы</span></h2>
+            </div>
+            <div class="economy-content">
+                <div class="factory-visual reveal-left">
+                    <div class="factory">
+                        <div class="factory-body">
+                            <div class="factory-chimney">
+                                <div class="smoke smoke-1"></div>
+                                <div class="smoke smoke-2"></div>
+                                <div class="smoke smoke-3"></div>
+                            </div>
+                            <div class="factory-window"></div>
+                            <div class="factory-door"></div>
+                        </div>
+                        <div class="factory-base"></div>
+                        <div class="resource-flow">
+                            <div class="resource metal"></div>
+                            <div class="resource energy"></div>
+                            <div class="resource metal"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="economy-info reveal-right">
+                    <div class="economy-block">
+                        <h3>Что такое заводы?</h3>
+                        <p>Заводы — это внеигровой элемент, который размещается в личном меню игрока. Они генерируют
+                            ресурсы между матчами и во время игры!</p>
+                    </div>
+                    <div class="economy-block">
+                        <h3>Типы ресурсов</h3>
+                        <div class="resources-grid">
+                            <div class="resource-item">
+                                <div class="resource-icon metal-icon"></div>
+                                <span>Металл</span>
+                            </div>
+                            <div class="resource-item">
+                                <div class="resource-icon energy-icon"></div>
+                                <span>Энергия</span>
+                            </div>
+                            <div class="resource-item">
+                                <div class="resource-icon crystal-icon"></div>
+                                <span>Кристаллы</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="economy-block special">
+                        <h3>Уникальная механика</h3>
+                        <p>Пешка, дошедшая до последнего ряда, может превратиться не только в фигуру, но и в
+                            <strong>завод</strong>! Она исчезает с доски и начинает генерировать выбранный ресурс.
+                        </p>
+                        <div class="protection-badge">
+                            <span class="lock-icon">🔒</span>
+                            <span>Заводы нельзя атаковать или уничтожить</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="events" class="events">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-badge">События</span>
+                <h2 class="section-title">События на <span class="highlight">поле боя</span></h2>
+            </div>
+            <div class="events-content">
+                <div class="events-types">
+                    <div class="event-type reveal-left">
+                        <div class="event-icon global-icon">
+                            <div class="globe"></div>
+                        </div>
+                        <div class="event-info">
+                            <h3>Глобальные события</h3>
+                            <p>Влияют на всю доску целиком</p>
+                            <div class="event-example">
+                                <span class="example-name">Туман войны</span>
+                                <span class="example-desc">Все видят только на 1 клетку (ладья — на 2)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="event-type reveal-right">
+                        <div class="event-icon local-icon">
+                            <div class="target"></div>
+                        </div>
+                        <div class="event-info">
+                            <h3>Локальные события</h3>
+                            <p>Затрагивают определённую зону</p>
+                            <div class="event-example">
+                                <span class="example-name">Дым</span>
+                                <span class="example-desc">Закрывает обзор в радиусе 3 клеток</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="events-showcase reveal-up">
+                    <h3>Примеры событий</h3>
+                    <div class="events-grid">
+                        <div class="event-card earthquake">
+                            <div class="event-visual">
+                                <div class="crack crack-1"></div>
+                                <div class="crack crack-2"></div>
+                                <div class="crack crack-3"></div>
+                            </div>
+                            <h4>Землетрясение</h4>
+                            <p>Удаляет случайные клетки с доски</p>
+                        </div>
+                        <div class="event-card storm">
+                            <div class="event-visual">
+                                <div class="lightning lightning-1"></div>
+                                <div class="lightning lightning-2"></div>
+                            </div>
+                            <h4>Магнитная буря</h4>
+                            <p>Отключает все карты на 1 ход</p>
+                        </div>
+                        <div class="event-card fog">
+                            <div class="event-visual">
+                                <div class="fog-layer fog-1"></div>
+                                <div class="fog-layer fog-2"></div>
+                            </div>
+                            <h4>Густой туман</h4>
+                            <p>Скрывает часть доски от обоих игроков</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="legendary" class="legendary">
+        <div class="legendary-bg">
+            <div class="star star-1"></div>
+            <div class="star star-2"></div>
+            <div class="star star-3"></div>
+            <div class="star star-4"></div>
+            <div class="star star-5"></div>
+        </div>
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-badge legendary-badge">Легендарные</span>
+                <h2 class="section-title">Уникальные <span class="highlight-gold">фигуры</span></h2>
+            </div>
+            <div class="legendary-content">
+                <div class="shark-showcase reveal-left">
+                    <div class="shark-container">
+                        <div class="shark-glow"></div>
+                        <div class="shark-piece">
+                            <div class="shark-body">
+                                <div class="shark-fin"></div>
+                                <div class="shark-tail"></div>
+                                <div class="shark-eye"></div>
+                            </div>
+                        </div>
+                        <div class="water-ripple ripple-1"></div>
+                        <div class="water-ripple ripple-2"></div>
+                        <div class="water-ripple ripple-3"></div>
+                    </div>
+                    <div class="legendary-tag">АКУЛА-ИСТРИБИТЕЛЬ</div>
+                </div>
+                <div class="shark-abilities reveal-right">
+                    <h3>Способности Акулы-истрибителя</h3>
+                    <div class="ability">
+                        <div class="ability-icon dive-icon">
+                            <div class="wave"></div>
+                        </div>
+                        <div class="ability-info">
+                            <h4>Погружение</h4>
+                            <p>Акула-истрибитель может «нырнуть» на 1 ход, став неуязвимой и невидимой. Нельзя
+                                использовать подряд.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="ability">
+                        <div class="ability-icon air-icon">
+                            <div class="crosshair"></div>
+                        </div>
+                        <div class="ability-info">
+                            <h4>Воздушный удар</h4>
+                            <p>Может атаковать через 1 клетку, «перелетая» препятствия. Перезарядка: 2 хода.</p>
+                        </div>
+                    </div>
+                    <div class="legendary-quote">
+                        <p>«Глубины скрывают то, что поверхность не покажет»</p>
+                        <span>— Древняя шахматная мудрость</span>
+                    </div>
+                </div>
+            </div>
+            <div class="future-hint reveal-up">
+                <span class="hint-icon">✨</span>
+                <p>Больше легендарных фигур появится в будущих обновлениях...</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-logo">
+            <span class="logo-chess">Chess</span><span class="logo-2">2</span>
+        </div>
+        <p class="footer-tagline">Новая эра шахмат начинается здесь</p>
+        <div class="footer-divider"></div>
+        <p class="footer-copyright">© 2025 Chess2. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
+
 </html>
